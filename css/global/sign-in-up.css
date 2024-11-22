@@ -1,0 +1,14 @@
+.sign-in {
+    font-size: .95rem;
+    /* background-color: var(--color-black-1); */
+    padding: 10px;
+    border-radius: 30%;
+    color: var(--color-white);
+}
+
+@media (width >= 50.625em) {
+    .sign-in {
+        font-size: fs-6;
+    }
+    
+}
