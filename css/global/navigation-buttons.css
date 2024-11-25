@@ -14,7 +14,7 @@
     font-size: 34px;
     background-color: var(--color-black-3);
     border-radius: 5px;
-    border: 1px solid var(--color-white);
+    /* border: 1px solid var(--color-white); */
     transition: 150ms ease-in-out;
     transition-property: opacity, color;
     opacity: .5;
@@ -42,3 +42,26 @@
     color: var(--color-yellow);
     opacity: .8;
 } */
+
+
+@media (width >= 50.625em) {
+    .bx-left-arrow-alt,
+    .bx-right-arrow-alt {
+        padding-block: 21.5px;
+        font-size: 68px;
+        border-radius: 17px;
+        padding-inline: 2px;
+    }
+
+    .featured .navigation-container {
+        top: 0;
+        translate: 0 120%;
+    }
+    
+}
+
+@media (width >= 90em) {
+    .featured .navigation-container {
+        width: 92%;
+    }
+}
