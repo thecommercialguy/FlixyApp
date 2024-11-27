@@ -3,5 +3,7 @@
 @import url('/css/global/navigation-buttons.css');
 @import url('/css/global/sign-in-up.css');
 @import url('/css/global/logo.css');
+@import url('/css/global/section.css');
 @import url('/css/components/header.css');
 @import url('/css/components/featured.css');
+@import url('/css/components/content-slider.css');

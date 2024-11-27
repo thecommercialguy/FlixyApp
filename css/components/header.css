@@ -45,3 +45,11 @@
 
 }
 
+@media (width >= 50.625em) {
+    .navbar {
+        padding-block: 4.8px;
+        padding-inline: 121px;
+    }
+
+}
+

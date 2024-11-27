@@ -5,7 +5,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding-block: 19px 10px;
+    padding-block: 19px 0;
 
     color: var(--color-white);
 }
@@ -21,7 +21,7 @@
     display: flex;
     position: relative;
     width: 95.733%;
-    padding-block-end: 11.2%;
+    padding-block-end: 10.6%;
 }
 
 .portrait {
@@ -38,7 +38,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     padding-inline-start: 34%;
-    padding-block-start: 1%;
+    padding-block-start: 1.3%;
 }
 
 .portrait-text-container {
@@ -110,14 +110,14 @@
 
     .portrait {
         width: 25.183%;
-        translate: 45.7% -52%;
+        translate: 39.5% -52%;
     }
     .portrait-container {
-        padding-block-end: 16.4%;
+        padding-block-end: 10.68%;
     }
 
     .featured-movie-details {
-        padding-inline-start: 40.5%;
+        padding-inline-start: 37%;
         padding-block-start: 2.8%;
     }
 

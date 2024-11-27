@@ -8,6 +8,7 @@
     
 }
 
+
 .bx-left-arrow-alt,
 .bx-right-arrow-alt {
     padding-block: 15px;
@@ -37,6 +38,12 @@
     top: 0;
     translate: 0 83%;
 }
+
+.monthly.section .navigation-container {
+    top: 0;
+    translate: 0% 161%;
+}
+
 
 /* .featured .navigation-container:hover {
     color: var(--color-yellow);
