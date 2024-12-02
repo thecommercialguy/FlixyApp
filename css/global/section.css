@@ -21,3 +21,13 @@
 .section-title-container h2 {
     font-size: var(--fs-2);
 }
+
+@media (width >= 50.625em) {
+    .section {
+        padding-block: 2.79% 3.95%;
+    }
+
+    .section-title-container {
+        padding-block: 0 2.592%;
+    }
+}

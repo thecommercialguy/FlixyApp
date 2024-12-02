@@ -3,10 +3,10 @@
     justify-content: center;
     color: var(--color-white);
     background-color: var(--color-black-2);
-    box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.50);
+    box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.90);
     width: 100%;
-    /* border: 1px solid red; */
 }
+
 
 .navbar {
     display: flex;
@@ -45,7 +45,7 @@
 
 }
 
-@media (width >= 50.625em) {
+@media (width >= 90em) {
     .navbar {
         padding-block: 4.8px;
         padding-inline: 121px;
