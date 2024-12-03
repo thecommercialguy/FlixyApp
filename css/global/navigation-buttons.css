@@ -22,11 +22,6 @@
     /* border-radius: 11px; */
 }
 
-.bx-left-arrow-alt:hover,
-.bx-right-arrow-alt:hover {
-    opacity: .7;
-
-}
 
 .bx-left-arrow-alt:active,
 .bx-right-arrow-alt:active {
@@ -42,6 +37,38 @@
 .monthly.section .navigation-container {
     top: 0;
     translate: 0% 161%;
+}
+
+.reviews.section .navigation-container {
+    top: 0;
+    translate: 0% 75%;
+    transition: 150ms ease-in-out;
+    transition-property: opacity;
+    opacity: 0;
+}
+
+.bx-left-arrow-alt:hover,
+.bx-right-arrow-alt:hover {
+    opacity: .7;
+
+}
+
+.reviews.section .navigation-container:hover {
+    opacity: .7;
+}
+
+.reviews.section .navigation-container .bx-left-arrow-alt,
+.reviews.section .navigation-container .bx-right-arrow-alt {
+    /* opacity */
+    transition: 150ms ease-in-out;
+    transition-property: color;
+}
+
+.reviews.section .navigation-container .bx-left-arrow-alt:active,
+.reviews.section .navigation-container .bx-right-arrow-alt:active {
+    /* opacity: .7; */
+    color: var(--color-yellow);
+
 }
 
 

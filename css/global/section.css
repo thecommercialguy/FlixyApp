@@ -14,12 +14,22 @@
 }
 
 .section-title-container {
+    display: flex;
+    flex-direction: row;
     padding-block: 0 13px;
     padding-inline-start: 2.133%;
 }
 
 .section-title-container h2 {
     font-size: var(--fs-2);
+    padding-right: 5px;
+}
+
+.rect {
+    /* background-color: var(--color-yellow); */
+    /* border-radius: 100%; */
+    margin-top: 1px;
+
 }
 
 @media (width >= 50.625em) {
@@ -29,5 +39,16 @@
 
     .section-title-container {
         padding-block: 0 2.592%;
+    }
+
+    .section-title-container h2 {
+        padding-right: 8px;
+    }
+
+    .rect {
+        margin-top: 1.44%;
+        height: 28px;
+        width: 6px;
+        /* width: 1.756%; */
     }
 }
