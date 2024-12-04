@@ -100,7 +100,7 @@
 @media (width >= 90em) {
     .featured {
         display: flex;
-        /* width: 70%; */
+        width: 1008px;
         
     }
 

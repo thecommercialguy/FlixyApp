@@ -41,7 +41,7 @@
 
 .reviews.section .navigation-container {
     top: 0;
-    translate: 0% 75%;
+    translate: 0% 148%;
     transition: 150ms ease-in-out;
     transition-property: opacity;
     opacity: 0;
@@ -95,7 +95,12 @@
 }
 
 @media (width >= 90em) {
-    .featured .navigation-container {
+    .navigation-container {
         width: 92%;
     }
+
+    .monthly.section .navigation-container {
+        translate: 0% 190%;
+    }
+    
 }

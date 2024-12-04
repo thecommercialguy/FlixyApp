@@ -35,10 +35,13 @@
 @media (width >= 50.625em) {
     .section {
         padding-block: 2.79% 3.95%;
+        align-items: center;
     }
 
     .section-title-container {
         padding-block: 0 2.592%;
+        align-self: flex-start;
+        padding-inline-start: 4.1%;
     }
 
     .section-title-container h2 {
@@ -50,5 +53,16 @@
         height: 28px;
         width: 6px;
         /* width: 1.756%; */
+    }
+}
+
+@media (width >= 90em) {
+    .section {
+        width: 1008px;
+    }
+
+    .section-title-container {
+        align-self: flex-start;
+        padding-inline-start: 84px;
     }
 }
