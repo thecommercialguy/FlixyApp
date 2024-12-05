@@ -34,14 +34,15 @@
     translate: 0 83%;
 }
 
-.monthly.section .navigation-container {
+.monthly.section .navigation-container,
+.seasonal.section .navigation-container {
     top: 0;
     translate: 0% 161%;
 }
 
 .reviews.section .navigation-container {
     top: 0;
-    translate: 0% 148%;
+    translate: 0% 185%;
     transition: 150ms ease-in-out;
     transition-property: opacity;
     opacity: 0;
@@ -91,6 +92,10 @@
         top: 0;
         translate: 0 120%;
     }
+
+    .reviews.section .navigation-container {
+        translate: 0% 221%;
+    }
     
 }
 
@@ -103,4 +108,7 @@
         translate: 0% 190%;
     }
     
+    .reviews.section .navigation-container {
+        translate: 0% 200%;
+    }
 }

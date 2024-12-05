@@ -1,4 +1,4 @@
-.sign-in {
+.sign-in, .sign-up {
     font-size: .95rem;
     /* background-color: var(--color-black-1); */
     padding: 10px;
@@ -7,14 +7,14 @@
 }
 
 @media (width >= 50.625em) {
-    .sign-in {
+    .sign-in, .sign-up {
         font-size: fs-6;
     }
     
 }
 
 @media (width >= 90em) {
-    .sign-in {
+    .sign-in, .sign-up {
         font-size: 23px;
     }
     

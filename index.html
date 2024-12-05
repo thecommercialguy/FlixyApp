@@ -138,6 +138,7 @@
                                 Stone is magnificent.
                             </p>
                         </div>
+                        
                         <div class="review-card">
                             <div class="review-card-title">
                                 <h3>Poor Things was incredible!!!</h3>
@@ -192,60 +193,7 @@
                                 Stone is magnificent.
                             </p>
                         </div>
-                        <!-- <div class="review-card">
-                            <div class="review-card-title">
-                                <h3>Poor Things was incredible!!!</h3>
-                                <h4 class="username">@username</h4>
-                            </div>
-
-                            <div class="review-rating">
-                                <ul class="star-list reviews">
-                                    <li><i class='bx bxs-star'></i></li>
-                                    <li><i class='bx bxs-star'></i></li>
-                                    <li><i class='bx bxs-star'></i></li>
-                                    <li><i class='bx bxs-star'></i></li>
-                                    <li><i class='bx bxs-star'></i></li>
-                                </ul>
-
-                                <div class="like-count">
-                                    <i class='bx bx-like like likes' style="font-size: 13px;"></i>
-                                    <h6 class="num-likes">(100)</h6>
-                                </div>
-                            </div>
-
-                            <p class="review-text">
-                                Yorgos Lanthimos' "Poor Things" is a bizarre, 
-                                beautiful, and unforgettable cinematic experience. Emma
-                                Stone in magnificent.
-                            </p>
-                        </div>
-                        <div class="review-card">
-                            <div class="review-card-title">
-                                <h3>Poor Things was incredible!!!</h3>
-                                <h4 class="username">@username</h4>
-                            </div>
-
-                            <div class="review-rating">
-                                <ul class="star-list reviews">
-                                    <li><i class='bx bxs-star'></i></li>
-                                    <li><i class='bx bxs-star'></i></li>
-                                    <li><i class='bx bxs-star'></i></li>
-                                    <li><i class='bx bxs-star'></i></li>
-                                    <li><i class='bx bxs-star'></i></li>
-                                </ul>
-
-                                <div class="like-count">
-                                    <i class='bx bx-like like likes' style="font-size: 13px;"></i>
-                                    <h6 class="num-likes">(100)</h6>
-                                </div>
-                            </div>
-
-                            <p class="review-text">
-                                Yorgos Lanthimos' "Poor Things" is a bizarre, 
-                                beautiful, and unforgettable cinematic experience. Emma
-                                Stone in magnificent.
-                            </p>
-                        </div> -->
+                        
                     </div>
                 
                 <!-- </div> -->
@@ -258,50 +206,87 @@
             </div>
         </section>
 
+        <section class="seasonal section">
+            <div class="section-title-container">
+                <h2>Holiday Favorites</h2>
+                <svg width="3" height="16" viewBox="0 0 3 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="rect">
+                    <rect y="0.854019" width="2.29218" height="14.2843" rx="1.14609" fill="#F5C518"/>
+                </svg>
+                
+            </div>
+
+            <div class="content-slider-container">
+                <img src="/images/poor-things-portrait.jpg" class="slider-image"/>
+
+                <div class="content-slider">
+                    
+                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
+
+                </div>
+
+            </div>
+
+             <div class="navigation-container">
+                <!-- <object data="/assets/left-arrow.svg" type="image/svg+xml" width="300" height="300" class="left-arrow"></object>
+                <object data="/assets/right-arrow.svg" type="image/svg+xml" width="300" height="300" class="right-arrow"></object> -->
+                <i class='bx bx-left-arrow-alt content' data-index-change="-1" ></i>
+                <i class='bx bx-right-arrow-alt content' data-index-change="1"></i>
+            </div>
+            
+        </section>
+
 
 
     </main>
    
-
-    Popular Reviews
-
-    Poor Things was incredible!!! @username
-    (100)
-
-    Yorgos Lanthimos' "Poor Things" is a bizarre, 
-    beautiful, and unforgettable cinematic experience. Emma
-    Stone is magnificent.
-
-
-    Holiday Favorites
-
-
-    Sign Up
-    Sign In
+    <footer class="footer">
+        <img src="assets/flixy-logo.svg" alt="Flixy Logo" class="logo" />
+            
+        
+        <div class="sign-in-up ">
+            <a href="" class="sign-in">
+                    SIGN IN
+            </a>
+            <a href="" class="sign-up">
+                    SIGN UP
+            </a>
+        </div>
+    </footer>
 
 
     <script>
         const monthlySliderButtons = document.querySelectorAll('.monthly .navigation-container i')
-        const monthlySliderContent = document.querySelectorAll('.monthly .content-slider-container .content-slider .slider-image')
+        const monthlySliderImages = document.querySelectorAll('.monthly .content-slider-container .content-slider .slider-image')
+        const monthlySliderContent = document.querySelectorAll('.monthly .content-slider-container .content-slider .slider-index')
 
         const reviewSliderButtons = document.querySelectorAll('.reviews .navigation-container i')
         const reviewSliderContent = document.querySelectorAll('.review-card')
 
+        const seasonalSliderButtons = document.querySelectorAll('.seasonal .navigation-container i')
+        const seasonalSliderImages = document.querySelectorAll('.seasonal .content-slider-container .content-slider .slider-image')
+        const seasonalSliderContent = document.querySelectorAll('.seasonal .content-slider-container .content-slider .slider-index')
 
-        console.log(reviewSliderButtons.length)
-        console.log(reviewSliderContent.length)
+
+        console.log(seasonalSliderContent.length)
+        console.log(seasonalSliderButtons.length)
 
         let currSlideIndexMonthly = 0
 
-        function navigateSliderContentMobile(indexChange) {
+        function navigateMonthlySliderContentMobile(indexChange) {
             console.log("mobile")
             currSlideIndexMonthly += indexChange
-            // 0 + 1 -> 1
-            // 1 + 1 -> 2
-            // 2 + 1 -> 3 -> 2
-            // 2 - 1 -> 1
-            // 1 - 1 -> 0
-            // 0 - 1 -> -1 -> 0
+
             if (currSlideIndexMonthly === 4) {
                 currSlideIndex = 3
                 console.log("returned")
@@ -313,6 +298,15 @@
                 console.log("returned")
                 return
             }
+
+            const monthlySliderContentStyles = getComputedStyle(monthlySliderContent[0])
+
+            const widthString = monthlySliderContentStyles.getPropertyValue('width')
+            const marginRightString = monthlySliderContentStyles.getPropertyValue('margin-right')
+
+            const width = Number(widthString.split("px")[0])
+            const marginRight = Number(marginRightString.split("px")[0])
+            const shiftX = -((width + marginRight)/width) * 100
         
             console.log(indexChange)
             console.log(currSlideIndexMonthly)
@@ -330,7 +324,7 @@
 
                 // } else {
                 
-                image.style.transform = `translateX(${currSlideIndexMonthly * -321.1093676337}%)`
+                image.style.transform = `translateX(${currSlideIndexMonthly * (3*shiftX)}%)`
 
                 
             })
@@ -338,50 +332,11 @@
             
         }
 
-        function navigateSliderContentTablet(indexChange) {
-            console.log("tablet")
-            currSlideIndexMonthly += indexChange
-
-            if (currSlideIndexMonthly === 3) {
-                currSlideIndexMonthly = 2
-                console.log("returned")
-                return 
-            }
-
-            if (currSlideIndexMonthly < 0) {
-                currSlideIndexMonthly = 0
-                console.log("returned")
-                return
-            }
-        
-            console.log(indexChange)
-            console.log(currSlideIndexMonthly)
-            console.log("//")
-
-            monthlySliderContent.forEach((image, index) => {
-                
-                
-                if (index === 11) {
-                    console.log(index)
-                    console.log(indexChange*321.1093676337)
-                }
-                // if (currSlideIndex === 2) {
-                //     image.style.transform = `translateX(${indexChange * -211.9321826382}%)`
-
-                // } else {
-                
-                image.style.transform = `translateX(${currSlideIndexMonthly * -460.606060606}%)`
-
-                
-            })
-
-            
-        }
-
-        function navigateSliderContentDesktop(indexChange) {
+        function navigateMonthlySliderContent(indexChange) {
             console.log("desktop")
             currSlideIndexMonthly += indexChange
 
+            
             if (currSlideIndexMonthly === 3) {
                 currSlideIndexMonthly = 2
                 console.log("returned")
@@ -393,10 +348,23 @@
                 console.log("returned")
                 return
             }
-        
+
+            const monthlySliderContentStyles = getComputedStyle(monthlySliderContent[0])
+
+            const widthString = monthlySliderContentStyles.getPropertyValue('width')
+            const marginRightString = monthlySliderContentStyles.getPropertyValue('margin-right')
+
+            const width = Number(widthString.split("px")[0])
+            const marginRight = Number(marginRightString.split("px")[0])
+            const shiftX = -((width + marginRight)/width) * 100
+            
+            console.log(width)
+            console.log(marginRight)
+            console.log(shiftX)
             console.log(indexChange)
             console.log(currSlideIndexMonthly)
             console.log("//")
+
 
             monthlySliderContent.forEach((image, index) => {
                 
@@ -410,7 +378,7 @@
 
                 // } else {
                 
-                image.style.transform = `translateX(${currSlideIndexMonthly * -452.631578947}%)`
+                image.style.transform = `translateX(${currSlideIndexMonthly * (4*shiftX)}%)`
 
                 
             })
@@ -457,21 +425,116 @@
             })
         }
 
+        let currSlideIndexSeasonal = 0
+
+        function navigateSeasonalSliderMobile(indexChange) {
+            currSlideIndexSeasonal += indexChange
+
+            if (currSlideIndexSeasonal === 4) {
+                currSlideIndexSeasonal = 3
+                console.log("returned")
+                return 
+            }
+
+            if (currSlideIndexSeasonal < 0) {
+                currSlideIndexSeasonal = 0
+                console.log("returned")
+                return
+            }
+            const seasonalSliderContentStyles = getComputedStyle(seasonalSliderContent[0])
+
+            const widthString = seasonalSliderContentStyles.getPropertyValue('width')
+            const marginRightString = seasonalSliderContentStyles.getPropertyValue('margin-right')
+
+            const width = Number(widthString.split("px")[0])
+            const marginRight = Number(marginRightString.split("px")[0])
+            const shiftX = -((width + marginRight)/width) * 100
+            
+            console.log(width)
+            console.log(marginRight)
+            console.log(shiftX)
+            console.log(indexChange)
+            console.log(currSlideIndexSeasonal)
+            console.log("//")
+
+            seasonalSliderContent.forEach((image, index) => {
+                
+                
+                if (index === 11) {
+                    console.log(index)
+                    console.log(indexChange*451.02040816)
+                }
+                // if (currSlideIndex === 2) {
+                //     image.style.transform = `translateX(${indexChange * -211.9321826382}%)`
+
+                // } else {
+                
+                image.style.transform = `translateX(${currSlideIndexSeasonal * (3*shiftX)}%)`
+
+                
+            })
+        }
+
+        function navigateSeasonalSlider(indexChange) {
+            currSlideIndexSeasonal += indexChange
+
+            if (currSlideIndexSeasonal === 3) {
+                currSlideIndexSeasonal = 2
+                console.log("returned")
+                return 
+            }
+
+            if (currSlideIndexSeasonal < 0) {
+                currSlideIndexSeasonal = 0
+                console.log("returned")
+                return
+            }
+            const seasonalSliderContentStyles = getComputedStyle(seasonalSliderContent[0])
+
+            const widthString = seasonalSliderContentStyles.getPropertyValue('width')
+            const marginRightString = seasonalSliderContentStyles.getPropertyValue('margin-right')
+
+            const width = Number(widthString.split("px")[0])
+            const marginRight = Number(marginRightString.split("px")[0])
+            const shiftX = -((width + marginRight)/width) * 100
+            
+            console.log(width)
+            console.log(marginRight)
+            console.log(shiftX)
+            console.log(indexChange)
+            console.log(currSlideIndexSeasonal)
+            console.log("//")
+
+            seasonalSliderContent.forEach((image, index) => {
+                
+                
+                if (index === 11) {
+                    console.log(index)
+                    console.log(indexChange*451.02040816)
+                }
+                // if (currSlideIndex === 2) {
+                //     image.style.transform = `translateX(${indexChange * -211.9321826382}%)`
+
+                // } else {
+                
+                image.style.transform = `translateX(${currSlideIndexSeasonal * (4*shiftX)}%)`
+
+                
+            })
+        }
+
         monthlySliderButtons.forEach((button) => {
             button.addEventListener('click', ()=> {
                 const indexChange = +button.getAttribute('data-index-change')
                 const screenWidth = window.innerWidth
                 console.log(screenWidth)
-                if (screenWidth <= 375) {
-                    console.log(screenWidth)
-                    navigateSliderContentMobile(indexChange)
-                } else if (1440 > screenWidth && screenWidth >= 810) {
-                    console.log(screenWidth)
-                    navigateSliderContentTablet(indexChange)
+                if (screenWidth < 810) {
+                    navigateMonthlySliderContentMobile(indexChange)
                 } else {
                     console.log(screenWidth)
-                    navigateSliderContentDesktop(indexChange)
+                    navigateMonthlySliderContent(indexChange)
                 }
+
             })
         })
 
@@ -481,6 +544,26 @@
                 navigateReviewSlider(indexChange)
             })
         })
+
+        seasonalSliderButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const indexChange = +button.getAttribute('data-index-change')
+                const screenWidth = window.innerWidth
+                if (screenWidth < 810) {
+                    navigateSeasonalSliderMobile(indexChange)
+                } else {
+                    navigateSeasonalSlider(indexChange)
+                }
+            })
+        })
+
+        // For each seasonal slider button, the "button" (which is a dom element)
+        // will have an event listener method attatched to it
+        // That's first parameter is set to detetct "clicks" and it's second parameter
+        // Takes an arrow function, which in this case will be our navigateSeasonal slider
+        // method.
+        // An so yeah, it (the event listener) surveys the dom for a certain event to
+        // occur on an element and calls a specified method once said event occurs
 
     </script>
 

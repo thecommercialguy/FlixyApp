@@ -58,11 +58,16 @@
 
 @media (width >= 90em) {
     .section {
-        width: 1008px;
+        width: 88.888888%;
     }
 
     .section-title-container {
         align-self: flex-start;
         padding-inline-start: 84px;
+    }
+    .rect {
+        margin-top: 0;
+        height: 33px;
+        align-self: center;
     }
 }
