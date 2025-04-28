@@ -1,0 +1,120 @@
+:root {
+    --color-black: hsl(0, 0%, 0%);
+    --color-black-1: hsl(0, 0%, 7%);
+    --color-black-2: hsl(0, 0%, 10%);
+    --color-black-3: hsl(0, 0%, 13%);
+    --color-black-4: hsl(0, 0%, 11%);
+    --drop-shadow: hsla(0, 0%, 0%, .25);
+    /* --color-grey: hsl(0, 0%, 69%); */
+    --color-grey: hsl(0, 0%, 62%);
+    --color-grey-1: hsl(0, 0%, 40%);
+    --color-grey-2: hsl(0, 0%, 65%);
+    --trans-grey: hsla(0, 0%, 100%, .3);
+    /* --color-grey-2: hsl(0, 0%, 50%); */
+    /* --color-black-5: hsl(0, 0%, 11%); */
+    --color-yellow: hsl(47, 92%, 53%);
+    --color-yellow-1: hsl(47, 92%, 47%);
+    --color-yellow-2: hsl(47, 92%, 41%);
+    --opaque-yellow: rgba(245, 197, 24, .9);
+    --opaque-yellow-1: rgba(230, 182, 10, .9);
+    --color-white: hsl(0, 0%, 100%);
+    --gradient-black: linear-gradient(hsl(0, 0%, 10%) 0%, hsl(0, 0%, 7%) 51%);
+    --gradient-black-1: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+    /* --gradient-black-1: linear-gradient(hsl(101, 0%, 61%) 100%, hsl(0, 0%, 100%) 100%); */
+    --gradient-yellow: linear-gradient(hsl(0, 0, 100%), hsl(47,92%,53%));
+    --director-header-fm: clamp(2rem, 0.92rem + 4.608vw, 3.25rem);
+    --director-header-ft: clamp(3.25rem, 0.031rem + 6.359vw, 5.75rem);
+    --section-header-m: clamp(1rem, 0.784rem + 0.922vw, 1.25rem);
+    --section-header-t: clamp(1.25rem, 0.445rem + 1.59vw, 1.875rem);
+    --accent-height-m: clamp(0.938rem, 0.775rem + 0.691vw, 1.125rem);
+    --accent-height-t: clamp(1.125rem, 0.412rem + 1.408vw, 1.688rem);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    /* background-color: var(--color-black-4); */
+
+    /* padding-inline: 15%; */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Figtree', Arial, sans-serif;
+    font-weight: 400;
+    margin: 0;
+    background-color: var(--color-black);
+    overflow-x: clip;
+    width: 100%;
+
+    
+}
+
+h1{
+    font-weight: 900;
+}
+
+h2 {
+    font-weight: 700;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+i {
+    display: block;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+li {
+    list-style: none;
+}
+
+p {
+    max-width: 35ch;
+}
+
+@media (width >= 50.65) {
+    main {
+        overflow-x: clip;
+    }
+}
+
+@media (width >= 90em) {
+    main {
+        /* width: 43%;
+        max-width: 1008px; */
+        width: 1008px;
+        /* margin-left: center;
+        margin-right: center */
+    }
+
+    body {
+        width: 100%;
+        /* zoom: 80%; */
+        /* transform: scale(0.8); */
+        /* transform-origin: top left;  */
+    }
+
+    
+}

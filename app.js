@@ -21,6 +21,7 @@ app.use(express.static(path.join(__dirname,'css','components')))
 
 const movies = require('./movies/movie-router.js')
 const directors = require('./directors/directors-router.js')
+const users = require('./users/users-router.js')
 
 app.get('/config', (req, res) => {
     res.json({
@@ -48,6 +49,7 @@ app.route('/a').
 
 app.use('/movies', movies)
 app.use('/directors', directors)
+app.use('/users', users)
 
 
 

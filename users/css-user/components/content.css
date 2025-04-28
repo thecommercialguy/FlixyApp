@@ -1,0 +1,104 @@
+.slider-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 95.733%;
+    padding-inline: 1.06690793011%;
+    border-radius:21px;
+    aspect-ratio: 359.183/178.283; 
+    background-color: var(--color-black-3);
+    align-self: center;
+}
+
+
+.slider-container .slider {
+    display: grid;
+    justify-items: stretch;
+    position: relative;
+    grid-template-columns: repeat(3, 31.8792089518%);
+    /* grid-template-columns: repeat(3, 112.05px); */
+    grid-gap: 2.24287661139%;
+    grid-auto-flow: column;
+    grid-auto-columns: 31.8792089518%;
+    /* grid-auto-columns: 112.05px; */
+    overflow-x: auto;
+    transition: transform 150ms ease;
+    scroll-snap-type: x mandatory;
+
+}
+
+.slider .idx-cont {
+    width: 100%;
+    min-width: auto;
+    display: inline-flex;
+    position: relative;
+    border-radius: 21px;
+    overflow: clip;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1707/2560;
+    height: max-content;
+    scroll-snap-align: start;
+}
+
+.idx-image {
+    max-width: 100%;
+    padding: 0;
+    height: auto;
+    border: 1px solid white;
+    border-radius: 21px;
+    /* object-fit: cover; */
+}
+
+.idx-link {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+@media (width >= 50.625em) {
+    .slider-container {
+        display: flex;
+        align-items: center;
+        width: 92.548%;
+        padding-inline: .866%;
+        aspect-ratio: 835.883/320.983;
+    }
+    
+    
+    .slider-container .slider {
+        grid-template-columns: repeat(4, 22.4296626171%);
+        grid-gap: 3.39843372986%;
+        grid-auto-flow: column;
+        grid-auto-columns: 22.4296626171%; 
+    }
+    
+}
+
+@media (width >= 90em) {
+    .slider-container {
+        /* width: 100%; */
+        
+        width: 83.533%;
+        
+        padding-inline: 12.26px;
+        /* padding-inline: 13.26px; */
+    
+    }
+    
+    
+    .slider-container .slider {
+        display: grid;
+        justify-items: stretch;
+        position: relative;
+        grid-template-columns: repeat(4, 190px);
+        grid-gap: 19.0833px;
+        grid-auto-flow: column;
+        grid-auto-columns: 190px;
+        overflow-x: auto;
+    
+    }
+    
+}

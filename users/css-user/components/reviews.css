@@ -1,0 +1,337 @@
+.button {
+    width: 117px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-inline-start: 2.133%;
+    margin-block-end: 18px;
+    padding-block: 10px;
+    border-style: none;
+    border-radius: 21px;
+
+    color: var(--color-white);
+    background-color: var(--color-yellow);
+    
+    font-size: 1em;
+    font-weight: 400;
+
+    cursor: pointer;
+
+    transition: 150ms ease-in-out;
+    transition-property: color, background-color;
+}
+
+.button:hover {
+    background-color: var(--color-yellow-1);
+}
+
+.button:active {
+    color: var(--color-black-4);
+    background-color: var(--color-yellow-2);
+
+}
+
+.review-card-container {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-content: center;
+    justify-content: flex-start;
+
+    width: 100%;
+}
+
+.review-card {
+    display: flex;
+    align-self: center;
+    flex-direction: row;
+    justify-self: flex-start;
+    align-items: center;
+    width: 95.733%;
+    padding-inline: 11px;
+    padding-block: 13px;
+    border-radius: 21px;
+    margin-block-end: 18px;
+
+
+    /* border: 1px solid var(--color-white); */
+    background-color: var(--color-black-3);
+    /* box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.90); */
+
+}
+
+.profile-picture {
+    display: flex;
+    align-self: start;
+    justify-content: center;
+    align-items: center;
+    margin-block-start: 5px;
+    margin-inline-end: 8px;
+    border-radius: 100%;
+    background-color: gray;
+    
+
+    aspect-ratio: 1/1;
+    width: 45px;
+    height: 45px;
+
+}
+
+.review-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.review-title {
+    font-size: 1em;
+    font-weight: 500;
+
+    /* padding: 6; */
+    margin-block-end: 2px;
+}
+
+.username-rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-block: 0px;
+
+    margin-block-end: 6px;
+
+    width: max-content;
+}
+
+.username {
+    font-size: 12px;
+    font-weight: 500;
+    margin-inline-end: 3px;
+}
+
+.rating-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+}
+
+.rating-container > i {
+    font-size: 12px;
+    margin-inline-end: 3px;
+}
+
+.rating {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+p.review-body {
+    font-size: 16px;
+    font-weight: 400;
+    /* padding-block: 0; */
+    max-width: 100%;
+    padding: 0;
+    margin-block-start: 0;
+    margin-block-end: 13px; 
+} 
+
+.like-count {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+
+}
+
+.user-link {
+    color: var(--color-white);
+    cursor: pointer;
+}
+
+.user-link:visited {
+    color: var(--color-white);
+}
+
+.review-card-null {
+    display: flex;
+    align-self: center;
+    padding-block: 18px;
+    background-color: var(--color-black-3);
+    padding-inline: 15px;
+    border-radius: 21px;
+}
+
+@media (width >= 50.625em) {
+    .button {
+        align-self: flex-start;
+        width: 200px;
+        margin-inline-start: 4.1%;
+        padding-block: 16px;
+        border-radius: 41px;
+
+        font-size: 1.25em;
+    }
+
+    .review-card {
+        width: 91.6049438%;
+        padding-block: 28px;
+        padding-inline: 26px;
+    }
+
+    .profile-picture {
+        width: 74px;
+        height: 74px;
+        margin-inline-end: 22px;
+        margin-block: 0;
+    }
+
+    .review-title {
+        font-weight: 600;
+        margin-block-end: 3px;
+    }
+
+    .username-rating {
+        margin-block-end: 12px;
+    }
+
+    .username {
+        font-size: 16px;
+        font-weight: 500;
+        margin-inline-end: 5px;
+    }
+
+    .rating-container > i {
+        font-size: 16px;
+        margin-inline-end: 2px;
+        padding: 0;
+    }
+    
+
+    .rating {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    p.review-body {
+        margin-block-end: 14px; 
+    }
+
+    i.bx.bx-like.like.likes {
+        font-size: 1.144em;
+        margin-inline-end: 3px;
+    }
+
+    .review-card-null {
+        padding-block: 30px;
+        padding-inline: 26px;
+    }
+}
+
+@media (width >= 90em) {
+    .button {
+        align-self: flex-start;
+        width: 200px;
+        margin-inline-start: 8.23%;
+        
+        padding-block: 16px;
+        margin-block-end: 30px;
+        border-radius: 41px;
+
+        font-size: 1.25em;
+    }
+
+    .review-card {
+        width: 83.532%;
+        padding-block: 30px;
+        padding-inline: 26px;
+        margin-block-end: 30px;
+
+    }
+
+    .profile-picture {
+        width: 74px;
+        height: 74px;
+        margin-inline-end: 22px;
+        margin-block: 0;
+    }
+
+    .review-title {
+        font-weight: 500;
+        font-size: 1.125em;
+        margin-block-end: 3px;
+    }
+
+    .username-rating {
+        margin-block-end: 12px;
+    }
+
+    .username {
+        font-size: 1em;
+        /* font-size: 1.125em; */
+        font-weight: 500;
+        margin-inline-end: 5px;
+
+    }
+
+    .rating-container > i {
+        font-size: 18px;
+        margin-inline-end: 2px;
+        padding: 0;
+    }
+
+    .rating {
+        font-size: 1em;
+        /* font-size: 1.125em; */
+        font-weight: 500;
+
+    }
+    
+    p.review-body {
+        margin-block-end: 14px; 
+    }
+
+    i.bx.bx-like.like.likes {
+        font-size: 1.125em;
+        /* margin-inline-end: 4px; */
+        margin-inline-end: 2px;
+    }
+
+    .num-likes {
+        font-size: 1em;
+        padding-block-start: 1px;
+    }
+
+    .review-card-null {
+        font-size: 1.125em;
+        padding-block: 38px;
+        padding-inline: 26px;
+    }
+    /* .like */
+}
+
+/* 37px */
+
+
+
+
+
+
+/* a {
+display: flex;
+justify-content: center;
+align-items: center;  
+aspect-ratio: 1707/2560;
+width: 30.565%;
+margin-inline-end: .5478%;
+transform: translateX(0%);
+transition: transform 300ms ease-in-out;
+border-radius: 21px;
+
+border: 1px solid white;
+cursor: pointer;
+/* background-image: url(""); */
+/* background-size: cover; */
+/* } */ 
