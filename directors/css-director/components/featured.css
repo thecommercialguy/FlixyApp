@@ -1,0 +1,89 @@
+.featured {
+    background-color: var(--color-black-4);
+    /* background-image: var(--gradient-black); */
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-block: 19px 0;
+
+    color: var(--color-white);
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+
+}
+
+.featured .banner {
+    display: flex;
+    align-items: flex-end;
+
+    aspect-ratio: 359.183/188.283;
+    width: 95.733%;
+    /* height: auto; */
+    border-radius: 21px;
+    padding-inline: 1.335%;
+    /* background-image: linear-gradient(to bottom, #9C9C9B, #1C1C1C); */
+    /* background-image: linear-gradient(to bottom, rgba(156, 156, 155, 0.2), rgba(28, 28, 28, 0.2)); */
+    background-image: linear-gradient(
+        to bottom,
+        hsla(60, 1%, 61%, 0.2) 0%,
+        hsla(30, .81%, 48.63%, 0.2) 25%,
+        hsla(0, 0%, 36.08%, 0.2) 50%,
+        hsla(0, 0%, 23.53%, 0.2) 75%,
+        hsla(0, 0%, 10.98%, .2) 100%
+    );
+    /* background: var(--gradient-black-1); */
+
+
+
+}
+
+.featured .director-header {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: max-content;
+    align-items: flex-start;
+    justify-content: flex-start;
+    bottom: 0;
+    left: 0;
+    transform: translateY(2%);
+}
+
+.featured .banner .director-header .first-name, 
+.featured .banner .director-header .last-name {
+    color: white;
+    font-size: var(--director-header-fm);
+    /* font-size: 32px; */
+
+}
+
+/* Doing this in sections */
+
+
+@media (width >= 50.625em) {
+    .featured .banner {
+        width: 98.026%;
+        padding-inline: 2.7%;
+    }
+
+    .featured .banner .director-header .first-name, 
+    .featured .banner .director-header .last-name {
+        font-size: var(--director-header-ft);
+    }
+    
+}
+
+@media (width >= 90em) {
+    .featured .banner {
+        width: 83.532%;
+        padding-inline: .69999%;
+    }
+
+    .featured .banner .director-header .first-name, 
+    .featured .banner .director-header .last-name {
+        font-size: 52px;
+    }
+}

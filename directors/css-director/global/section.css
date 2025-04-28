@@ -1,0 +1,95 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    width: 100%;
+    
+    padding-block: 1.125em;
+    /* padding-block: 4% 6%; */
+
+    /* background-color: white; */
+    background-color: var(--color-black-4);
+    /* background-color: var(--color-black-1); */
+    color: var(--color-white);
+
+}
+
+.section-title-container {
+    display: flex;
+    flex-direction: row-reverse;
+    /* justify-content: space-between; */
+    padding-block: 0 13px;
+    padding-inline-start: 2.133%;
+}
+
+.section-title-container h2, span.director-header.slider {
+    /* font-size: var(--fs-2); */
+    font-size: var(--section-header-m);
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+.accent {
+        background-color: var(--color-yellow);
+        border-radius: 100%;
+        display: flex;
+        background-color: var(--color-yellow);
+        margin-top: 1px;
+        width: 2px;
+        height: var(--accent-height-m);
+        align-self: center;
+        margin-inline-end: 2px;
+        border-radius: 77px;
+}
+
+/* Doing this in sections */
+
+
+@media (width >= 50.625em) {
+    .section {
+        padding-block: 2.79% 3.95%;
+        align-items: center;
+    }
+
+    .section-title-container {
+        padding-block: 0 2.592%;
+        align-self: flex-start;
+        padding-inline-start: 4.1%;
+    }
+
+    .section-title-container h2, span.director-header.slider {
+        font-size: var(--section-header-t);
+        padding-right: 8px;
+    }
+
+    .accent {
+        margin-top: 1.44%;
+        height: var(--accent-height-t);
+        /* height: 18px; */
+        width: 3px;
+        margin-inline-end: 4px;
+        /* width: 1.756%; */
+    }
+}
+
+@media (width >= 90em) {
+   .section {
+        /* width: 88.888888%; */
+   }
+
+   .section-title-container {
+    padding-inline-start: 8.23%;
+}
+
+
+   .section-title-container h2, span.director-header.slider {
+        font-size: 2rem;
+        
+   }
+
+   .accent {
+    height: 28px;
+    width: 5px;
+   }
+}

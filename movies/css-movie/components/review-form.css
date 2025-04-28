@@ -1,0 +1,301 @@
+form#post-review {
+    /* display: flex; */
+    flex-direction: column;
+    color: var(--color-white);
+    display: none;
+    
+
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    
+
+    padding-block-start: 25px;
+    /* width: 724px; */
+    width: 359px;
+    /* width: 95.7333%; */
+    border-radius: 21px;
+
+    /* background-color: red; */
+    background-color: var(--color-black-3);
+    font-family: 'Figtree', Arial, sans-serif;
+
+    padding-block: 42px 59px;
+
+    top: 14%;
+    position: fixed;
+    top: 34%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    padding-inline: 15px;
+    /* padding-block: 15px; */
+    padding-block-start: 15px;
+    padding-block-end: 30px;
+    
+
+}
+
+form .portrait-container {
+    display: flex;
+    flex-direction: row;
+    position: unset;
+    /* width: 50%; */
+    align-items: center;
+    padding-block-end: 15px;
+    align-self: flex-start;
+    width: max-content;
+
+}
+
+
+form .portrait-container .portrait {
+    position: unset;
+    translate:unset;
+    width: 46px;
+    border-radius: 11px;
+    border: none;
+}
+
+.portrait-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-inline-start: 6px;
+    color: var(--color-grey)
+    
+}
+
+.portrait-meta h2 {
+    font-size: .75em;
+    font-weight: 600;
+}
+
+.portrait-meta h3 {
+    font-size: .75em;
+    font-weight: 400;
+}
+.fa-solid.fa-star-half:hover {
+    color: red;
+}
+.review-fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* width: 50%; */
+    border: 0px solid white;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* review-form header? */
+/* /form-header review? */
+.review-header {
+
+}
+
+.review-fields .form-row {
+    flex-direction: column;
+    width: 100%;
+    padding-block-end: 15px;
+    /* padding-block-end: 10px; */
+
+
+}
+
+.form-row #rating-post {
+    display: none;
+}
+.review-fields .star-list {
+    width: max-content;
+}
+.review-fields .star-list .bx.bxs-star {
+    /* width: 18px;
+     */
+    font-size: 18px;
+    padding-inline-end: 2px;
+    color: var(--color-grey);
+}
+
+.review-fields i.fa-solid.fa-star-half {
+    color: var(--color-yellow);
+    font-size: 40px;
+    /* transform: scaleX(-1); */
+}
+
+i.fa-solid.fa-star-half[data-rating*=".0"] {
+    transform: scaleX(-1);
+}
+
+.review-fields .star-list .bx.bxs-star[data-rating]:hover {
+    color: var(--color-yellow);
+}
+
+.review-fields label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-white);
+    padding: 0;  /* Resetting other styles */
+    padding-block-end: 5px;
+}
+
+.review-fields input {
+    /* .90807799 */
+    width: 100%;
+    font-size: 12px;
+    height: 17px;
+    border: none;
+    /* width: 326px; */
+}
+
+
+
+
+.review-body-post {
+    height: 6.25em;
+    color: black;
+    border: none;
+    box-shadow: none;
+    outline: none;
+
+    font-family: 'Figtree', Arial, sans-serif;
+    font-size: 12px;
+    border-radius: 6px;
+}
+
+.review-body-post:focus {
+    /* border: 1px solid var(--color-yellow); */
+    outline: 1px solid var(--color-yellow);
+}
+
+
+
+
+
+@media (width >= 50.625em) {
+    form#post-review {
+        width: 797px;
+
+        padding-inline: 36px;
+        padding-block-start: 15px;
+        padding-block-end: 60px;
+        justify-content: flex-start;
+        /* top: 60%; */
+        top: 50%;
+        max-height: 99vh;
+        overflow: scroll;
+        /* max-height: 99vh; */
+    }
+
+    form .portrait-container .portrait {
+        width: 102px;
+    }
+
+    form .portrait-container {
+        padding-bottom: 30px;
+    }
+
+    .portrait-meta h2, .portrait-meta h3, .review-fields label, .review-fields input {
+        font-size: 1em;
+    }
+
+    .review-fields {
+        padding-block-end: 35px;
+    }
+
+    .review-fields .form-row {
+        padding-block-end: 30px;
+    }
+
+    .review-fields label {
+        padding-bottom: 10px;
+        font-weight: 700;
+    }
+
+    .review-fields input {
+        height: 37px;
+        
+        border-radius: 6px;
+    }
+
+    .review-fields .star-list .bx.bxs-star {
+        /* width: 18px;
+         */
+         font-size: 40px;
+         padding-inline-end: 2px;
+         /* color: yellow; */
+         /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
+    }
+
+    .review-body-post {
+        height: 220px;
+        font-size: 1em;
+        padding-block: 20px;
+        padding-inline: 15px;
+    }
+
+    .review-fields .submit-row button {
+        width: 200px;
+        height: 56px;
+        font-size: 1.25em;
+        padding: 0;
+        border-radius: 41px;
+        
+
+    }
+}
+
+@media (width >= 90em) {
+    form#post-review {
+        width: 846px;
+
+        padding-inline: 40px;
+        padding-block: 30px;
+        /* padding-block-start: 35px; */
+
+        top: 50%;
+        /* padding-block-end: 60 */
+    }
+
+    form .portrait-container {
+        padding-block-end: 25px;
+    }
+
+    form .portrait-container .portrait {
+        width: 95px;
+        /* width: 110px; */
+    }
+
+    .portrait-meta h2, .portrait-meta h3 {
+        font-size: 1.25em;
+    }
+
+    .review-fields {
+        padding: 0;
+    }
+
+    .review-fields .form-row {
+        padding-block-end: 10px;
+    }
+    
+    .review-fields label, .review-fields input {
+        font-size: 1.125em;
+    }
+
+    .review-fields label {
+        padding-block-end: 10px;
+        /* padding-block-end: 12px; */
+    }
+
+
+    .portrait-meta {
+        padding-inline-start: 15px;
+    }
+
+    .review-fields .form-row {
+        padding-inline-end: 10px;
+    }
+
+}

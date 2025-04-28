@@ -1,0 +1,14 @@
+.logo {
+    width: 77px;
+    height: auto;
+    cursor: pointer;
+
+}
+
+@media (width >= 50.625em) {
+    .logo {
+        width: 96px;
+        height: auto;
+    }
+
+}

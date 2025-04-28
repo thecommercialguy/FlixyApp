@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css-movie/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/749768cdb4.js" crossorigin="anonymous"></script>
+
+    <title>MoviePage</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="menu-logo-container">
+                <!-- <div class="menu-container"> -->
+                <i class='bx bx-menu menu'></i>
+                <!-- </div> -->
+                <a href="/"><img src="../assets/flixy-logo-2.svg" alt="Flixy Logo" class="logo" /></a>
+                
+            </div>
+            <a href="#" class="sign-in" id="sign-in-h">
+                    <span class="sign-in-text" id="sign-in-text-h">Sign In</span>
+            </a>
+            </div>
+        </nav>
+    </header>
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <form method="post" action="" id="sign-in-form">
+        <i class='bx bx-x' id="modal-x"></i> <!-- Close -->
+        <h2 id="sign-in-header" class="sign-in-header"><span class="header-text">Log in to</span><img src="../assets/flixy-logo-2.svg" alt="Flixy Logo" class="logo"></h2> <!-- Logo -->
+        <div class="contents">
+            <div class="form-row username-f hidden">
+                <!-- <label for="email">Email:</label> -->
+                <input id="username"
+                    name="username"
+                    type="text"
+                    placeholder="Username"/>
+            </div>
+            <div class="form-row">
+                <!-- <label for="email">Email:</label> -->
+                <input id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Email"/>
+            </div>
+            
+            <div class="form-row last-form-row">
+                <input id="password"
+                    name="password"
+                    type="password"
+                    placeholder="Password"/>
+            </div>
+            <div class="submit-row">
+                <input id="sign-in-input" type="submit" class="submit" value="Sign In">
+                    <!-- Sign In -->
+                <!-- <button type="submit" class="submit">
+                    Sign In
+                </button> -->
+                <!-- <a href=""> -->
+                    <button id="sign-up-b" class="sign-up-b">
+                        Sign Up
+                    </button>
+                <!-- </a> -->
+            </div>
+        </div>
+    </form>
+
+    <form method="post" action="" id="post-review">
+        <!-- <i class="fa-solid fa-star-half"></i> -->
+        <div id="review-form-meta"class="portrait-container"> 
+            <img class="portrait" src="" alt="">
+
+            <div class="portrait-meta">
+                <h2 class="portrait-header"></h2>
+                <h3 class="director-name"></h3>
+            </div>
+        </div>
+        
+        <fieldset class="review-fields">
+            <!-- <legend class="review-header">Post review</legend> -->
+            <!-- <h2 class="review-header">Post review</h2> -->
+            <div class="form-row">
+                <label for="review-title-post">Title</label>
+                <input id="review-title-post" name="title" type="text" placeholder="">
+            </div>
+            <div class="form-row">
+                <label for="rating-post">Rate</label>
+                <input id="rating-post" type="number" >
+                <ul class="star-list">
+                    <li><i class='bx bxs-star' data-rating="1"></i></li>
+                    <li><i class='bx bxs-star' data-rating="2"></i></li>
+                    <li><i class='bx bxs-star' data-rating="3"></i></li>
+                    <li><i class='bx bxs-star' data-rating="4"></i></li>
+                    <li><i class='bx bxs-star' data-rating="5"></i></li>                 
+                </ul>
+                
+            </div>
+            <div class="form-row">
+                <label for="rating-body-post">Review</label>
+                <textarea class="review-body-post" id="review-body-post" name="review" type="text" placeholder="Add review..."></textarea>
+            </div>
+            <div class="submit-row">
+                <button type="submit">Submit</button>
+            </div>
+        </fieldset>
+        
+    </form>
+
+    <main>
+        
+        <section class="featured" id="featured">
+            
+            <!-- <div class='content-slider-container'>
+                <div class="content-slider"> -->
+                    <!-- <div class="featured-card"> -->
+            <img src="" alt="" class="banner" id="banner-id">
+            <div class="portrait-container" >
+                <img src="" alt="" class="portrait" id="portrait-id">
+                <div class="featured-movie-details">
+                    <div class="portrait-text-container">
+                        <h1></h1>
+                        <h2></h2>
+                    </div>  
+
+
+                        <ul class="star-list">
+                            <li><i class='bx bxs-star'></i></li>
+                            <li><i class='bx bxs-star'></i></li>
+                            <li><i class='bx bxs-star'></i></li>
+                            <li><i class='bx bxs-star'></i></li>
+                            <li><i class='bx bxs-star'></i></li>
+                        </ul>
+                </div>
+            </div>
+                    <!-- </div> -->
+                <!-- </div>
+            </div> -->
+        </section>
+
+        <section class="about section" id="about">
+            <div class="section-title-container">
+                <h2>About</h2>
+                <div class="accent"></div>
+            </div>
+
+            <div class="about-text-container">
+                <div class="about-text">
+                </div>
+            </div>
+
+            <div class="about-text-container" >
+                <div class="about-text" id="release">
+                </div>
+                
+            </div>
+
+            <div class="about-text-container">
+                <div class="about-text" id="genres">
+                </div>
+            </div>
+            
+        </section>
+
+        <section class="reviews section" id="reviews">
+            <div class="section-title-container">
+                <h2>Reviews</h2>
+                <div class="accent"></div>
+            </div>
+
+            <button id="add-review"class="button">
+                Add review
+            </button>
+
+            <div class="review-card-container" id="review-card-container">
+                <!-- <div class="review-card">
+                    <div class="profile-picture">
+
+                    </div>
+                    <div class="review-data">
+                        <h3 class="review-title">Poor Things was incredible!!!!</h3>
+           
+
+                        <div class="username-rating">
+                            <span class="username">@username</span>
+                            <span class="rating-container">
+                                <i class='bx bxs-star'></i>
+                                <span class="rating">4.5/5</span>
+                            </span>
+                        </div>
+
+                        <p class="review-body">
+                            Yorgos Lanthimos's "Poor Things" is a bizarre, beautiful, and 
+                            unforgettable cinematic experience. Emma Stone is magnificent.
+                        </p>
+
+                        <div class="like-count">
+                            <i class='bx bx-like like likes'></i>
+                            <span>(100)</span>
+
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <div class="review-card">
+                    <div class="profile-picture">
+
+                    </div>
+                    <div class="review-data">
+                        <h3 class="review-title"></h3>
+           
+
+                        <div class="username-rating">
+                            <span class="username"></span>
+                            <span class="rating-container">
+                                <i class='bx bxs-star'></i>
+                                <span class="rating"></span>
+                            </span>
+                        </div>
+
+                        <p class="review-body">
+                        </p>
+
+                        <div class="like-count">
+                            <i class='bx bx-like like likes'></i>
+                            <span class=""></span>
+
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- <div class="review-card">
+                    <div class="profile-picture">
+
+                    </div>
+                    <div class="review-data">
+                        <h3 class="review-title">Poor Things was incredible!!!!</h3>
+           
+
+                        <div class="username-rating">
+                            <a href="" class="user-link"><span class="username">@username</span></a>
+                            <span class="rating-container">
+                                <i class='bx bxs-star'></i>
+                                <span class="rating">4.5/5</span>
+                            </span>
+                        </div>
+
+                        <p class="review-body">
+                            Yorgos Lanthimos's "Poor Things" is a bizarre, beautiful, and 
+                            unforgettable cinematic experience. Emma Stone is magnificent.
+                        </p>
+
+                        <div class="like-count">
+                            <i class='bx bx-like like likes'></i>
+                            <span class="num-likes">(100)</span>
+
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <span class="nav-container">
+                <button id="btn-back"class="nav-button" data-index-change="-1">
+                    Back
+                </button>
+                <!-- Handled by JS -->
+
+                <button id="btn-next" class="nav-button" data-index-change="1">
+                    Next
+                </button>
+            </span>
+        </section>
+
+       
+
+    </main>
+
+
+    <footer class="footer">
+        <img src="../assets/flixy-logo-2.svg" alt="Flixy Logo" class="logo" />
+            
+        
+        <div class="sign-in-up ">
+            <a href="#" class="sign-in" id="sign-in-f">
+                <span class="sign-in-text" id="sign-in-text-f">Sign In</span>
+            </a>
+            
+            <a href="" class="sign-up" id="sign-up">
+                <span class="sign-up-text" id="sign-up-text">Sign Up</span>
+            </a>
+        </div>
+    </footer>
+</body>
+</html>
+
+<script src="./js-movie/movie-main.js" type="module"></script>

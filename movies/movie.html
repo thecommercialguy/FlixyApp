@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css-movie/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>MoviePage</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="menu-logo-container">
+                <!-- <div class="menu-container"> -->
+                <i class='bx bx-menu menu'></i>
+                <!-- </div> -->
+                <a href="/"><img src="../assets/flixy-logo.svg" alt="Flixy Logo" class="logo" /></a>
+                
+            </div>
+            <a href="#" class="sign-in" id="sign-in-h">
+                    <span class="sign-in-text" id="sign-in-text-h">Sign In</span>
+            </a>
+            </div>
+        </nav>
+    </header>
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <form method="post" action="" id="sign-in-form">
+        <i class='bx bx-x' id="modal-x"></i>
+        <h2 class="sign-in-header">Log in to <img src="../assets/flixy-logo.svg" alt="Flixy Logo" class="logo"></h2>
+        
+        <div class="contents">
+            <div class="form-row">
+                <!-- <label for="email">Email:</label> -->
+                <input id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Email"/>
+            </div>
+            
+            <div class="form-row">
+                <!-- <label for="password">Password:</label> -->
+                <input id="password"
+                    name="password"
+                    type="password"
+                    placeholder="Password"/>
+            </div>
+            <div class="submit-row">
+                <button class="submit">
+                    Sign In
+                </button>
+                <a href="">
+                    <button class="sign-up-b">
+                        Sign Up
+                    </button>
+                </a>
+            </div>
+        </div>
+    </form>
+
+    <main>
+        
+        <section class="featured">
+            
+            <!-- <div class='content-slider-container'>
+                <div class="content-slider"> -->
+                    <!-- <div class="featured-card"> -->
+            <img src="" alt="" class="banner" id="banner-id">
+            <div class="portrait-container" >
+                <img src="" alt="" class="portrait" id="portrait-id">
+                <div class="featured-movie-details">
+                    <div class="portrait-text-container">
+                        <h1></h1>
+                        <h2></h2>
+                    </div>  
+
+
+                        <ul class="star-list">
+                            <li><i class='bx bxs-star'></i></li>
+                            <li><i class='bx bxs-star'></i></li>
+                            <li><i class='bx bxs-star'></i></li>
+                            <li><i class='bx bxs-star'></i></li>
+                            <li><i class='bx bxs-star'></i></li>
+                        </ul>
+                </div>
+                        </div>
+                    <!-- </div> -->
+                <!-- </div>
+            </div> -->
+        </section>
+
+        <section class="about section">
+            <div class="section-title-container">
+                <h2>About</h2>
+                <div class="accent"></div>
+            </div>
+
+            <div class="about-text-container">
+                <div class="about-text">
+                </div>
+            </div>
+
+            <div class="about-text-container" >
+                <div class="about-text" id="release">
+                </div>
+                
+            </div>
+
+            <div class="about-text-container">
+                <div class="about-text" id="genres">
+                </div>
+            </div>
+            
+        </section>
+
+        <section class="reviews section">
+            <div class="section-title-container">
+                <h2>Reviews</h2>
+                <div class="accent"></div>
+            </div>
+
+            <button class="button">
+                Add review
+            </button>
+
+            <div class="review-card-container">
+                <div class="review-card">
+                    <div class="profile-picture">
+
+                    </div>
+                    <div class="review-data">
+                        <h3 class="review-title">Poor Things was incredible!!!!</h3>
+           
+
+                        <div class="username-rating">
+                            <span class="username">@username</span>
+                            <span class="rating-container">
+                                <i class='bx bxs-star'></i>
+                                <span class="rating">4.5/5</span>
+                            </span>
+                        </div>
+
+                        <p class="review-body">
+                            Yorgos Lanthimos's "Poor Things" is a bizarre, beautiful, and 
+                            unforgettable cinematic experience. Emma Stone is magnificent.
+                        </p>
+
+                        <div class="like-count">
+                            <i class='bx bx-like like likes'></i>
+                            <span>(100)</span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="profile-picture">
+
+                    </div>
+                    <div class="review-data">
+                        <h3 class="review-title">Poor Things was incredible!!!!</h3>
+           
+
+                        <div class="username-rating">
+                            <span class="username">@username</span>
+                            <span class="rating-container">
+                                <i class='bx bxs-star'></i>
+                                <span class="rating">4.5/5</span>
+                            </span>
+                        </div>
+
+                        <p class="review-body">
+                            Yorgos Lanthimos's "Poor Things" is a bizarre, beautiful, and 
+                            unforgettable cinematic experience. Emma Stone is magnificent.
+                        </p>
+
+                        <div class="like-count">
+                            <i class='bx bx-like like likes'></i>
+                            <span>(100)</span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="profile-picture">
+
+                    </div>
+                    <div class="review-data">
+                        <h3 class="review-title">Poor Things was incredible!!!!</h3>
+           
+
+                        <div class="username-rating">
+                            <span class="username">@username</span>
+                            <span class="rating-container">
+                                <i class='bx bxs-star'></i>
+                                <span class="rating">4.5/5</span>
+                            </span>
+                        </div>
+
+                        <p class="review-body">
+                            Yorgos Lanthimos's "Poor Things" is a bizarre, beautiful, and 
+                            unforgettable cinematic experience. Emma Stone is magnificent.
+                        </p>
+
+                        <div class="like-count">
+                            <i class='bx bx-like like likes'></i>
+                            <span class="num-likes">(100)</span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="footer">
+        <img src="../assets/flixy-logo.svg" alt="Flixy Logo" class="logo" />
+            
+        
+        <div class="sign-in-up ">
+            <a href="#" class="sign-in" id="sign-in-f">
+                <span class="sign-in-text" id="sign-in-text-f">Sign In</span>
+            </a>
+            
+            <a href="" class="sign-up" id="sign-up">
+                <span class="sign-up-text" id="sign-up-text">Sign Up</span>
+            </a>
+        </div>
+    </footer>
+</body>
+</html>
+
+<script>
+    const url = window.location.href
+    const urlParts = url.split("/")
+    const titleParam = urlParts[urlParts.length - 1]
+
+    const movieTitleBox = document.querySelector('.portrait-text-container h1')
+    const directorBox = document.querySelector('.portrait-text-container h2')
+    const aboutBox = document.querySelector('.about-text')
+
+    const banner = document.getElementById('banner-id')
+    const portrait = document.getElementById('portrait-id')
+    const releaseDate = document.getElementById('release')
+    const genres = document.getElementById('genres')
+
+    const bodyElement = document.querySelector('body')
+
+    
+    const signInButtonHeader = document.getElementById('sign-in-h')
+    const signInTextHeader = document.getElementById('sign-in-text-h')
+    const signInButtonFooter = document.getElementById('sign-in-f')
+    const signInTextFooter = document.getElementById('sign-in-text-f')
+    const signUpButton = document.getElementById('sign-up')
+    const signUpText = document.getElementById('sign-up-text')
+    const signInForm = document.getElementById('sign-in-form')
+    const signInBackdrop = document.getElementById('modal-backdrop')
+    const modalX = document.getElementById('modal-x')
+    
+
+    // console.log(signInButtonHeader)
+    // Auth stuff
+    // signInButtonHeader.addEventListener('click', () => displayElement(signInForm))
+    if (isAuthenticatedBool() === false) {
+        signInButtonHeader.addEventListener('click', () => displayElement(signInForm))
+        signInButtonFooter.addEventListener('click', () => displayElement(signInForm))
+        modalX.addEventListener('click', () => displayElement(signInForm))
+        signInBackdrop.addEventListener('click', () => displayElement(signInForm))
+
+        signInForm.addEventListener('submit', userSignIn)
+    }
+
+
+    // signInForm.addEventListener('submit', async () => userSignIn(event))
+    // signInForm.addEventListener('submit', () => userSignIn(event))
+    
+    // movieTitleBox.textContent = 
+    // const emil = document.getElementById('email').value
+    //     const passord = document.getElementById('password').value
+
+    //     console.log(emil)
+    //     console.log(passord)
+    const movieTitle = titleParam.split("-").join(" ")
+    let fileType = 'png'
+
+    if (titleParam === 'poor-things') {
+        fileType = 'jpg'
+    }
+
+    banner.src = `../images/${titleParam}-banner.${fileType}`
+    portrait.src = `../images/${titleParam}-portrait.${fileType}`
+
+
+    async function getMovie() {
+        const url = `http://localhost:5200/api/Movie/title/${movieTitle}`
+        console.log(url)
+        const response = await fetch(url)
+
+        const movie = await response.json()
+        
+
+        
+
+        setAbout(movie.description)
+        setDate(movie.releaseDate)
+        setGenres(movie.id)
+        
+        
+
+        // Destructuring these movie data
+        movieTitleBox.textContent = movie.title
+        directorBox.textContent = `${movie.director.firstName} ${movie.director.lastName}`
+        // aboutBox.textContent = movie.descriptionF
+        console.log(movie)
+        return movie
+        
+    }
+
+    async function setAbout(about) {
+        aboutBox.textContent = about
+        
+    }
+
+    async function setDate(date) {
+        const months = {
+            '01': 'January',
+            '02': 'February',
+            '03': 'March',
+            '04': 'April',
+            '05': 'May',
+            '06': 'June',
+            '07': 'July',
+            '08': 'August',
+            '09': 'September',
+            '10': 'October',
+            '11': 'November',
+            '12': 'December'
+        }
+
+        const days = {
+            '01': '1',
+            '02': '2',
+            '03': '3',
+            '04': '4',
+            '05': '5',
+            '06': '6',
+            '07': '7',
+            '08': '8',
+            '09': '9',
+        }
+
+        const dateSplit = date.split("-")
+        const month = months[dateSplit[1]]
+        const day = dateSplit[2] in days ? days[dateSplit[2]] : dateSplit[2]
+
+        dateFormatted = `${months[dateSplit[1]]} ${day}, ${dateSplit[0]}`
+
+        releaseDate.textContent = dateFormatted
+        
+
+    }
+
+    async function setGenres(movieId) {
+        const url = `http://localhost:5200/api/Movie/${movieId}/genres`
+        console.log(url)
+        const response = await fetch(url)
+        const genreObjs = await response.json()
+        const genresList = []
+        // let genreText = ''
+        console.log(genreObjs)
+
+        for (let i = 0; i < genreObjs.length; i++){
+            genresList.push(genreObjs[i].title)
+            console.log(genreObjs[i].title)
+        }
+   
+        const genreText = genresList.join(' ')
+        console.log(genreText)
+        genres.textContent = genreText
+
+
+        
+    }
+
+    // Auth
+
+    function displayElement(e) {
+        const styles = getComputedStyle(e)
+        const display = styles.getPropertyValue('display')
+        if (display === 'none') {
+            e.style.display = 'flex'
+            e.style.boxShadow = 'rgba(0, 0, 0, .9) 0px 0px 30px'
+            // box-shadow: rgba(0, 0, 0, .9) 0px 0px 30px;
+            signInBackdrop.classList.add('active')
+            bodyElement.style.overflowY = 'hidden'
+        }
+        else {
+            e.style.display = 'none'
+            bodyElement.style.overflowY = 'visible'
+            signInBackdrop.classList.remove('active')
+        }
+        
+
+    }
+
+    async function userSignIn(event) {
+        event.preventDefault()
+
+        const email = document.getElementById('email').value
+        const password = document.getElementById('password').value
+
+
+        try {
+            endpoint = 'http://localhost:5200/api/Auth/login'
+            console.log(endpoint)
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email, 
+                    password: password
+                })
+            })
+
+            if (response.ok) {
+                const data = await response.json()
+                const token = data.token  // Data Transfer Object (Representing our Token)
+
+                localStorage.setItem('Bearer', token)
+
+                const rel = `/movies/${movieTitle}`
+
+                window.location.href = rel
+            } else {
+                const errorData = await response.json()
+                console.error('Login failed:', errorData)
+                alert('Login failed: Invalid credentials')
+            }
+
+        } catch (error) {
+            console.error("Error during login:", error)
+            alert("An error occured during login")
+        }
+    }
+
+    function displayUserNameTextHeader(username) {
+        signInTextHeader.textContent = username
+        return
+    }
+
+    function displayUserNameTextFooter(username) {
+        signInTextFooter.textContent = username
+        return
+    }
+
+    function displaySignOutText() {
+        signUpText.textContent = 'Sign Out'
+        return
+    }
+
+    function modifySignInHrefHeader(username) {
+        signInButtonHeader.href = `users/${username}`
+        return
+    }
+
+    function modifySignInHrefFooter(username) {
+        signInButtonFooter.href = `users/${username}`
+        return
+    }
+
+    // function modifySignInHrefFooter(username) {
+    //     signInTextHeader.href = `users/${username}`
+    //     return
+    // }
+
+
+
+
+
+    function getToken() {
+        const token = localStorage.getItem('Bearer')
+
+        return token 
+    }
+
+    function parseJwt(token) {
+        // Split the token into its parts
+        var base64Url = token.split('.')[1];
+        // Convert Base64 URL to regular Base64
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        // Decode the Base64 string
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        return JSON.parse(jsonPayload);
+    }
+
+    function signOut() {
+        localStorage.removeItem('Bearer')
+    }
+
+    function isAuthenticatedBool() {
+        const token = getToken()
+
+        if (token === null) {
+            return false
+        }
+        
+        return true
+    }
+
+    function isAuthenticated() {
+        
+        const token = getToken()
+
+        if (token === null) {
+            
+        }
+        
+
+        // Setting to user name
+        // Setting log out option
+        // Methods
+
+        const tokenClaims = parseJwt(token)
+        const username = tokenClaims['name']
+
+        
+        // A way to edit the account settings from here
+        // console.log(username['name'])
+        
+
+        displayUserNameTextHeader(username)
+        displayUserNameTextFooter(username)
+        displaySignOutText()
+        modifySignInHrefHeader(username)
+        modifySignInHrefFooter(username)
+        signUpButton.addEventListener('click', () => signOut())
+
+
+
+
+    }
+
+
+    getMovie()  // Split up into several methods in my js page....
+    isAuthenticated()  // when authenticated
+    // Havent implemented Revire logic
+
+
+
+
+    // Reaching out to DB..
+    // const token = localStorage.getItem('jwt');
+
+    // fetch('/api/protected-data', {
+    // headers: {
+    //     'Authorization': `Bearer ${token}` // Important: "Bearer " + token
+    // }
+    // })
+    // .then(response => { /* ... */ });
+
+    // console.log(titleParam)
+    // console.log(movieTitle)
+
+    // Images
+
+    // Title
+
+    // About
+
+    // Genres
+</script>

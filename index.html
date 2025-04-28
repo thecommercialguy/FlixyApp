@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" type='text/css'>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 
@@ -16,42 +16,125 @@
                 <!-- <div class="menu-container"> -->
                 <i class='bx bx-menu menu'></i>
                 <!-- </div> -->
-                <img src="assets/flixy-logo.svg" alt="Flixy Logo" class="logo" />
+                <a href="/"><img src="assets/flixy-logo.svg" alt="Flixy Logo" class="logo" /></a>
                 
             </div>
-            <a href="" class="sign-in">
-                    SIGN IN
+            <a href="#" class="sign-in" id="sign-in-h">
+                <span class="sign-in-text" id="sign-in-text-h">Sign In</span>
             </a>
             </div>
         </nav>
     </header>
-      
+
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <form method="post" action="" id="sign-in-form">
+        <i class='bx bx-x' id="modal-x"></i>
+        <h2 class="sign-in-header">Log in to <img src="../assets/flixy-logo.svg" alt="Flixy Logo" class="logo"></h2>
+        
+        <div class="contents">
+            <div class="form-row">
+                <!-- <label for="email">Email:</label> -->
+                <input id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Email"/>
+            </div>
+            
+            <div class="form-row">
+                <!-- <label for="password">Password:</label> -->
+                <input id="password"
+                    name="password"
+                    type="password"
+                    placeholder="Password"/>
+            </div>
+            <div class="submit-row">
+                <button class="submit">
+                    Sign In
+                </button>
+                <a href="">
+                    <button class="sign-up-b">
+                        Sign Up
+                    </button>
+                </a>
+            </div>
+        </div>
+    </form>
+
     <main>
         <section class="featured">
+            
+            <div class='content-slider-container'>
+                <div class="content-slider">
+                    <div class="slider-index">
+                        <img src="/images/poor-things-banner.jpg" alt="" class="banner">
+                        <div class="portrait-container">
+                            <img src="/images/poor-things-portrait.jpg" alt="" class="portrait" id="portrait">
+                            <div class="featured-movie-details">
+                                <div class="portrait-text-container">
+                                    <h1>Poor Things</h1>
+                                    <h2>Yorgos Lanthimos</h2>
+                                </div>  
+
+
+                                    <ul class="star-list">
+                                        <li><i class='bx bxs-star'></i></li>
+                                        <li><i class='bx bxs-star'></i></li>
+                                        <li><i class='bx bxs-star'></i></li>
+                                        <li><i class='bx bxs-star'></i></li>
+                                        <li><i class='bx bxs-star'></i></li>
+                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-index">
+                        <img src="/images/django-unchained-banner.png" alt="" class="banner">
+                        <div class="portrait-container">
+                            <img src="/images/django-unchained-portrait.png" alt="" class="portrait" id="portrait">
+                            <div class="featured-movie-details">
+                                <div class="portrait-text-container">
+                                    <h1>Django Unchained</h1>
+                                    <h2>Quentin Tarantino</h2>
+                                </div>  
+
+
+                                    <ul class="star-list">
+                                        <li><i class='bx bxs-star'></i></li>
+                                        <li><i class='bx bxs-star'></i></li>
+                                        <li><i class='bx bxs-star'></i></li>
+                                        <li><i class='bx bxs-star'></i></li>
+                                        <li><i class='bx bxs-star'></i></li>
+                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-index">
+                        <img src="/images/toy-story-banner.png" alt="" class="banner">
+                        <div class="portrait-container">
+                            <img src="/images/toy-story-portrait.png" alt="" class="portrait" id="portrait">
+                            <div class="featured-movie-details">
+                                <div class="portrait-text-container">
+                                    <h1>Toy Story</h1>
+                                    <h2>John Lasseter</h2>
+                                </div>  
+
+
+                                    <ul class="star-list">
+                                        <li><i class='bx bxs-star'></i></li>
+                                        <li><i class='bx bxs-star'></i></li>
+                                        <li><i class='bx bxs-star'></i></li>
+                                        <li><i class='bx bxs-star'></i></li>
+                                        <li><i class='bx bxs-star'></i></li>
+                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="navigation-container">
                 <!-- <object data="/assets/left-arrow.svg" type="image/svg+xml" width="300" height="300" class="left-arrow"></object>
                 <object data="/assets/right-arrow.svg" type="image/svg+xml" width="300" height="300" class="right-arrow"></object> -->
                 <i class='bx bx-left-arrow-alt' data-index-change="-1" ></i>
                 <i class='bx bx-right-arrow-alt' data-index-change="1"></i>
-            </div>
-            <img src="/images/poor-things-banner.jpg" alt="" class="banner">
-            <div class="portrait-container">
-                <img src="/images/poor-things-portrait.jpg" alt="" class="portrait">
-                <div class="featured-movie-details">
-                    <div class="portrait-text-container">
-                        <h1>Poor Things</h1>
-                        <h2>Yorgos Lanthimos</h2>
-                    </div>  
-
-
-                        <ul class="star-list">
-                            <li><i class='bx bxs-star'></i></li>
-                            <li><i class='bx bxs-star'></i></li>
-                            <li><i class='bx bxs-star'></i></li>
-                            <li><i class='bx bxs-star'></i></li>
-                            <li><i class='bx bxs-star'></i></li>
-                        </ul>
-                </div>
             </div>
         </section>
     
@@ -59,9 +142,7 @@
         <section class="monthly section">
             <div class="section-title-container">
                 <h2>Top Movies This Month</h2>
-                <svg width="3" height="16" viewBox="0 0 3 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="rect">
-                    <rect y="0.854019" width="2.29218" height="14.2843" rx="1.14609" fill="#F5C518"/>
-                </svg>
+                <div class="accent"></div>
                 
             </div>
             
@@ -71,7 +152,23 @@
                 
                 <!-- <div class="content-relative"> -->
                 <div class="content-slider">
+                    <a href="" class="slider-index"><img src="" alt="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" alt="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" alt="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" alt="" class="slider-image"></a>
+
+                    <a href="" class="slider-index"><img src="" alt="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" alt="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" alt="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" alt="" class="slider-image"></a>
+
+                    <a href="" class="slider-index"><img src="" alt="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" alt="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" alt="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" alt="" class="slider-image"></a>
+                   
                     
+                    <!-- <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
                     <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
                     <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
                     <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
@@ -82,18 +179,15 @@
                     <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
                     <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
                     <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
-                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
-                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a> -->
 
                 </div>
                 
-            <!-- </div> -->
+                
 
             </div>
 
             <div class="navigation-container">
-                <!-- <object data="/assets/left-arrow.svg" type="image/svg+xml" width="300" height="300" class="left-arrow"></object>
-                <object data="/assets/right-arrow.svg" type="image/svg+xml" width="300" height="300" class="right-arrow"></object> -->
                 <i class='bx bx-left-arrow-alt content' data-index-change="-1" ></i>
                 <i class='bx bx-right-arrow-alt content' data-index-change="1"></i>
             </div>
@@ -102,16 +196,98 @@
         <section class="reviews section">
             <div class="section-title-container">
                 <h2>Popular Reviews</h2>
-                <svg width="3" height="16" viewBox="0 0 3 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="rect">
-                    <rect y="0.854019" width="2.29218" height="14.2843" rx="1.14609" fill="#F5C518"/>
-                </svg>
+                <div class="accent"></div>
             </div>
 
             <div class="review-slider-container">
                 <!-- <img src="/images/poor-things-portrait.jpg" alt="" class="place-holder">  Place holder -->
                 <!-- <div class="slider-contain"> -->
                     <div class="review-slider">
-                        <div class="review-card">
+                        <div class="review-card" data-id="">
+                            <div class="profile-picture">
+        
+                            </div>
+                            <div class="review-data">
+                                <h3 class="review-title">Poor Things was incredible!!!!</h3>
+                   
+        
+                                <div class="username-rating">
+                                    <span class="username">@username</span>
+                                    <span class="rating-container">
+                                        <i class='bx bxs-star'></i>
+                                        <span class="rating">4.5/5</span>
+                                    </span>
+                                </div>
+        
+                                <p class="review-body">
+                                    Yorgos Lanthimos's "Poor Things" is a bizarre, beautiful, and 
+                                    unforgettable cinematic experience. Emma Stone is magnificent.
+                                </p>
+        
+                                <div class="like-count">
+                                    <i class='bx bx-like like likes like-button'></i>
+                                    <span>(100)</span>
+        
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card" data-id="">
+                            <div class="profile-picture">
+        
+                            </div>
+                            <div class="review-data">
+                                <h3 class="review-title">Poor Things was incredible!!!!</h3>
+                   
+        
+                                <div class="username-rating">
+                                    <span class="username">@username</span>
+                                    <span class="rating-container">
+                                        <i class='bx bxs-star'></i>
+                                        <span class="rating">4.5/5</span>
+                                    </span>
+                                </div>
+        
+                                <p class="review-body">
+                                    Yorgos Lanthimos's "Poor Things" is a bizarre, beautiful, and 
+                                    unforgettable cinematic experience. Emma Stone is magnificent.
+                                </p>
+        
+                                <div class="like-count">
+                                    <i class='bx bx-like like likes like-button'></i>
+                                    <span>(100)</span>
+        
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card" data-id="">
+                            <div class="profile-picture">
+        
+                            </div>
+                            <div class="review-data">
+                                <h3 class="review-title">Poor Things was incredible!!!!</h3>
+                   
+        
+                                <div class="username-rating">
+                                    <span class="username">@username</span>
+                                    <span class="rating-container">
+                                        <i class='bx bxs-star'></i>
+                                        <span class="rating">4.5/5</span>
+                                    </span>
+                                </div>
+        
+                                <p class="review-body">
+                                    Yorgos Lanthimos's "Poor Things" is a bizarre, beautiful, and 
+                                    unforgettable cinematic experience. Emma Stone is magnificent.
+                                </p>
+        
+                                <div class="like-count">
+                                    <i class='bx bx-like like likes like-button'></i>
+                                    <span class="likes">(100)</span>
+        
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="review-card">
                             <div class="review-card-title">
                                 <h3>Poor Things was incredible!!!</h3>
                                 <h4 class="username">@username</h4>
@@ -192,26 +368,24 @@
                                 beautiful, and unforgettable cinematic experience. Emma
                                 Stone is magnificent.
                             </p>
-                        </div>
+                        </div> -->
                         
                     </div>
+                    
                 
                 <!-- </div> -->
             </div>
             <div class="navigation-container">
-                <!-- <object data="/assets/left-arrow.svg" type="image/svg+xml" width="300" height="300" class="left-arrow"></object>
-                <object data="/assets/right-arrow.svg" type="image/svg+xml" width="300" height="300" class="right-arrow"></object> -->
                 <i class='bx bx-left-arrow-alt content' data-index-change="-1" ></i>
                 <i class='bx bx-right-arrow-alt content' data-index-change="1"></i>
             </div>
+            
         </section>
 
         <section class="seasonal section">
             <div class="section-title-container">
                 <h2>Holiday Favorites</h2>
-                <svg width="3" height="16" viewBox="0 0 3 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="rect">
-                    <rect y="0.854019" width="2.29218" height="14.2843" rx="1.14609" fill="#F5C518"/>
-                </svg>
+                <div class="accent"></div>
                 
             </div>
 
@@ -219,7 +393,22 @@
                 <img src="/images/poor-things-portrait.jpg" class="slider-image"/>
 
                 <div class="content-slider">
+                    <a href="" class="slider-index"><img src="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" class="slider-image"></a>
+
+                    <a href="" class="slider-index"><img src="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" class="slider-image"></a>
+
+                    <a href="" class="slider-index"><img src="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="" class="slider-image"></a>
                     
+                    <!-- <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
                     <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
                     <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
                     <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
@@ -229,20 +418,17 @@
                     <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
                     <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
                     <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
-                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
-                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
-                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a>
+                    <a href="" class="slider-index"><img src="/images/poor-things-portrait.jpg" class="slider-image"></a> -->
 
                 </div>
+               
 
             </div>
 
              <div class="navigation-container">
-                <!-- <object data="/assets/left-arrow.svg" type="image/svg+xml" width="300" height="300" class="left-arrow"></object>
-                <object data="/assets/right-arrow.svg" type="image/svg+xml" width="300" height="300" class="right-arrow"></object> -->
-                <i class='bx bx-left-arrow-alt content' data-index-change="-1" ></i>
-                <i class='bx bx-right-arrow-alt content' data-index-change="1"></i>
-            </div>
+                    <i class='bx bx-left-arrow-alt content' data-index-change="-1" ></i>
+                    <i class='bx bx-right-arrow-alt content' data-index-change="1"></i>
+                </div>
             
         </section>
 
@@ -255,17 +441,82 @@
             
         
         <div class="sign-in-up ">
-            <a href="" class="sign-in">
-                    SIGN IN
+            <a href="#" class="sign-in" id="sign-in-f">
+                <span class="sign-in-text" id="sign-in-text-f">Sign In</span>
             </a>
-            <a href="" class="sign-up">
-                    SIGN UP
+            
+            <a href="" class="sign-up" id="sign-up">
+                <span class="sign-up-text" id="sign-up-text">Sign Up</span>
             </a>
         </div>
     </footer>
 
 
     <script>
+        // 12 holiday films
+        const widthSlider = document.querySelector('.featured .content-slider-container')
+        // const testButtonPos 
+        // const monthlyContentSliderContainer = document.querySelector('.monthly .content-slider-container')
+        // const monthlySliderIndexMargin = document.querySelector('.monthly .content-slider-container .content-slider .slider-index')
+        // const monthlyContentSlider1 = document.querySelector('.monthly .content-slider-container .content-slider')
+
+
+        // const monthlySliderContainerStyles = getComputedStyle(monthlyContentSliderContainer)
+        // const monthlySliderIndexStyles = getComputedStyle(monthlySliderIndexMargin)
+        // const widthStringContainer = monthlySliderContainerStyles.getPropertyValue('width')
+        // const marginStringContainer = monthlySliderIndexStyles.getPropertyValue('margin-inline')
+
+        // const monthlySliderScaleIndexT = .980421333333
+
+        // const widthContainer = Number(widthStringContainer.split("px")[0])
+        // const marginContainer = Number(marginStringContainer.split("px")[0])
+
+        const mobileBreakpoint = 810
+        const tabletBreakpoint = 1440
+
+        // monthlyContentSlider1.style.width = `${((widthContainer * monthlySliderScaleIndexT *3))}px`
+        
+        // console.log(((widthContainer * monthlySliderScaleIndexT)) * 3)
+        // console.log(marginStringContainer)
+
+
+        const featuredSliderScaleIndexM = 1.00675466667
+        const featuredSliderScaleIndexT = 1.00191358025
+        const featuredSliderScaleIndexD = 1
+        
+
+
+        if (window.innerWidth < mobileBreakpoint) {
+            widthSlider.style.width = `${(window.innerWidth * 3) * featuredSliderScaleIndexM}px`
+
+        } else if (window.innerWidth < tabletBreakpoint) {
+            widthSlider.style.width = `${(window.innerWidth * 3) * featuredSliderScaleIndexT}px`
+            
+        } else {
+            widthSlider.style.width = `${(1008 * 3) * featuredSliderScaleIndexD}px`
+
+        }
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth < mobileBreakpoint) {
+            widthSlider.style.width = `${(window.innerWidth * 3) * featuredSliderScaleIndexM}px`
+
+            } else if (window.innerWidth < tabletBreakpoint) {
+                widthSlider.style.width = `${((window.innerWidth * 3) * featuredSliderScaleIndexT)}px`
+                
+            } else {
+                widthSlider.style.width = `${1008 * featuredSliderScaleIndexD * 3}px`
+
+            }
+        })
+        
+        
+        const featuredSliderButtons = document.querySelectorAll('.featured .navigation-container i')
+        const featuredSliderBanner = document.querySelectorAll('.featured .banner')
+        const featuredSliderPortrait = document.querySelectorAll('#portrait')
+        const featuredSliderContent = document.querySelectorAll('.featured .slider-index')
+        
+
         const monthlySliderButtons = document.querySelectorAll('.monthly .navigation-container i')
         const monthlySliderImages = document.querySelectorAll('.monthly .content-slider-container .content-slider .slider-image')
         const monthlySliderContent = document.querySelectorAll('.monthly .content-slider-container .content-slider .slider-index')
@@ -273,13 +524,52 @@
         const reviewSliderButtons = document.querySelectorAll('.reviews .navigation-container i')
         const reviewSliderContent = document.querySelectorAll('.review-card')
 
+
         const seasonalSliderButtons = document.querySelectorAll('.seasonal .navigation-container i')
         const seasonalSliderImages = document.querySelectorAll('.seasonal .content-slider-container .content-slider .slider-image')
         const seasonalSliderContent = document.querySelectorAll('.seasonal .content-slider-container .content-slider .slider-index')
 
 
-        console.log(seasonalSliderContent.length)
-        console.log(seasonalSliderButtons.length)
+        // console.log(margin)
+        // console.log(monthlyContentSliderContainer)
+        // console.log(widthContainer)
+         
+
+        let currSlideIndexFeatured = 0
+
+        function naviagteFeaturedSldier(indexChange){
+            currSlideIndexFeatured += indexChange
+
+            if (currSlideIndexFeatured === 3) {
+                currSlideIndexFeatured = 2
+                console.log("returned")
+                return 
+            }
+
+            if (currSlideIndexFeatured < 0) {
+                currSlideIndexFeatured = 0
+                console.log("returned")
+                return
+            }
+
+            const featuredSliderContentStyles = getComputedStyle(featuredSliderContent[0])
+
+            const widthString = featuredSliderContentStyles.getPropertyValue('width')
+
+            const width = Number(widthString.split("px")[0])
+            const shiftX = -100
+        
+
+
+            featuredSliderContent.forEach((card, index) => {               
+                card.style.transform = `translateX(${currSlideIndexFeatured * (shiftX)}%)`
+
+            })
+
+
+        }
+
+        // 2388
 
         let currSlideIndexMonthly = 0
 
@@ -475,7 +765,7 @@
             })
         }
 
-        function navigateSeasonalSlider(indexChange) {
+        async function navigateSeasonalSlider(indexChange) {
             currSlideIndexSeasonal += indexChange
 
             if (currSlideIndexSeasonal === 3) {
@@ -523,6 +813,14 @@
             })
         }
 
+        featuredSliderButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const indexChange = +button.getAttribute('data-index-change')
+                const screenWidth = window.innerWidth
+                naviagteFeaturedSldier(indexChange)
+            })
+        })
+
         monthlySliderButtons.forEach((button) => {
             button.addEventListener('click', ()=> {
                 const indexChange = +button.getAttribute('data-index-change')
@@ -556,6 +854,421 @@
                 }
             })
         })
+
+
+        
+
+
+        async function getFeaturedMovies() {
+            const url = 'http://localhost:5200/api/Movie/featured?isFeatured=true'
+
+            try {
+                const response = await fetch(url)
+                if (!response.ok) {
+                    throw new Error('Server error')
+                }
+
+                const data = await response.json();
+
+                // for (let i = 0; i < data.length; i++){
+                //     console.log(data[i].title)
+                //     console.log(data[i].description)
+                //     console.log(data[i].isFeatured)
+                //     // console.log(data[i].title)
+                // }
+                
+                console.log(data)
+                // console.log([1,2,3])
+                return data
+            } catch(error) {
+                console.error('Error fetching featured movies:', error)
+            }
+        }
+
+        async function getMonthlyMovies() {
+            const url = 'http://localhost:5200/api/Movie/'
+            let notFeatured = []
+            let tok = ''
+            if (isAuthenticatedBool()){
+                tok = getToken()
+            }
+            try {
+                //  I'll get to this in the morning  //
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        // 'Content-Type': 'application/json',
+                        // 'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ3aWxsaWFtZzI4QGdtYWlsLmNvbSIsIm5hbWUiOiJ0aGVjb21tZXJjaWFsZ3V5IiwianRpIjoiYWMzYWNlNWYtNWU5MS00ZTFhLWEzNDctN2FlMzAwNWIwOGEyIiwibmJmIjoxNzQxMzA1ODAzLCJleHAiOjE3NDEzMDk0MDMsImlhdCI6MTc0MTMwNTgwM30.m2DdyiKWJ8_vx6VMvscIeLOTt4zyOiKiffwS23GsQOE`
+                        'Authorization': `Bearer ${tok}`
+                        
+                    },
+                    
+                })
+                console.log('Token:', tok);
+                console.log('Response Status:', response.status, response.statusText);
+                console.log('Response Headers:', Object.fromEntries(response.headers.entries()));
+                // if (!response.ok) {
+                //     throw new Error('Server error')
+                // }
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Response Body:', errorText);
+                    throw new Error(`HTTP error! Status: ${response.status}, ${errorText}`);
+                }
+
+                const data = await response.json()
+
+                for (let i = 0; i < data.length; i++){
+                    if (notFeatured.length < 13) {
+                        if (data[i].isFeatured === false) {
+                            notFeatured.push(data[i].title)
+                           
+                        }
+                    }
+                    
+                    // console.log(data[i].title)
+                }
+                
+                // console.log(data)
+                // console.log([1,2,3])
+                return notFeatured
+            } catch(error) {
+                console.error('Error fetching featured movies:', error)
+            }
+        }
+
+        async function getTopReviews() {
+            const url = 'http://localhost:5200/api/Review/likes'
+            try {
+                const response = await fetch(url)
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Response Body:', errorText);
+                    throw new Error(`HTTP error! Status: ${response.status}, ${errorText}`);
+                }
+
+                const topReviews = await response.json()
+                
+                return topReviews
+                
+                console.log(reviews)
+            } catch(error) {
+                console.error('Error fetching featured movies:', error)
+            }
+            
+
+        }
+
+        async function setReviewCards(){
+            const topReviews = await getTopReviews()
+
+            
+            for (let i = 0; i < reviewSliderContent.length; i++ ){
+
+                // const profilePic = card.querySelector('.profile-pictu');
+                const title = reviewSliderContent[i].querySelector('.review-title')
+                const userName = reviewSliderContent[i].querySelector('.username')
+                const description = reviewSliderContent[i].querySelector('.review-body')
+                const rating = reviewSliderContent[i].querySelector('.rating')
+                const likeCount = reviewSliderContent[i].querySelector('.likes')
+                
+                reviewSliderContent[i].dataset.id = topReviews[i]['id']
+                // console.log(reviewSliderContent[i].dataset.id, "nndnf")
+                title.textContent = topReviews[i]['title']
+                rating.textContent = `${topReviews[i]['stars']}/5`
+                // userName.textContent = topReviews[i]['reviewer']
+                description.textContent = topReviews[i]['description']
+            }
+            if (isAuthenticatedBool() == true){
+                likeButtons.forEach((button) => {
+                        const rC = button.closest('.review-card')
+                        const id = rC.dataset.id
+                        console.log(id, "Chekcing id")
+                        console.log(rC, "Chekcing id")
+                        if (id){
+                            console.log(id)
+                        button.addEventListener('click', () => updateReviewLikes(id))
+                        }
+                    })
+            }
+        }
+        // How I'd prevent multiple likes.. (From the same user....)
+        // How I'd unlike....
+        async function updateReviewLikes(reviewId) {
+            console.log(reviewId)
+            const token = getToken()
+            const url = `http://localhost:5200/api/Review/likes/${reviewId}`
+            try {
+                const response = fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                    
+                })
+
+                if (!response.ok) {  // What's the purpose of this in relation to the catch block....
+                    const errorData = await response.json()
+                    console.error('Like update failed:', errorData)
+                    // alert('Like update failed')  What's the purpse of alert...
+                }
+            } catch(error){
+                console.error('Like update failed:', errorData)
+            }
+
+
+        }
+
+        setReviewCards()
+
+        // getTopReviews()
+        
+
+        async function monthlySectionTitles() {
+            const monthly = await getMonthlyMovies()
+            monthlySliderImages.forEach((image, index) => {
+                let title = monthly[index].toLowerCase().trim().split(" ").join("-")
+                image.src = `/images/${title}-portrait.png`
+                // console.log(title)
+            })
+
+            console.log(monthly[0].toLowerCase().split(" ").join("-"))
+            // console.log(monthly[0].toLowerCase().oin(" "))j
+        }
+
+        async function monthlySectionMoviesHref() {
+            const monthlyMovies = await getMonthlyMovies()  // Array
+            monthlySliderContent.forEach((movie, index) => {
+                const movieTitle = monthlyMovies[index].toLowerCase().trim().split(" ").join("-")
+                movie.href = `/movies/${movieTitle}`
+                console.log(movieTitle)
+            })
+
+            console.log(monthlyMovies[0].toLowerCase().split(" ").join("-"))
+            // console.log(monthly[0].toLowerCase().oin(" "))j
+        }
+
+        console.log(monthlySliderContent[0])
+        
+
+        monthlySectionTitles()
+        monthlySectionMoviesHref()
+
+        
+
+        const featuredMovies = getFeaturedMovies()
+
+        for (let i = 0; i < featuredMovies.length; i++){
+                    console.log(featuredMovies[i].title)
+                    console.log(featuredMovies[i].description)
+                    console.log(featuredMovies[i].isFeatured)
+                    // console.log(data[i].title)
+                }
+
+        // Auth features
+
+        const bodyElement = document.querySelector('body')
+
+        const signInButtonHeader = document.getElementById('sign-in-h')
+        const signInTextHeader = document.getElementById('sign-in-text-h')
+        const signInButtonFooter = document.getElementById('sign-in-f')
+        const signInTextFooter = document.getElementById('sign-in-text-f')
+        const signUpButton = document.getElementById('sign-up')
+        const signUpText = document.getElementById('sign-up-text')
+        const signInForm = document.getElementById('sign-in-form')
+        const signInBackdrop = document.getElementById('modal-backdrop')
+        const modalX = document.getElementById('modal-x')
+        const likeButtons = document.querySelectorAll('.like-button')
+        console.log(likeButtons[0], 'd')
+        
+
+        
+
+        // If logged in
+
+        if (isAuthenticatedBool() === false) {
+            signInButtonHeader.addEventListener('click', () => displayElement(signInForm))
+            signInButtonFooter.addEventListener('click', () => displayElement(signInForm))
+            modalX.addEventListener('click', () => displayElement(signInForm))
+            signInBackdrop.addEventListener('click', () => displayElement(signInForm))
+            signInForm.addEventListener('submit', userSignIn)
+
+            likeButtons.forEach((button) => {
+                button.addEventListener('click', displayElement(signInForm))
+            })
+        }
+
+        // Auth Funcs
+
+        function displayElement(e) {
+            const styles = getComputedStyle(e)
+            const display = styles.getPropertyValue('display')
+            if (display === 'none') {
+                e.style.display = 'flex'
+                e.style.boxShadow = 'rgba(0, 0, 0, .9) 0px 0px 30px'
+                // box-shadow: rgba(0, 0, 0, .9) 0px 0px 30px;
+                signInBackdrop.classList.add('active')
+                bodyElement.style.overflowY = 'hidden'
+            }
+            else {
+                e.style.display = 'none'
+                bodyElement.style.overflowY = 'visible'
+                signInBackdrop.classList.remove('active')
+            }
+            
+
+        }
+
+        async function userSignIn(event) {
+            event.preventDefault()
+
+            const email = document.getElementById('email').value
+            const password = document.getElementById('password').value
+
+
+            try {
+                endpoint = 'http://localhost:5200/api/Auth/login'
+                console.log(endpoint)
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email, 
+                        password: password
+                    })
+                })
+
+                if (response.ok) {
+                    const data = await response.json()
+                    const token = data.token  // Data Transfer Object (Representing our Token)
+
+                    localStorage.setItem('Bearer', token)
+
+                    const rel = '/'
+
+                    window.location.href = rel
+                } else {
+                    const errorData = await response.json()
+                    console.error('Login failed:', errorData)
+                    alert('Login failed: Invalid credentials')
+                }
+
+            } catch (error) {
+                console.error("Error during login:", error)
+                alert("An error occured during login")
+            }
+        }
+
+        function displayUserNameTextHeader(username) {
+            signInTextHeader.textContent = username
+            return
+        }
+
+        function displayUserNameTextFooter(username) {
+            signInTextFooter.textContent = username
+            return
+        }
+
+        function displaySignOutText() {
+            signUpText.textContent = 'Sign Out'
+            return
+        }
+
+        function modifySignInHrefHeader(username) {
+            signInButtonHeader.href = `users/${username}`
+            return
+        }
+
+        function modifySignInHrefFooter(username) {
+            signInButtonFooter.href = `users/${username}`
+            return
+        }
+
+        // function modifySignInHrefFooter(username) {
+        //     signInTextHeader.href = `users/${username}`
+        //     return
+        // }
+
+
+
+
+
+        function getToken() {
+            const token = localStorage.getItem('Bearer')
+
+            return token 
+        }
+
+        function parseJwt(token) {
+            // Split the token into its parts
+            var base64Url = token.split('.')[1];
+            // Convert Base64 URL to regular Base64
+            var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            // Decode the Base64 string
+            var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+
+            return JSON.parse(jsonPayload);
+        }
+
+        function signOut() {
+            localStorage.removeItem('Bearer')
+        }
+
+        function isAuthenticatedBool() {
+            const token = getToken()
+
+            if (token === null) {
+                return false
+            }
+            
+            return true
+        }
+
+        function isAuthenticated() {
+            
+            const token = getToken()
+
+            if (token === null) {
+                
+            }
+            
+
+            // Setting to user name
+            // Setting log out option
+            // Methods
+
+            const tokenClaims = parseJwt(token)
+            const username = tokenClaims['name']
+
+            
+            // A way to edit the account settings from here
+            // console.log(username['name'])
+            
+
+            displayUserNameTextHeader(username)
+            displayUserNameTextFooter(username)
+            displaySignOutText()
+            modifySignInHrefHeader(username)
+            modifySignInHrefFooter(username)
+            
+            signUpButton.addEventListener('click', () => signOut())
+
+
+
+
+        }
+        
+        
+        
+        isAuthenticated()
+       
+        
 
         // For each seasonal slider button, the "button" (which is a dom element)
         // will have an event listener method attatched to it

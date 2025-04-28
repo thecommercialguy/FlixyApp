@@ -1,0 +1,22 @@
+.sign-in, .sign-up {
+    font-size: .95rem;
+    align-self: center;
+    /* background-color: var(--color-black-1); */
+    padding: 10px;
+    border-radius: 30%;
+    color: var(--color-white);
+}
+
+@media (width >= 50.625em) {
+    .sign-in, .sign-up {
+        font-size: fs-6;
+    }
+    
+}
+
+@media (width >= 90em) {
+    .footer .sign-in, .footer .sign-up {
+        font-size: 1.5rem;
+    }
+    
+}

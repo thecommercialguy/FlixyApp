@@ -1,5 +1,7 @@
 .featured {
-    background-image: var(--gradient-black);
+    /* background-image: var(--gradient-black); */
+    background-color: var(--color-black-4);
+
     display: flex;
     position: relative;
     flex-direction: column;
@@ -8,12 +10,18 @@
     padding-block: 19px 0;
 
     color: var(--color-white);
+    overflow-y: hidden;
+    overflow-x: hidden;
+
 }
 
 .featured .banner {
     width: 95.733%;
     height: auto;
     border-radius: 21px;
+    
+    /* overflow-y: hidden; */
+
 }
 
 .portrait-container {
@@ -30,7 +38,15 @@
     translate: 13% -49%;
     width: 28.68%;
     border-radius: 21px;
+    transition: 300ms ease-in-out;
+    transition-property: filter, border;
+    border: 2px solid white;
 }
+
+.portrait:hover {
+    border: 2px solid var(--color-yellow-1);
+}
+
 
 .featured-movie-details {
     display: flex;
@@ -44,12 +60,82 @@
 .portrait-text-container {
     padding-block-end: 1.2%;
 }
+/* .portrait-text-container > .featured-movie-link {
+    aspect-ratio: 0;
+    width: max-content;
+    font-size: var(--fs-1);
+    border:none;
+    stroke: none;
+    margin: 0;
+    padding: 0;
+} */
+.ft-link.ft-movie, .ft-link.ft-director {
+    padding: 0;
+    margin-inline: 0;
+    margin-block: 0;
+    border: none;
+    border-radius: 0;
+    aspect-ratio: auto;
+    overflow: visible;
+    justify-content: flex-start;
+    width: max-content;
+    outline: none;
+
+}
+
+.ft-link.ft-movie:hover,
+.ft-link.ft-director:hover {
+    box-shadow: none;
+
+}
+
+.ft-link.ft-movie:hover,
+.ft-link.ft-director:hover {
+    box-shadow: none;
+
+}
+
+.ft-link.ft-movie:visited,
+.ft-link.ft-director:visited {
+    color: white;
+    text-decoration: none;
+
+}
+
+.ft-movie-title {
+    font-size: var(--fs-1);
+    cursor: pointer;
+}
 
 .portrait-text-container > h1 {
+    /* width: 100%; */
     font-size: var(--fs-1);
+    transition: 150ms ease-in-out;
+    transition-property: text-stroke, scale;
+    cursor: pointer;
 }
-.portrait-text-container h2 {
+.portrait-text-container > h1:hover {
+    /* text-shadow: 0 0 15px var(--color-yellow); */
+    /* text-stroke: 1px var(--color-yellow); */
+    /* text-shadow: 
+        -1px -1px 0 hsl(47, 92%, 53%), 
+         1px -1px 0 hsl(47, 92%, 53%), 
+        -1px  1px 0 hsl(47, 92%, 53%), 
+         1px  1px 0 hsl(47, 92%, 53%);  */
+    /* text-stroke: 1px hsl(47, 92%, 53%); */
+    /* transform: scale(1.05); */
+    /* transform: translateY(-1%); */
+}
+.portrait-text-container > h1:active {
+    color: var(--color-yellow-2);
+}
+.ft-director-name {
     font-size: var(--fs-2);
+}
+.portrait-text-container > h2:hover {
+
+}.portrait-text-container > h2:hover {
+
 }
 
 .star-list {
@@ -59,11 +145,17 @@
     margin: 0;
 }
 
-
-.bxs-star {
+.portrait-container .star-list .bxs-star {
+    transition: transform 150ms ease-in-out;
     font-size: 12px;
-    color: var(--color-yellow);
+    
 }
+.portrait-container .star-list .bxs-star:hover {
+    transform: scale(1.05);
+    
+}
+
+
 
 @media (width >= 50.625em) {
     .featured .banner {
@@ -89,10 +181,13 @@
         padding-block-end: 8px;
     }
     
-    .bxs-star {
+    .portrait-container .star-list .bxs-star {
         font-size: 25.2px;
         padding-right: 2px;
         color: var(--color-yellow);
+    }
+    .portrait-container .star-list .bxs-star:hover {
+        transform: scale(1.15);
     }
     
 }
@@ -100,7 +195,7 @@
 @media (width >= 90em) {
     .featured {
         display: flex;
-        width: 88.888888%;
+        /* width: 88.888888%; */
         
     }
 

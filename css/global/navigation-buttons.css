@@ -3,11 +3,21 @@
     position: absolute;
     width: 99.9%;
     justify-content: space-between;
-    /* border: 1px solid red; */
-    /* opacity: .5; */
+    pointer-events: none; 
     
+    /* height: 100%; */
 }
 
+/* .slider-tab {
+    width: 2%;
+    height: 100%;
+    background-color: var(--color-yellow);
+    transition: background-color 150ms ease-in-out;
+}
+
+.slider-tab:hover {
+    background-color: var(--color-yellow-1);
+} */
 
 .bx-left-arrow-alt,
 .bx-right-arrow-alt {
@@ -15,37 +25,30 @@
     font-size: 34px;
     background-color: var(--color-black-3);
     border-radius: 5px;
-    /* border: 1px solid var(--color-white); */
     transition: 150ms ease-in-out;
     transition-property: opacity, color;
     opacity: .5;
-    /* border-radius: 11px; */
+    cursor: pointer;
+    pointer-events: auto;
 }
 
 
 .bx-left-arrow-alt:active,
 .bx-right-arrow-alt:active {
     color: var(--color-yellow);
-
 }
 
 .featured .navigation-container {
-    top: 0;
-    translate: 0 83%;
+    /* top: 0;
+    translate: 0 83%; */
+    top: 20%;
 }
 
 .monthly.section .navigation-container,
 .seasonal.section .navigation-container {
-    top: 0;
-    translate: 0% 161%;
-}
-
-.reviews.section .navigation-container {
-    top: 0;
-    translate: 0% 185%;
-    transition: 150ms ease-in-out;
-    transition-property: opacity;
-    opacity: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    /* translate: 0% 161%; */
 }
 
 .bx-left-arrow-alt:hover,
@@ -54,15 +57,21 @@
 
 }
 
-.reviews.section .navigation-container:hover {
-    opacity: .7;
+.reviews.section .navigation-container {
+    top: 50%;
+    translate: 0% -7%;
+    transition: 150ms ease-in-out;
+    transition-property: opacity;
+    opacity: 1;
+    pointer-events: none;
 }
 
 .reviews.section .navigation-container .bx-left-arrow-alt,
 .reviews.section .navigation-container .bx-right-arrow-alt {
-    /* opacity */
     transition: 150ms ease-in-out;
     transition-property: color;
+    pointer-events: all;
+
 }
 
 .reviews.section .navigation-container .bx-left-arrow-alt:active,
@@ -71,12 +80,6 @@
     color: var(--color-yellow);
 
 }
-
-
-/* .featured .navigation-container:hover {
-    color: var(--color-yellow);
-    opacity: .8;
-} */
 
 
 @media (width >= 50.625em) {
@@ -89,12 +92,19 @@
     }
 
     .featured .navigation-container {
-        top: 0;
-        translate: 0 120%;
+        top: 50%;
+        translate: 0px -222%;
     }
 
     .reviews.section .navigation-container {
-        translate: 0% 221%;
+        top: 50%;
+        translate: 0% -30%;
+    }
+
+    .monthly .navigation-container,
+    .seasonal .navigation-container {
+        /* top: 50%;
+        translate: 0% -30%; */
     }
     
 }
@@ -104,11 +114,19 @@
         width: 92%;
     }
 
+    .featured .navigation-container {
+        top: 50%;
+        translate: 0 -199%;
+    }
+
     .monthly.section .navigation-container {
-        translate: 0% 190%;
+        /* translate: 0% 190%; */
+        transform: translateY(-37%);
     }
     
     .reviews.section .navigation-container {
-        translate: 0% 200%;
+        /* translate: 0% -30%; */
+        top: 50%;
+        translate: 0% -30%;
     }
 }

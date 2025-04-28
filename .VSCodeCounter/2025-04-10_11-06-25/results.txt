@@ -1,0 +1,130 @@
+Date : 2025-04-10 11:06:25
+Directory : c:\Users\willi\projects\Flixy\FlixyApp
+Total : 76 files,  8390 codes, 1249 comments, 2374 blanks, all 12013 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| HTML       |          9 |      3,110 |        379 |      1,037 |      4,526 |
+| CSS        |         46 |      2,919 |        509 |        857 |      4,285 |
+| JavaScript |         12 |      1,295 |        361 |        473 |      2,129 |
+| JSON       |          2 |      1,036 |          0 |          2 |      1,038 |
+| SVG        |          5 |         27 |          0 |          5 |         32 |
+| Properties |          1 |          2 |          0 |          0 |          2 |
+| Markdown   |          1 |          1 |          0 |          0 |          1 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                 | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                    |         76 |      8,390 |      1,249 |      2,374 |     12,013 |
+| . (Files)                                                                            |          8 |      2,803 |        317 |        628 |      3,748 |
+| accounts                                                                             |         12 |        501 |         53 |        119 |        673 |
+| accounts (Files)                                                                     |          3 |        146 |          8 |         28 |        182 |
+| accounts\css-sign-in                                                                 |          9 |        355 |         45 |         91 |        491 |
+| accounts\css-sign-in (Files)                                                         |          1 |          8 |          6 |          0 |         14 |
+| accounts\css-sign-in\components                                                      |          3 |        148 |          8 |         41 |        197 |
+| accounts\css-sign-in\global                                                          |          5 |        199 |         31 |         50 |        280 |
+| assets                                                                               |          5 |         27 |          0 |          5 |         32 |
+| css                                                                                  |         13 |      1,081 |        247 |        327 |      1,655 |
+| css (Files)                                                                          |          1 |         12 |          0 |          0 |         12 |
+| css\components                                                                       |          6 |        745 |        175 |        240 |      1,160 |
+| css\global                                                                           |          6 |        324 |         72 |         87 |        483 |
+| js                                                                                   |          7 |        916 |        256 |        326 |      1,498 |
+| movies                                                                               |         31 |      3,062 |        376 |        969 |      4,407 |
+| movies (Files)                                                                       |          5 |      1,293 |        126 |        429 |      1,848 |
+| movies\css-movie                                                                     |         13 |        918 |        115 |        260 |      1,293 |
+| movies\css-movie (Files)                                                             |          1 |         12 |          3 |          0 |         15 |
+| movies\css-movie\components                                                          |          7 |        678 |         78 |        196 |        952 |
+| movies\css-movie\global                                                              |          5 |        228 |         34 |         64 |        326 |
+| movies\css-movies                                                                    |         11 |        565 |        102 |        179 |        846 |
+| movies\css-movies (Files)                                                            |          1 |         10 |          4 |          0 |         14 |
+| movies\css-movies\components                                                         |          5 |        333 |         46 |        117 |        496 |
+| movies\css-movies\global                                                             |          5 |        222 |         52 |         62 |        336 |
+| movies\js-movie                                                                      |          2 |        286 |         33 |        101 |        420 |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                             | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\willi\projects\Flixy\FlixyApp\.env                                          | Properties |          2 |          0 |          0 |          2 |
+| c:\Users\willi\projects\Flixy\FlixyApp\README.md                                     | Markdown   |          1 |          0 |          0 |          1 |
+| c:\Users\willi\projects\Flixy\FlixyApp\accounts\accounts.js                          | JavaScript |         19 |          1 |          8 |         28 |
+| c:\Users\willi\projects\Flixy\FlixyApp\accounts\css-sign-in\components\footer.css    | CSS        |         29 |          0 |          5 |         34 |
+| c:\Users\willi\projects\Flixy\FlixyApp\accounts\css-sign-in\components\form.css      | CSS        |         71 |          6 |         23 |        100 |
+| c:\Users\willi\projects\Flixy\FlixyApp\accounts\css-sign-in\components\header.css    | CSS        |         48 |          2 |         13 |         63 |
+| c:\Users\willi\projects\Flixy\FlixyApp\accounts\css-sign-in\global\boilerplate.css   | CSS        |         78 |         10 |         17 |        105 |
+| c:\Users\willi\projects\Flixy\FlixyApp\accounts\css-sign-in\global\fonts.css         | CSS        |         36 |          9 |         11 |         56 |
+| c:\Users\willi\projects\Flixy\FlixyApp\accounts\css-sign-in\global\logo.css          | CSS        |         11 |          0 |          3 |         14 |
+| c:\Users\willi\projects\Flixy\FlixyApp\accounts\css-sign-in\global\section.css       | CSS        |         57 |         11 |         15 |         83 |
+| c:\Users\willi\projects\Flixy\FlixyApp\accounts\css-sign-in\global\sign-in-up.css    | CSS        |         17 |          1 |          4 |         22 |
+| c:\Users\willi\projects\Flixy\FlixyApp\accounts\css-sign-in\style.css                | CSS        |          8 |          6 |          0 |         14 |
+| c:\Users\willi\projects\Flixy\FlixyApp\accounts\sign-in.html                         | HTML       |         62 |          5 |         11 |         78 |
+| c:\Users\willi\projects\Flixy\FlixyApp\accounts\sign-up.html                         | HTML       |         65 |          2 |          9 |         76 |
+| c:\Users\willi\projects\Flixy\FlixyApp\app.js                                        | JavaScript |         41 |         58 |         26 |        125 |
+| c:\Users\willi\projects\Flixy\FlixyApp\assets\Rectangle 5.svg                        | SVG        |          3 |          0 |          1 |          4 |
+| c:\Users\willi\projects\Flixy\FlixyApp\assets\flixy-logo-2.svg                       | SVG        |          9 |          0 |          1 |         10 |
+| c:\Users\willi\projects\Flixy\FlixyApp\assets\flixy-logo.svg                         | SVG        |          9 |          0 |          1 |         10 |
+| c:\Users\willi\projects\Flixy\FlixyApp\assets\left-arrow.svg                         | SVG        |          3 |          0 |          1 |          4 |
+| c:\Users\willi\projects\Flixy\FlixyApp\assets\right-arrow.svg                        | SVG        |          3 |          0 |          1 |          4 |
+| c:\Users\willi\projects\Flixy\FlixyApp\css\components\content-slider.css             | CSS        |        151 |         37 |         63 |        251 |
+| c:\Users\willi\projects\Flixy\FlixyApp\css\components\featured.css                   | CSS        |        153 |         24 |         42 |        219 |
+| c:\Users\willi\projects\Flixy\FlixyApp\css\components\footer.css                     | CSS        |         27 |          1 |          4 |         32 |
+| c:\Users\willi\projects\Flixy\FlixyApp\css\components\header.css                     | CSS        |         48 |          2 |         15 |         65 |
+| c:\Users\willi\projects\Flixy\FlixyApp\css\components\review-slider.css              | CSS        |        214 |         86 |         67 |        367 |
+| c:\Users\willi\projects\Flixy\FlixyApp\css\components\sign-in-form.css               | CSS        |        152 |         25 |         49 |        226 |
+| c:\Users\willi\projects\Flixy\FlixyApp\css\global\boilerplate.css                    | CSS        |         77 |         10 |         19 |        106 |
+| c:\Users\willi\projects\Flixy\FlixyApp\css\global\fonts.css                          | CSS        |         36 |          9 |         11 |         56 |
+| c:\Users\willi\projects\Flixy\FlixyApp\css\global\logo.css                           | CSS        |         17 |          0 |          4 |         21 |
+| c:\Users\willi\projects\Flixy\FlixyApp\css\global\navigation-buttons.css             | CSS        |         89 |         19 |         24 |        132 |
+| c:\Users\willi\projects\Flixy\FlixyApp\css\global\section.css                        | CSS        |         69 |         26 |         16 |        111 |
+| c:\Users\willi\projects\Flixy\FlixyApp\css\global\sign-in-up.css                     | CSS        |         36 |          8 |         13 |         57 |
+| c:\Users\willi\projects\Flixy\FlixyApp\css\style.css                                 | CSS        |         12 |          0 |          0 |         12 |
+| c:\Users\willi\projects\Flixy\FlixyApp\index.ejs                                     | HTML       |        602 |         34 |        214 |        850 |
+| c:\Users\willi\projects\Flixy\FlixyApp\index.html                                    | HTML       |        863 |        115 |        309 |      1,287 |
+| c:\Users\willi\projects\Flixy\FlixyApp\index2.html                                   | HTML       |        258 |        110 |         77 |        445 |
+| c:\Users\willi\projects\Flixy\FlixyApp\js\api.js                                     | JavaScript |        115 |         15 |         40 |        170 |
+| c:\Users\willi\projects\Flixy\FlixyApp\js\auth.js                                    | JavaScript |         78 |          4 |         19 |        101 |
+| c:\Users\willi\projects\Flixy\FlixyApp\js\config.js                                  | JavaScript |          8 |          0 |          1 |          9 |
+| c:\Users\willi\projects\Flixy\FlixyApp\js\contnentInit.js                            | JavaScript |        312 |         57 |        103 |        472 |
+| c:\Users\willi\projects\Flixy\FlixyApp\js\error.js                                   | JavaScript |          5 |          0 |          0 |          5 |
+| c:\Users\willi\projects\Flixy\FlixyApp\js\main.js                                    | JavaScript |        108 |         59 |         28 |        195 |
+| c:\Users\willi\projects\Flixy\FlixyApp\js\slider.js                                  | JavaScript |        290 |        121 |        135 |        546 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movie\components\about.css         | CSS        |         37 |          3 |         12 |         52 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movie\components\featured.css      | CSS        |        115 |          2 |         30 |        147 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movie\components\footer.css        | CSS        |         27 |          1 |          4 |         32 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movie\components\header.css        | CSS        |         48 |          2 |         13 |         63 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movie\components\nav-buttons.css   | CSS        |         57 |         11 |         17 |         85 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movie\components\reviews.css       | CSS        |        242 |         25 |         70 |        337 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movie\components\sign-in-form.css  | CSS        |        152 |         34 |         50 |        236 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movie\global\boilerplate.css       | CSS        |         74 |         10 |         19 |        103 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movie\global\fonts.css             | CSS        |         36 |          9 |         11 |         56 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movie\global\logo.css              | CSS        |         17 |          0 |          4 |         21 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movie\global\section.css           | CSS        |         68 |          7 |         18 |         93 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movie\global\sign-in-up.css        | CSS        |         33 |          8 |         12 |         53 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movie\style.css                    | CSS        |         12 |          3 |          0 |         15 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movies\components\all-movies.css   | CSS        |         47 |          8 |         30 |         85 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movies\components\footer.css       | CSS        |         28 |          0 |          4 |         32 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movies\components\header.css       | CSS        |         50 |          2 |         13 |         65 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movies\components\nav-buttons.css  | CSS        |         56 |          2 |         20 |         78 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movies\components\sign-in-form.css | CSS        |        152 |         34 |         50 |        236 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movies\global\boilerplate.css      | CSS        |         76 |         10 |         17 |        103 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movies\global\fonts.css            | CSS        |         36 |          9 |         11 |         56 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movies\global\logo.css             | CSS        |         17 |          0 |          4 |         21 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movies\global\section.css          | CSS        |         57 |         25 |         17 |         99 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movies\global\sign-in-up.css       | CSS        |         36 |          8 |         13 |         57 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\css-movies\style.css                   | CSS        |         10 |          4 |          0 |         14 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\js-movie\movie-main.js                 | JavaScript |        114 |         14 |         33 |        161 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\js-movie\movies-main.js                | JavaScript |        172 |         19 |         68 |        259 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\movie-2.html                           | HTML       |        123 |         93 |         29 |        245 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\movie-router.js                        | JavaScript |         33 |         13 |         12 |         58 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\movie.html                             | HTML       |        426 |         10 |        140 |        576 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\movies-2.html                          | HTML       |         96 |          5 |         21 |        122 |
+| c:\Users\willi\projects\Flixy\FlixyApp\movies\movies.html                            | HTML       |        615 |          5 |        227 |        847 |
+| c:\Users\willi\projects\Flixy\FlixyApp\package-lock.json                             | JSON       |      1,020 |          0 |          1 |      1,021 |
+| c:\Users\willi\projects\Flixy\FlixyApp\package.json                                  | JSON       |         16 |          0 |          1 |         17 |
+| Total                                                                                |            |      8,390 |      1,249 |      2,374 |     12,013 |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

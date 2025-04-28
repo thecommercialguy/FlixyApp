@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css-movies/style.css" type='text/css'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Movies</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="menu-logo-container">
+                <!-- <div class="menu-container"> -->
+                <i class='bx bx-menu menu'></i>
+                <!-- </div> -->
+                <a href="/"><img  href="/" src="../assets/flixy-logo-2.svg" alt="Flixy Logo" class="logo" /></a>
+                
+            </div>
+            <a href="#" class="sign-in" id="sign-in-h">
+                <span class="sign-in-text" id="sign-in-text-h">Sign In</span>
+            </a>
+            </div>
+        </nav>
+    </header>
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <form method="post" action="" id="sign-in-form">
+        <i class='bx bx-x' id="modal-x"></i>
+        <h2 class="sign-in-header">Log in to <img src="../assets/flixy-logo-2.svg" alt="Flixy Logo" class="logo"></h2>
+        
+        <div class="contents">
+            <div class="form-row">
+                <!-- <label for="email">Email:</label> -->
+                <input id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Email"/>
+            </div>
+            
+            <div class="form-row">
+                <!-- <label for="password">Password:</label> -->
+                <input id="password"
+                    name="password"
+                    type="password"
+                    placeholder="Password"/>
+            </div>
+            <div class="submit-row">
+                <button class="submit">
+                    Sign In
+                </button>
+                <a href="">
+                    <button class="sign-up-b">
+                        Sign Up
+                    </button>
+                </a>
+            </div>
+        </div>
+    </form>
+
+    <main>
+        <div class="section-title-container">
+            <h2>Movies</h2>
+            <div class="accent"></div>
+        </div>
+
+        <div class="all-movies">
+
+            <a href="" class="img-container"><img src="" alt="" class="portrait"></a>
+            <a href="" class="img-container"><img src="" alt="" class="portrait"></a>
+            <a href="" class="img-container"><img src="" alt="" class="portrait"></a>
+            <a href="" class="img-container"><img src="" alt="" class="portrait"></a>
+     
+            <a href="" class="img-container"><img src="" alt="" class="portrait"></a>
+            <a href="" class="img-container"><img src="" alt="" class="portrait"></a>
+            <a href="" class="img-container"><img src="" alt="" class="portrait"></a>
+            <a href="" class="img-container"><img src="" alt="" class="portrait"></a>
+     
+            <a href="" class="img-container"><img src="" alt="" class="portrait"></a>
+            <a href="" class="img-container"><img src="" alt="" class="portrait"></a>
+            <a href="" class="img-container"><img src="" alt="" class="portrait"></a>
+            <a href="" class="img-container"><img src="" alt="" class="portrait"></a>
+     
+            <a href="" class="img-container"><img src="" alt="" class="portrait"></a>
+            <a href="" class="img-container"><img src="" alt="" class="portrait"></a>
+            <a href="" class="img-container"><img src="" alt="" class="portrait"></a>
+            <a href="" class="img-container"><img src="" alt="" class="portrait"></a>
+     
+          
+        </div>
+
+        <span class="nav-container">
+            <button class="nav-button" data-index-change="-1">
+                Back
+            </button>
+            <!-- Handled by JS -->
+
+            <button class="nav-button" data-index-change="1">
+                Next
+            </button>
+        </span>
+    </main>
+
+    
+
+    <footer class="footer">
+        <img src="../assets/flixy-logo-2.svg" alt="Flixy Logo" class="logo" />
+            
+        
+        <div class="sign-in-up ">
+            <a href="#" class="sign-in" id="sign-in-f">
+                <span class="sign-in-text" id="sign-in-text-f">Sign In</span>
+            </a>
+            
+            <a href="" class="sign-up" id="sign-up">
+                <span class="sign-up-text" id="sign-up-text">Sign Up</span>
+            </a>
+        </div>
+    </footer>
+    
+</body>
+</html>
+
+<script>
+    // Implemented later (Fetching Titles)
+
+    const imageContainers = document.querySelectorAll('.img-container')
+    const images = document.querySelectorAll('.img-container img')
+
+    const navButtons = document.querySelectorAll('.nav-button')
+    console.log(navButtons.length)
+
+    const bodyElement = document.querySelector('body')
+
+    // Auth features 
+    const signInButtonHeader = document.getElementById('sign-in-h')
+    const signInTextHeader = document.getElementById('sign-in-text-h')
+    const signInButtonFooter = document.getElementById('sign-in-f')
+    const signInTextFooter = document.getElementById('sign-in-text-f')
+    const signUpButton = document.getElementById('sign-up')
+    const signUpText = document.getElementById('sign-up-text')
+    const signInForm = document.getElementById('sign-in-form')
+    const signInBackdrop = document.getElementById('modal-backdrop')
+    const modalX = document.getElementById('modal-x')
+
+    // // When unauthenticated
+    if (isAuthenticatedBool() === false) {
+        signInButtonHeader.addEventListener('click', () => displayElement(signInForm))
+        signInButtonFooter.addEventListener('click', () => displayElement(signInForm))
+        modalX.addEventListener('click', () => displayElement(signInForm))
+        signInBackdrop.addEventListener('click', () => displayElement(signInForm))
+
+        signInForm.addEventListener('submit', userSignIn)
+    }
+
+    async function moviesList() {
+            const url = 'http://localhost:5200/api/Movie/'
+            const response = await fetch(url)
+            if (!response.ok) {
+                throw new Error('Server error')
+            } 
+
+            const data = await response.json()
+            let movies = []
+
+            for (let i = 0; i < data.length; i++) {
+                formattedTitle = data[i].title.toLowerCase().trim().split(" ").join("-")
+                movies.push(formattedTitle)
+            }
+
+            return movies
+    }
+
+    async function displayTitles() {
+        const titles = await moviesList()
+        titles.forEach((v, i) => {
+            console.log(v)
+        })
+    }
+
+    let page = 1
+    let j = 0
+    async function setMovies() {
+        const titles = await moviesList()
+        const start = (page - 1) * 16
+        const end = page * 16
+        const titlesSlice = titles.slice(start, end)
+    
+        for (let i = 0; i < titlesSlice.length; i++) {
+            const title = titlesSlice[i]
+            let fileType = 'png'
+            if (title === 'poor-things') {
+                fileType = 'jpg'
+            }
+            console.log(title)
+            images[i].src = `../images/${title}-portrait.${fileType}`
+            imageContainers[i].href = `${title}`
+            
+            j++ 
+        }
+
+        
+    }
+
+    // Addong more movies
+
+    // Auth Funcs
+    function displayElement(e) {
+        const styles = getComputedStyle(e)
+        const display = styles.getPropertyValue('display')
+        if (display === 'none') {
+            e.style.display = 'flex'
+            e.style.boxShadow = 'rgba(0, 0, 0, .9) 0px 0px 30px'
+            // box-shadow: rgba(0, 0, 0, .9) 0px 0px 30px;
+            signInBackdrop.classList.add('active')
+            bodyElement.style.overflowY = 'hidden'
+        }
+        else {
+            e.style.display = 'none'
+            bodyElement.style.overflowY = 'visible'
+            signInBackdrop.classList.remove('active')
+        }
+        
+
+    }
+
+    async function userSignIn(event) {
+        event.preventDefault()
+
+        const email = document.getElementById('email').value
+        const password = document.getElementById('password').value
+
+
+        try {
+            endpoint = 'http://localhost:5200/api/Auth/login'
+            console.log(endpoint)
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email, 
+                    password: password
+                })
+            })
+
+            if (response.ok) {
+                const data = await response.json()
+                const token = data.token  // Data Transfer Object (Representing our Token)
+
+                localStorage.setItem('Bearer', token)
+
+                const rel = '/movies/'
+
+                window.location.href = rel
+            } else {
+                const errorData = await response.json()
+                console.error('Login failed:', errorData)
+                alert('Login failed: Invalid credentials')
+            }
+
+        } catch (error) {
+            console.error("Error during login:", error)
+            alert("An error occured during login")
+        }
+    }
+
+    function displayUserNameTextHeader(username) {
+        signInTextHeader.textContent = username
+        return
+    }
+
+    function displayUserNameTextFooter(username) {
+        signInTextFooter.textContent = username
+        return
+    }
+
+    function displaySignOutText() {
+        signUpText.textContent = 'Sign Out'
+        return
+    }
+
+    function modifySignInHrefHeader(username) {
+        signInButtonHeader.href = `users/${username}`
+        return
+    }
+
+    function modifySignInHrefFooter(username) {
+        signInButtonFooter.href = `users/${username}`
+        return
+    }
+
+    // function modifySignInHrefFooter(username) {
+    //     signInTextHeader.href = `users/${username}`
+    //     return
+    // }
+
+
+
+
+
+    function getToken() {
+        const token = localStorage.getItem('Bearer')
+
+        return token 
+    }
+
+    function parseJwt(token) {
+        // Split the token into its parts
+        var base64Url = token.split('.')[1];
+        // Convert Base64 URL to regular Base64
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        // Decode the Base64 string
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        return JSON.parse(jsonPayload);
+    }
+
+    function signOut() {
+        localStorage.removeItem('Bearer')
+    }
+
+    function isAuthenticatedBool() {
+        const token = getToken()
+
+        if (token === null) {
+            return false
+        }
+        
+        return true
+    }
+
+    function isAuthenticated() {
+        
+        const token = getToken()
+
+        if (token === null) {
+            
+        }
+        
+
+        // Setting to user name
+        // Setting log out option
+        // Methods
+
+        const tokenClaims = parseJwt(token)
+        const username = tokenClaims['name']
+
+        
+        // A way to edit the account settings from here
+        // console.log(username['name'])
+        
+
+        displayUserNameTextHeader(username)
+        displayUserNameTextFooter(username)
+        displaySignOutText()
+        modifySignInHrefHeader(username)
+        modifySignInHrefFooter(username)
+        signUpButton.addEventListener('click', () => signOut())
+
+    }
+
+
+
+    navButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const indexChange = +button.getAttribute('data-index-change')
+            page += indexChange
+            setMovies()
+        })
+    })
+
+
+    // Redirects....
+    
+
+
+
+    setMovies()
+    isAuthenticated()
+    // moviesList()
+    // displayTitles()
+
+
+    
+    // 16
+
+
+    // const seasonalSliderContent = document.querySelectorAll('.seasonal .content-slider-container .content-slider .slider-index')
+
+    // if (window.innerWidth < mobileBreakpoint) {
+    //         widthSlider.style.width = `${(window.innerWidth * 3) * featuredSliderScaleIndexM}px`
+
+    //     } else if (window.innerWidth < tabletBreakpoint) {
+    //         widthSlider.style.width = `${(window.innerWidth * 3) * featuredSliderScaleIndexT}px`
+            
+    //     } else {
+    //         widthSlider.style.width = `${(1008 * 3) * featuredSliderScaleIndexD}px`
+
+    //     }
+
+    //     window.addEventListener('resize', function() {
+    //         if (window.innerWidth < mobileBreakpoint) {
+    //         widthSlider.style.width = `${(window.innerWidth * 3) * featuredSliderScaleIndexM}px`
+
+    //         } else if (window.innerWidth < tabletBreakpoint) {
+    //             widthSlider.style.width = `${((window.innerWidth * 3) * featuredSliderScaleIndexT)}px`
+                
+    //         } else {
+    //             widthSlider.style.width = `${1008 * featuredSliderScaleIndexD * 3}px`
+
+    //         }
+    //     })
+        
+        
+    //     const featuredSliderButtons = document.querySelectorAll('.featured .navigation-container i')
+    //     const featuredSliderBanner = document.querySelectorAll('.featured .banner')
+    //     const featuredSliderPortrait = document.querySelectorAll('#portrait')
+    //     const featuredSliderContent = document.querySelectorAll('.featured .slider-index')
+        
+
+    //     const monthlySliderButtons = document.querySelectorAll('.monthly .navigation-container i')
+    //     const monthlySliderImages = document.querySelectorAll('.monthly .content-slider-container .content-slider .slider-image')
+    //     const monthlySliderContent = document.querySelectorAll('.monthly .content-slider-container .content-slider .slider-index')
+
+    //     const reviewSliderButtons = document.querySelectorAll('.reviews .navigation-container i')
+    //     const reviewSliderContent = document.querySelectorAll('.review-card')
+
+    //     const seasonalSliderButtons = document.querySelectorAll('.seasonal .navigation-container i')
+    //     const seasonalSliderImages = document.querySelectorAll('.seasonal .content-slider-container .content-slider .slider-image')
+    //     const seasonalSliderContent = document.querySelectorAll('.seasonal .content-slider-container .content-slider .slider-index')
+
+
+    //     // console.log(margin)
+    //     // console.log(monthlyContentSliderContainer)
+    //     // console.log(widthContainer)
+
+    //     let currSlideIndexFeatured = 0
+
+    //     function naviagteFeaturedSldier(indexChange){
+    //         currSlideIndexFeatured += indexChange
+
+    //         if (currSlideIndexFeatured === 3) {
+    //             currSlideIndexFeatured = 2
+    //             console.log("returned")
+    //             return 
+    //         }
+
+    //         if (currSlideIndexFeatured < 0) {
+    //             currSlideIndexFeatured = 0
+    //             console.log("returned")
+    //             return
+    //         }
+
+    //         const featuredSliderContentStyles = getComputedStyle(featuredSliderContent[0])
+
+    //         const widthString = featuredSliderContentStyles.getPropertyValue('width')
+
+    //         const width = Number(widthString.split("px")[0])
+    //         const shiftX = -100
+        
+
+
+    //         featuredSliderContent.forEach((card, index) => {               
+    //             card.style.transform = `translateX(${currSlideIndexFeatured * (shiftX)}%)`
+
+    //         })
+
+
+    //     }
+
+    //     // 2388
+
+    //     let currSlideIndexMonthly = 0
+
+    //     function navigateMonthlySliderContentMobile(indexChange) {
+    //         console.log("mobile")
+    //         currSlideIndexMonthly += indexChange
+
+    //         if (currSlideIndexMonthly === 4) {
+    //             currSlideIndex = 3
+    //             console.log("returned")
+    //             return 
+    //         }
+
+    //         if (currSlideIndexMonthly < 0) {
+    //             currSlideIndexMonthly = 0
+    //             console.log("returned")
+    //             return
+    //         }
+
+    //         const monthlySliderContentStyles = getComputedStyle(monthlySliderContent[0])
+
+    //         const widthString = monthlySliderContentStyles.getPropertyValue('width')
+    //         const marginRightString = monthlySliderContentStyles.getPropertyValue('margin-right')
+
+    //         const width = Number(widthString.split("px")[0])
+    //         const marginRight = Number(marginRightString.split("px")[0])
+    //         const shiftX = -((width + marginRight)/width) * 100
+        
+    //         console.log(indexChange)
+    //         console.log(currSlideIndexMonthly)
+    //         console.log("//")
+
+    //         monthlySliderContent.forEach((image, index) => {
+                
+                
+    //             if (index === 11) {
+    //                 console.log(index)
+    //                 console.log(indexChange*321.1093676337)
+    //             }
+    //             // if (currSlideIndex === 2) {
+    //             //     image.style.transform = `translateX(${indexChange * -211.9321826382}%)`
+
+    //             // } else {
+                
+    //             image.style.transform = `translateX(${currSlideIndexMonthly * (3*shiftX)}%)`
+
+                
+    //         })
+
+            
+    //     }
+
+    //     function navigateMonthlySliderContent(indexChange) {
+    //         console.log("desktop")
+    //         currSlideIndexMonthly += indexChange
+
+            
+    //         if (currSlideIndexMonthly === 3) {
+    //             currSlideIndexMonthly = 2
+    //             console.log("returned")
+    //             return 
+    //         }
+
+    //         if (currSlideIndexMonthly < 0) {
+    //             currSlideIndexMonthly = 0
+    //             console.log("returned")
+    //             return
+    //         }
+
+    //         const monthlySliderContentStyles = getComputedStyle(monthlySliderContent[0])
+
+    //         const widthString = monthlySliderContentStyles.getPropertyValue('width')
+    //         const marginRightString = monthlySliderContentStyles.getPropertyValue('margin-right')
+
+    //         const width = Number(widthString.split("px")[0])
+    //         const marginRight = Number(marginRightString.split("px")[0])
+    //         const shiftX = -((width + marginRight)/width) * 100
+            
+    //         console.log(width)
+    //         console.log(marginRight)
+    //         console.log(shiftX)
+    //         console.log(indexChange)
+    //         console.log(currSlideIndexMonthly)
+    //         console.log("//")
+
+
+    //         monthlySliderContent.forEach((image, index) => {
+                
+                
+    //             if (index === 11) {
+    //                 console.log(index)
+    //                 console.log(indexChange*451.02040816)
+    //             }
+    //             // if (currSlideIndex === 2) {
+    //             //     image.style.transform = `translateX(${indexChange * -211.9321826382}%)`
+
+    //             // } else {
+                
+    //             image.style.transform = `translateX(${currSlideIndexMonthly * (4*shiftX)}%)`
+
+                
+    //         })
+
+            
+    //     }
+
+    //     //
+
+    //     let currSlideIndexReviews = 0
+
+    //     function navigateReviewSlider(indexChange) {
+    //         currSlideIndexReviews += indexChange
+    //         console.log(currSlideIndexReviews)
+
+
+    //         const reviewSliderContentStyles = getComputedStyle(reviewSliderContent[0])
+
+    //         const widthString = reviewSliderContentStyles.getPropertyValue('width')
+    //         const marginRightString = reviewSliderContentStyles.getPropertyValue('margin-right')
+
+    //         const width = Number(widthString.split("px")[0])
+    //         const marginRight = Number(marginRightString.split("px")[0])
+    //         const shiftX = -((width + marginRight)/width) * 100
+            
+    //         console.log(width)
+    //         console.log(marginRight)
+    //         console.log(shiftX)
+
+    //         if (currSlideIndexReviews === 3) {
+    //             currSlideIndexReviews = 2
+    //             console.log("returned")
+    //             return 
+    //         }
+
+    //         if (currSlideIndexReviews < 0) {
+    //             currSlideIndexReviews = 0
+    //             console.log("returned")
+    //             return
+    //         }
+            
+    //         reviewSliderContent.forEach((review, index) => {
+    //             review.style.transform = `translateX(${currSlideIndexReviews * shiftX}%)`
+    //         })
+    //     }
+
+    //     let currSlideIndexSeasonal = 0
+
+    //     function navigateSeasonalSliderMobile(indexChange) {
+    //         currSlideIndexSeasonal += indexChange
+
+    //         if (currSlideIndexSeasonal === 4) {
+    //             currSlideIndexSeasonal = 3
+    //             console.log("returned")
+    //             return 
+    //         }
+
+    //         if (currSlideIndexSeasonal < 0) {
+    //             currSlideIndexSeasonal = 0
+    //             console.log("returned")
+    //             return
+    //         }
+    //         const seasonalSliderContentStyles = getComputedStyle(seasonalSliderContent[0])
+
+    //         const widthString = seasonalSliderContentStyles.getPropertyValue('width')
+    //         const marginRightString = seasonalSliderContentStyles.getPropertyValue('margin-right')
+
+    //         const width = Number(widthString.split("px")[0])
+    //         const marginRight = Number(marginRightString.split("px")[0])
+    //         const shiftX = -((width + marginRight)/width) * 100
+            
+    //         console.log(width)
+    //         console.log(marginRight)
+    //         console.log(shiftX)
+    //         console.log(indexChange)
+    //         console.log(currSlideIndexSeasonal)
+    //         console.log("//")
+
+    //         seasonalSliderContent.forEach((image, index) => {
+                
+                
+    //             if (index === 11) {
+    //                 console.log(index)
+    //                 console.log(indexChange*451.02040816)
+    //             }
+    //             // if (currSlideIndex === 2) {
+    //             //     image.style.transform = `translateX(${indexChange * -211.9321826382}%)`
+
+    //             // } else {
+                
+    //             image.style.transform = `translateX(${currSlideIndexSeasonal * (3*shiftX)}%)`
+
+                
+    //         })
+    //     }
+
+    //     async function navigateSeasonalSlider(indexChange) {
+    //         currSlideIndexSeasonal += indexChange
+
+    //         if (currSlideIndexSeasonal === 3) {
+    //             currSlideIndexSeasonal = 2
+    //             console.log("returned")
+    //             return 
+    //         }
+
+    //         if (currSlideIndexSeasonal < 0) {
+    //             currSlideIndexSeasonal = 0
+    //             console.log("returned")
+    //             return
+    //         }
+    //         const seasonalSliderContentStyles = getComputedStyle(seasonalSliderContent[0])
+
+    //         const widthString = seasonalSliderContentStyles.getPropertyValue('width')
+    //         const marginRightString = seasonalSliderContentStyles.getPropertyValue('margin-right')
+
+    //         const width = Number(widthString.split("px")[0])
+    //         const marginRight = Number(marginRightString.split("px")[0])
+    //         const shiftX = -((width + marginRight)/width) * 100
+            
+    //         console.log(width)
+    //         console.log(marginRight)
+    //         console.log(shiftX)
+    //         console.log(indexChange)
+    //         console.log(currSlideIndexSeasonal)
+    //         console.log("//")
+
+    //         seasonalSliderContent.forEach((image, index) => {
+                
+                
+    //             if (index === 11) {
+    //                 console.log(index)
+    //                 console.log(indexChange*451.02040816)
+    //             }
+    //             // if (currSlideIndex === 2) {
+    //             //     image.style.transform = `translateX(${indexChange * -211.9321826382}%)`
+
+    //             // } else {
+                
+    //             image.style.transform = `translateX(${currSlideIndexSeasonal * (4*shiftX)}%)`
+
+                
+    //         })
+    //     }
+
+    //     featuredSliderButtons.forEach((button) => {
+    //         button.addEventListener('click', () => {
+    //             const indexChange = +button.getAttribute('data-index-change')
+    //             const screenWidth = window.innerWidth
+    //             naviagteFeaturedSldier(indexChange)
+    //         })
+    //     })
+
+    //     monthlySliderButtons.forEach((button) => {
+    //         button.addEventListener('click', ()=> {
+    //             const indexChange = +button.getAttribute('data-index-change')
+    //             const screenWidth = window.innerWidth
+    //             console.log(screenWidth)
+    //             if (screenWidth < 810) {
+    //                 navigateMonthlySliderContentMobile(indexChange)
+    //             } else {
+    //                 console.log(screenWidth)
+    //                 navigateMonthlySliderContent(indexChange)
+    //             }
+
+    //         })
+    //     })
+
+    //     reviewSliderButtons.forEach((button) => {
+    //         button.addEventListener('click', ()=> {
+    //             const indexChange = +button.getAttribute('data-index-change')
+    //             navigateReviewSlider(indexChange)
+    //         })
+    //     })
+
+    //     seasonalSliderButtons.forEach((button) => {
+    //         button.addEventListener('click', () => {
+    //             const indexChange = +button.getAttribute('data-index-change')
+    //             const screenWidth = window.innerWidth
+    //             if (screenWidth < 810) {
+    //                 navigateSeasonalSliderMobile(indexChange)
+    //             } else {
+    //                 navigateSeasonalSlider(indexChange)
+    //             }
+    //         })
+    //     })
+
+
+        
+
+
+    //     async function getFeaturedMovies() {
+    //         const url = 'http://localhost:5200/api/Movie/featured?isFeatured=true'
+
+    //         try {
+    //             const response = await fetch(url)
+    //             if (!response.ok) {
+    //                 throw new Error('Server error')
+    //             }
+
+    //             const data = await response.json();
+
+    //             // for (let i = 0; i < data.length; i++){
+    //             //     console.log(data[i].title)
+    //             //     console.log(data[i].description)
+    //             //     console.log(data[i].isFeatured)
+    //             //     // console.log(data[i].title)
+    //             // }
+                
+    //             console.log(data)
+    //             // console.log([1,2,3])
+    //             return data
+    //         } catch(error) {
+    //             console.error('Error fetching featured movies:', error)
+    //         }
+    //     }
+
+    //     async function getMonthlyMovies() {
+    //         const url = 'http://localhost:5200/api/Movie/'
+    //         let notFeatured = []
+
+    //         try {
+    //             const response = await fetch(url)
+    //             if (!response.ok) {
+    //                 throw new Error('Server error')
+    //             }
+
+    //             const data = await response.json()
+
+    //             for (let i = 0; i < data.length; i++){
+    //                 if (notFeatured.length < 13) {
+    //                     if (data[i].isFeatured === false) {
+    //                         notFeatured.push(data[i].title)
+                           
+    //                     }
+    //                 }
+                    
+    //                 // console.log(data[i].title)
+    //             }
+                
+    //             // console.log(data)
+    //             // console.log([1,2,3])
+    //             return notFeatured
+    //         } catch(error) {
+    //             console.error('Error fetching featured movies:', error)
+    //         }
+    //     }
+        
+
+    //     async function monthlySectionTitles() {
+    //         const monthly = await getMonthlyMovies()
+    //         monthlySliderImages.forEach((image, index) => {
+    //             let title = monthly[index].toLowerCase().trim().split(" ").join("-")
+    //             image.src = `/images/${title}-portrait.png`
+    //             console.log(title)
+    //         })
+
+    //         console.log(monthly[0].toLowerCase().split(" ").join("-"))
+    //         // console.log(monthly[0].toLowerCase().oin(" "))j
+    //     }
+
+    //     monthlySectionTitles()
+
+        
+
+    //     const featuredMovies = getFeaturedMovies()
+
+    //     for (let i = 0; i < featuredMovies.length; i++){
+    //                 console.log(featuredMovies[i].title)
+    //                 console.log(featuredMovies[i].description)
+    //                 console.log(featuredMovies[i].isFeatured)
+    //                 // console.log(data[i].title)
+    //             }
+</script>
