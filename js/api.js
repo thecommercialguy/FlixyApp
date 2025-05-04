@@ -190,17 +190,32 @@ export async function getMovieTitleByReview({reviewObjs}){
     }
 
     
-    const movieTitles = []
+    const movieTitles = await Promise.all(
+        movieIds.map(async (movieId) => {
+            try {
+                const movie = await getMovieById({movieId: movieId})
+                const movieTitle = !movie ? '' : movie['title']
+                return movieTitle
+                console.log(movieTitle)
+            } catch (error){
+                console.error('Error getting movie', error)
+            }
+        })
+
+    )
     // const { apiBaseUrl } = await loadConfig()
-    movieIds.forEach(async (movieId) => {
-        try {
-            const movie = await getMovieById({movieId: movieId})
-            const movieTitle = !movie ? '' : movie['title']
-            movieTitles.push(movieTitle)
-        } catch (error){
-            console.error('Error getting movie', error)
-        }
-    })
+    // const movieTitles = await
+    // // const { apiBaseUrl } = await loadConfig()
+    // movieIds.forEach(async (movieId) => {
+    //     try {
+    //         const movie = await getMovieById({movieId: movieId})
+    //         const movieTitle = !movie ? '' : movie['title']
+    //         movieTitles.push(movieTitle)
+    //         console.log(movieTitle)
+    //     } catch (error){
+    //         console.error('Error getting movie', error)
+    //     }
+    // })
 
 
     return movieTitles
@@ -261,7 +276,7 @@ export async function getReviewerById({reviewerId}) {
         response = await fetch(url)
 
     } catch (error) {
-        console.error('Error fetching revier:', error)
+        console.error('Error fetching reviewer:', error)
         return
     }
 
@@ -286,6 +301,88 @@ export async function getReviewerById({reviewerId}) {
     }
 
     return data
+}
+
+export async function getReviewerByUsername({username}) {
+    if (!username) {
+        return 0  // May change this
+    }
+
+    
+
+    const { apiBaseUrl } = await loadConfig()
+    const url = `http://localhost:5200/api/Reviewer/ids/${username}`
+
+    let response
+    try {
+        response = await fetch(url)
+
+    } catch (error) {
+        console.error('Error fetching reviewer ID:', error)
+        return
+    }
+
+    // So what exactly could go wrong here
+    // And what alert does
+    if (!response.ok) {
+        let errorData
+        try {
+            errorData = await response.json()
+        } catch (error) {
+            console.error('Error getting reviewer ID:', error)
+            return
+        }
+    }
+
+    let data
+    try {
+        data = await response.json()
+    } catch (error) {
+        console.error('Error processing success response:', error)
+        return
+    }
+
+    return data
+}
+
+export async function getReviewsByReviewerId({reviewerId}) {
+    if (!reviewerId) {
+        return
+    }
+
+    const { apiBaseUrl } = await loadConfig()
+    const url = `${ apiBaseUrl }/Reviewer/${reviewerId}/reviews`
+
+    let response
+    try {
+        response = await fetch(url)
+
+    } catch (error) {
+        console.error('Error fetching reviews:', error)
+        return
+    }
+
+    // So what exactly could go wrong here
+    // And what alert does
+    if (!response.ok) {
+        let errorData
+        try {
+            errorData = await response.json()
+        } catch (error) {
+            console.error('Error getting reviews:', error)
+            return
+        }
+    }
+
+    let data
+    try {
+        data = await response.json()
+    } catch (error) {
+        console.error('Error processing success response:', error)
+        return
+    }
+    return data
+
 }
 
 export async function updateReviewLikes(reviewId) {
@@ -565,4 +662,90 @@ export async function getMoviesByDirectorId({dirId}) {
     }
 
     return data
+}
+
+export async function updateProfilePictureBanner({user, pfpBannerForm, currPage}) {
+    // event.preventDefault()
+    // console.log('Sign in executed')
+    const { apiBaseUrl } = await loadConfig()
+
+    if (!user) {
+        console.log('error')
+        return
+    }
+
+   
+    
+    // Hardcoded values for fields not in the form (replace with actual values)
+    const reviewerId = user.id // Example: Replace with the actual reviewer ID
+    const username = user.userName // Replace with actual username
+    const email = user.email // Replace with actual email
+    const about = user.about // Replace with actual bio
+
+    // Create FormData object from the form
+    // const form = event.target;
+    const formData = new FormData(pfpBannerForm);
+
+    // Append additional fields to FormData
+    formData.append('Id', reviewerId)
+    formData.append('Username', username)
+    formData.append('Email', email)
+    formData.append('About', about)
+    
+    // eveListner('change', formvalue)
+    // dynamic error handling
+
+    const formContnents = pfpBannerForm.querySelector('.contents')
+    const pfpEl = formContnents.querySelector('#pf-p')
+    const bannerEl = formContnents.querySelector('#banner')
+
+    // if (pfpEl.value === '' || pfpEl.value.length < 2) {
+    //     // error hadnling on form
+    //     return
+    // }
+    
+    // if (bannerEl.value === '' || bannerEl.value.length < 2) {
+    //     // error hadnling on form
+    //     return
+    // }
+
+    const pfp = pfpEl.value
+    const banner = bannerEl.value
+
+    console.log('Username:', email)
+    console.log('Password:', password)
+    console.log(formData)
+    try {
+        const endpoint = `${ apiBaseUrl }/Reviewer/files/${user.id}`
+        console.log(endpoint)
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            // headers: {
+            //     'Content-Type': 'application/json'
+            // },
+            body: formData
+        })
+
+    
+
+        if (response.ok) {
+            const data = await response.json()
+            const token = data.token  // Data Transfer Object (Representing our Token)
+
+            localStorage.setItem('Bearer', token)
+            
+            const rel = currPage
+            console.log(rel)
+
+            window.location.href = rel
+        } else {
+            const errorData = await response.json()
+            console.error('Login failed:', errorData)
+            alert('Login failed: Invalid credentials')
+        }
+
+    } catch (error) {
+        console.error("Error during login:", error)
+        alert("An error occured during login")
+    }
 }

@@ -100,6 +100,9 @@ export function hideSignUpFields({usernameRowEl, signInButtonForm, signInHeader}
 
 export async function userSignInMax({signInForm, currPage}) {
     event.preventDefault()
+    if (!currPage) {
+        return
+    }
     console.log('Sign in executed')
     const { apiBaseUrl } = await loadConfig()
 
@@ -107,7 +110,7 @@ export async function userSignInMax({signInForm, currPage}) {
     const emailEl = formContnents.querySelector('#email')
     const passwordEl = formContnents.querySelector('#password')
 
-    if (emailEl.value === '' || email.value.length < 2) {
+    if (emailEl.value === '' || emailEl.value.length < 2) {
         // error hadnling on form
         return
     }
@@ -213,8 +216,8 @@ export async function userSignUpMax({signInForm, currPage}) {
 
     const formContents = signInForm.querySelector('.contents')
     const usernameEl = formContents.querySelector('#username')
-    const emailEl = formContnents.querySelector('#email')
-    const passwordEl = formContnents.querySelector('#password')
+    const emailEl = formContents.querySelector('#email')
+    const passwordEl = formContents.querySelector('#password')
 
     if (usernameEl.value === '' || usernameEl.value.length < 2) {
         // error hadnling on form

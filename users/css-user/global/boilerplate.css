@@ -22,8 +22,8 @@
     --gradient-black-1: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
     /* --gradient-black-1: linear-gradient(hsl(101, 0%, 61%) 100%, hsl(0, 0%, 100%) 100%); */
     --gradient-yellow: linear-gradient(hsl(0, 0, 100%), hsl(47,92%,53%));
-    --director-header-fm: clamp(2rem, 0.92rem + 4.608vw, 3.25rem);
-    --director-header-ft: clamp(3.25rem, 0.031rem + 6.359vw, 5.75rem);
+    --user-header-fm: clamp(1.5rem, 0.42rem + 4.608vw, 2.75rem);
+    --user-header-ft: clamp(2.75rem, 2.589rem + 0.318vw, 2.875rem)
     --section-header-m: clamp(1rem, 0.784rem + 0.922vw, 1.25rem);
     --section-header-t: clamp(1.25rem, 0.445rem + 1.59vw, 1.875rem);
     --accent-height-m: clamp(0.938rem, 0.775rem + 0.691vw, 1.125rem);

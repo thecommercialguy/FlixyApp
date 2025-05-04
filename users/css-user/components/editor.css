@@ -1,0 +1,51 @@
+form#pfp-banner-form {
+    /* display: flex; */
+    flex-direction: column;
+    color: var(--color-white);
+    display: none;
+    
+
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    
+
+    padding-block-start: 25px;
+    /* width: 724px; */
+    width: 359px;
+    /* width: 95.7333%; */
+    border-radius: 21px;
+
+    /* background-color: red; */
+    background-color: var(--color-black-3);
+    font-family: 'Figtree', Arial, sans-serif;
+
+    padding-block: 42px 59px;
+
+    top: 14%;
+    position: fixed;
+    top: 34%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    padding-inline: 15px;
+    /* padding-block: 15px; */
+    padding-block-start: 15px;
+    padding-block-end: 30px;
+    
+
+}
+
+form#pfp-banner-form .contents {
+    display: flex;
+    flex-direction: column;
+
+}
+
+form#pfp-banner-form .contents .form-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+

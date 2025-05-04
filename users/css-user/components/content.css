@@ -1,4 +1,4 @@
-.slider-container {
+.rec-reviewed-container{
     display: flex;
     align-items: center;
     position: relative;
@@ -11,7 +11,7 @@
 }
 
 
-.slider-container .slider {
+.rec-reviewed-container .movies {
     display: grid;
     justify-items: stretch;
     position: relative;
@@ -21,13 +21,13 @@
     grid-auto-flow: column;
     grid-auto-columns: 31.8792089518%;
     /* grid-auto-columns: 112.05px; */
-    overflow-x: auto;
+    overflow-x: clip;
     transition: transform 150ms ease;
     scroll-snap-type: x mandatory;
 
 }
 
-.slider .idx-cont {
+.movies .idx-cont {
     width: 100%;
     min-width: auto;
     display: inline-flex;
@@ -46,7 +46,7 @@
     max-width: 100%;
     padding: 0;
     height: auto;
-    border: 1px solid white;
+    border: 2px solid white;
     border-radius: 21px;
     /* object-fit: cover; */
 }
@@ -59,7 +59,7 @@
 }
 
 @media (width >= 50.625em) {
-    .slider-container {
+    .rec-reviewed-container{
         display: flex;
         align-items: center;
         width: 92.548%;
@@ -68,7 +68,7 @@
     }
     
     
-    .slider-container .slider {
+    .rec-reviewed-container .movies {
         grid-template-columns: repeat(4, 22.4296626171%);
         grid-gap: 3.39843372986%;
         grid-auto-flow: column;
@@ -78,7 +78,7 @@
 }
 
 @media (width >= 90em) {
-    .slider-container {
+    .rec-reviewed-container{
         /* width: 100%; */
         
         width: 83.533%;
@@ -89,7 +89,7 @@
     }
     
     
-    .slider-container .slider {
+    .rec-reviewed-container .movies {
         display: grid;
         justify-items: stretch;
         position: relative;

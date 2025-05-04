@@ -1,0 +1,43 @@
+.featured .banner .edit-b.authed {
+    display: flex;
+    position: absolute;
+    padding: 0;
+    text-decoration: underline;
+    font-size: 1rem;   /* ? */
+    right: 2.4%;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-family: 'Figtree', Arial, sans-serif;
+}
+
+.featured .banner .edit-b.authed:hover {
+    color: #8ee161;
+}
+
+.edit-b:not(.authed) {
+    display: none;
+}
+
+/* 
+    ie jwt id != userId
+*/
+@media (width >= 50.625em) {
+    .featured .banner .edit-b.authed {
+        right: 2.8%;
+        bottom: 6.279%;
+        font-size: 18px;
+    }
+}
+
+@media (width >= 90em) {
+    .featured .banner .edit-b.authed {
+        display: flex;
+        position: absolute;
+
+        right: 23px;
+        bottom: 29.05px;
+
+        font-size: 20px;
+      }
+ }

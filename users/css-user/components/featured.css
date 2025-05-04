@@ -24,8 +24,8 @@
     width: 95.733%;
     /* height: auto; */
     border-radius: 21px;
-    padding-inline: 9px;
-    padding-block-end: 12px;
+    padding-inline: 2.4%;
+  padding-block-end: 3.2%;
 
     background-color: var(--trans-grey);
     /* background-image: linear-gradient(to bottom, #9C9C9B, #1C1C1C); */
@@ -49,19 +49,34 @@
     width: max-content;
     margin-inline-start: 1px;
 
+
+    
 }   
 
-.featured .user-pfp .pfp {
-    border-radius: 21px;
-    display: block;
-
-    width: 58px;
-    height: 58px;
-
+.featured .banner .user-pfp .pfp-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    width: 17.06%;
+    height: auto;
     margin-inline-end: 8px;
+    
+    border: 2px solid white;
+    border-radius: 21px;
 
-    border: 1px solid white;
+    overflow: clip;
+    
     filter: drop-shadow(0px 8px 4px var(--drop-shadow));
+}
+.featured .user-pfp .pfp {
+    display: block;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    width: 100%;
+
 }
 
 .featured .user-pfp .user-header {
@@ -71,7 +86,8 @@
     width: max-content;
     align-items: flex-start; */
     /* justify-content: flex-start; */
-    font-size: 1.5rem;
+    font-size: var(--user-header-fm);
+    font-weight: 900;
     /* bottom: 0;
     left: 0; */
     /* transform: translateY(2%); */
@@ -85,23 +101,41 @@
     .featured .banner {
         width: 98.026%;
         padding-inline: 2.7%;
+        padding-block-end: 3.279%;
     }
 
-    .featured .banner .director-header .first-name, 
-    .featured .banner .director-header .last-name {
-        font-size: var(--director-header-ft);
+    .featured .banner .user-pfp .pfp-cont {
+        width: 17.122%;
+        height: auto;
+        /* height: 128.29px; */
+
+        margin-inline-end: 14.71px;
+
+        filter: drop-shadow(0px 16px 4px var(--drop-shadow));
     }
-    
+
+    .featured .user-pfp .user-header {
+        font-size: 2.75rem;
+        top: 50%;
+        transform: translateY(25%);
+    }
 }
 
 @media (width >= 90em) {
     .featured .banner {
         width: 83.532%;
-        padding-inline: .69999%;
+        padding-inline: 23px;
+        padding-block-end: 29.05px;
+
     }
 
-    .featured .banner .director-header .first-name, 
-    .featured .banner .director-header .last-name {
-        font-size: 52px;
+    .featured .banner .user-pfp .pfp-cont {
+        width: 136px;
+        height: auto;
     }
+
+    .featured .user-pfp .user-header {
+        /* font-size: 2.875rem; */
+    }
+
 }

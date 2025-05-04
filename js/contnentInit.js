@@ -1,15 +1,17 @@
 // Better documentation
-export function setSliderCards({titles, contentSlider}) {
-    if (!contentSlider) {
+export function setMovieCards({titles, movieCardCont}) {
+    if (!movieCardCont) {
+        console.log('err1')
         return
     }
 
     if (!titles) {
+        console.log('err2')
         return
     }
 
     // contentSlider.innerHTML = ''
-
+    // console.log(titles)
     titles.forEach((title, index) => {
         const cardContainer = document.createElement('div')
         cardContainer.className = 'idx-cont'
@@ -18,7 +20,7 @@ export function setSliderCards({titles, contentSlider}) {
         const cardImg = document.createElement('img')
         cardImg.className = 'idx-image'
         setSrc({title: title, el: cardImg})
-
+        console.log('cardImg')
         const cardLink = document.createElement('a')
         cardLink.className = 'idx-link'
         setHref({title: title, el: cardLink})
@@ -26,8 +28,10 @@ export function setSliderCards({titles, contentSlider}) {
         cardContainer.appendChild(cardImg)
         cardContainer.appendChild(cardLink)
 
-        contentSlider.appendChild(cardContainer)
+        movieCardCont.appendChild(cardContainer)
     })
+
+    console.log('dlfjkljf')
 
 
     // const sliderEls = contentSlider.querySelectorAll('.idx-cont')
@@ -47,6 +51,22 @@ export function setSliderCards({titles, contentSlider}) {
 
     // })
     
+}
+
+export function setPfp({pfpUrl, el}) {
+    if (!pfpUrl) {
+        el.src = '../assets/default-pfp.png'
+        return
+    }
+    console.log(pfpUrl)
+
+    el.src = pfpUrl
+}
+
+export function setBanner({bannerUrl, el}) {
+    if (!bannerUrl) {
+        return
+    }
 }
 
 export function setSrc({title, el}) {
@@ -295,9 +315,11 @@ export function setSignInHrefFooter(username, signInButtonFooter) {
     signInButtonFooter.href = `users/${username}`
     
 }
-// export function setElementText({text, element}){
+// For normal ol' text elements
+export function setElementText({text, el}){
+    el.textContent = text
 
-// }
+}
 export function setAbout({about, aboutBox}) {
     aboutBox.textContent = about
 
@@ -425,6 +447,7 @@ export function setReviewCardsMoviePage({reviewList, reviewsContainer, backButto
     
     for (let i = currIdx; i < currIdx + reviewsPerLoad; i++) {
         const review = reviewList[i]
+        // console.log(review)
         if (review != null) {
             console.log('Checking this', review)
             const reviewCard = createReviewCard({review: review})
@@ -587,12 +610,15 @@ export async function getFeaturedMovieDirectorsToList({movies}) {
 
 
 export function formatTitle({title}) {
+    console.log(title)
     return title.toLowerCase().trim().split(" ").join("-")
 }
 
 export async function formatTitles({titles}) {
     const formattedTitles = []
+    console.log(Array.isArray(titles))
     titles.forEach((title) => {
+        console.log(title)
         const formattedTitle = formatTitle({title: title})
         formattedTitles.push(formattedTitle)
     }) 

@@ -65,7 +65,7 @@ backButton.addEventListener('click', async () => {
 nextButton.addEventListener('click', async () => {
     currPage++
     await setMovies({queryParam: currPage})
-    currUrl = `?page?=${currPage}`
+    currUrl = `?page=${currPage}`
     history.pushState({page: currPage}, '', `${window.location.pathname}?page=${currPage}`)
 })
 // signInButtonHeader.addEventListener('click', () => displayModal(signInForm, bodyElement, signInBackdrop))
@@ -100,7 +100,7 @@ if (isAuthenticatedBool() === false) {
         hideSignUpFields({usernameRowEl: usernameRowEl, signInButtonForm: signInButtonForm, signInHeader: signInFormHeader})
         displayModal(signInForm, bodyElement, signInBackdrop)
     })
-    signInForm.addEventListener('submit', () => userSignInMax({signInForm: signInForm, currPage: currUrl}))
+    signInForm.addEventListener('submit', async () => userSignInMax({signInForm: signInForm, currPage: currUrl}))
 } else {
     const token = getToken()
     const { name } = parseJwt(token)

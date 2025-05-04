@@ -67,17 +67,52 @@
         </div>
     </form>
 
+    <form method="put" action="" id="pfp-banner-form" enctype="multipart/form-data">
+        <div class="contents">
+
+            <div class="form-row">
+                <div class="image-cont">
+                    
+                </div>
+                <div class="field">
+                    <label for="pf-p">Edit Profile Pictire</label>
+                    <input type="file" id="pf-p" name="ProfilePicture" accept="image/*">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="image-cont">
+                </div>
+                <div class="field">
+                    <label for="banner">Edit Banner</label>
+                    <input type="file" id="banner" name="Banner" accept="image/*">
+                </div>
+            </div>
+            <div class="submit-row">
+                <input type="submit" value="Submit">
+            </div>
+        </div>
+
+    </form>
+
         <main>
             <section class="featured" id="featured">
                 
                 <!-- <img src="" alt="" class="banner" id="banner-id"> -->
                 <div class="banner" id="banner-id">
                     <div class="user-pfp">
-                        <img src="../images/pfp1.jpg" alt="" class="pfp">
-                        <h1 id="user-header" class="user-header">@thecommercialguy</h1>
+                        <div class="pfp-cont">
+                            
+                            <img id="pfp" src="../assets/default-pfp.png" alt="" class="pfp">
+                            <!-- <img id="pfp" src="https://d11fj28yvx5n5b.cloudfront.net/profilePictures/user-1-638817909871610908.jpg" alt="" class="pfp"> -->
+                            <!-- <img id="pfp" src="../images/pfp1.jpg" alt="" class="pfp"> -->
+                        </div>
+
+                        <h1 id="user-header" class="user-header"></h1>
                         <!-- <h1 id="user-header" class="user-header"></h1> -->
                     </div>
-
+                    <button class="edit-b authed">
+                        Edit
+                    </button>   
                 </div>
                 
 
@@ -99,16 +134,16 @@
 
             <section class="recently-reviewed section">
                 <div class="section-title-container">
-                    <h2>Recently reviewed <span class="username-header poseters"></span></h2>
-                    <!-- <h2>Recently reviewed by <span class="director-header slider"></span></h2> -->
+                    <!-- <h2>Recently reviewed by <span class="username-header poseters">@thecommercialguy</span></h2> -->
+                    <h2>Recently reviewed</h2>
                     <div class="accent"></div>
                     
                 </div>
     
-                <div class="slider-container">    
-                    <div id="movie-slider" class="slider">
+                <div class="rec-reviewed-container">    
+                    <div id="movie-container" class="movies">
                         <!--  -->
-                        <div class="idx-cont">
+                        <!-- <div class="idx-cont">
                             <img src="../images/fight-club-portrait.png" class="idx-image">
                             <a href="" class="idx-link" data-index-type=""></a>
                         </div>
@@ -120,6 +155,10 @@
                             <img src="../images/the-substance-portrait.png" class="idx-image">
                             <a href="" class="idx-link" data-index-type=""></a>
                         </div>
+                        <div class="idx-cont">
+                            <img src="../images/we-live-in-time-portrait.png" class="idx-image">
+                            <a href="" class="idx-link" data-index-type=""></a>
+                        </div> -->
                         <!--  -->
                         
                         
@@ -130,16 +169,12 @@
 
             <section class="reviews section" id="reviews">
                 <div class="section-title-container">
-                    <h2>Reviews</h2>
+                    <h2>Reviews by <span class="username-header poseters">@thecommercialguy</span></h2>
                     <div class="accent"></div>
                 </div>
     
-                <button id="add-review"class="button">
-                    Add review
-                </button>
-    
                 <div class="review-card-container" id="review-card-container">
-                    <div class="review-card">
+                    <!-- <div class="review-card">
                         <div class="profile-picture">
     
                         </div>
@@ -148,7 +183,9 @@
                
     
                             <div class="username-rating">
-                                <span class="username">@username</span>
+                                <a href="#">
+                                    <span class="username">@username</span>
+                                </a>
                                 <span class="rating-container">
                                     <i class='bx bxs-star'></i>
                                     <span class="rating">4.5/5</span>
@@ -162,41 +199,12 @@
     
                             <div class="like-count">
                                 <i class='bx bx-like like likes'></i>
-                                <span>(100)</span>
+                                <span class="num-linkes">(100)</span>
     
                             </div>
                         </div>
-                    </div>
-                    <div class="review-card">
-                        <div class="profile-picture">
-    
-                        </div>
-                        <div class="review-data">
-                            <h3 class="review-title"></h3>
-               
-    
-                            <div class="username-rating">
-                                <span class="username"></span>
-                                <span class="rating-container">
-                                    <i class='bx bxs-star'></i>
-                                    <span class="rating"></span>
-                                </span>
-                            </div>
-    
-                            <p class="review-body">
-                                Yorgos Lanthimos's "Poor Things" is a bizarre, beautiful, and 
-                                unforgettable cinematic experience. Emma Stone is magnificent.
-                            </p>
-    
-                            <div class="like-count">
-                                <i class='bx bx-like like likes'></i>
-                                <span class=""></span>
-    
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="review-card">
+                    </div> -->
+                    <!-- <div class="review-card">
                         <div class="profile-picture">
     
                         </div>
@@ -205,7 +213,9 @@
                
     
                             <div class="username-rating">
-                                <a href="" class="user-link"><span class="username">@username</span></a>
+                                <a href="#">
+                                    <span class="username">@username</span>
+                                </a>
                                 <span class="rating-container">
                                     <i class='bx bxs-star'></i>
                                     <span class="rating">4.5/5</span>
@@ -219,11 +229,42 @@
     
                             <div class="like-count">
                                 <i class='bx bx-like like likes'></i>
-                                <span class="num-likes">(100)</span>
+                                <span class="num-linkes">(100)</span>
     
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+                    <!-- <div class="review-card">
+                        <div class="profile-picture">
+    
+                        </div>
+                        <div class="review-data">
+                            <h3 class="review-title">Poor Things was incredible!!!!</h3>
+               
+    
+                            <div class="username-rating">
+                                <a href="#">
+                                    <span class="username">@username</span>
+                                </a>
+                                <span class="rating-container">
+                                    <i class='bx bxs-star'></i>
+                                    <span class="rating">4.5/5</span>
+                                </span>
+                            </div>
+    
+                            <p class="review-body">
+                                Yorgos Lanthimos's "Poor Things" is a bizarre, beautiful, and 
+                                unforgettable cinematic experience. Emma Stone is magnificent.
+                            </p>
+    
+                            <div class="like-count">
+                                <i class='bx bx-like like likes'></i>
+                                <span class="num-linkes">(100)</span>
+    
+                            </div>
+                        </div>
+                    </div> -->
+                    
                 </div>
                 <span class="nav-container">
                     <button id="btn-back"class="nav-button" data-index-change="-1">
@@ -255,5 +296,5 @@
 </body>
 </html>
 
-<script src="./js-director/director-main.js" type="module"></script>
+<script src="./js-user/user-main.js" type="module"></script>
 
