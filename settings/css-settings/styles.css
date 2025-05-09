@@ -6,13 +6,7 @@
 @import url('global/navigation-buttons.css');
 @import url('components/header.css');
 @import url('components/dropdown.css');
-@import url('components/featured.css');
-@import url('components/about.css');
-@import url('components/content.css');
-@import url('components/reviews.css');
-@import url('components/edit.css');
-@import url('components/editor.css');
-@import url('components/nav-buttons.css');
+@import url('components/settings-form.css');
 
 @import url('components/sign-in-form.css');
 @import url('components/footer.css');

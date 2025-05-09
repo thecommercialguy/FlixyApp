@@ -22,9 +22,8 @@ form#pfp-banner-form {
 
     padding-block: 42px 59px;
 
-    top: 14%;
     position: fixed;
-    top: 34%;
+    top: 27%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1001;
@@ -39,13 +38,137 @@ form#pfp-banner-form {
 form#pfp-banner-form .contents {
     display: flex;
     flex-direction: column;
+    width: 100%;
 
 }
+
+form#pfp-banner-form .contents.hidden {
+    display: none;
+}
+
+/* form#pfp-banner-form .contents {} */
+
+
 
 form#pfp-banner-form .contents .form-row {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    
+    border: none;
+    outline: none;
+    width: 100%;
+
+
 }
 
+form#pfp-banner-form .contents .form-row .preview-cont {
+    display: flex;
+    width: 50%;
+    /* border: 2px solid white; */
+    justify-content: center;
+    align-items: center;
+
+}
+
+form#pfp-banner-form .contents .form-row .preview-cont .prev-img-cont {
+    display: flex;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border: 2px solid white;
+    border-radius: 21px;
+    overflow: clip;
+
+}
+
+form#pfp-banner-form .contents .form-row .preview-cont .prev-img-cont.banner {
+    aspect-ratio: 359.183/188.283;
+    height: auto;
+    width: 141px;  
+}
+
+form#pfp-banner-form .contents .form-row .preview-cont .prev-img-cont .overlay {
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    transition: 150ms ease-in;
+    transition-property: opacity, background-color;
+    background-color: hsla(0, 0%, 13%, 0.3);
+}
+
+form#pfp-banner-form .contents .form-row .preview-cont .prev-img-cont .overlay:hover {
+    opacity: .9;
+}
+
+
+
+form#pfp-banner-form .contents .form-row .preview-cont .prev-img-cont .prev-img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+form#pfp-banner-form .contents .form-row .field {
+    width: 50%;
+}
+
+form#pfp-banner-form .contents .form-row .field label {
+    font-size: 1em;
+}
+
+form#pfp-banner-form .contents .form-row:hover {
+    border: none;
+    outline: none
+}
+
+form#pfp-banner-form .contents .form-row:active {
+    border: none;
+    outline: none
+}
+
+form#pfp-banner-form .contents .form-row input:hover {
+    border: none;
+    outline: none
+}
+
+form#pfp-banner-form .contents .form-row input:active {
+    border: none;
+    outline: none
+}
+
+form#pfp-banner-form .preview-edit.hidden {
+    display: none;
+}
+
+form#pfp-banner-form .preview-edit:not(.hidden) {
+    /* aspect-ratio: 1/1; */
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: auto;
+
+
+}
+
+.prev-img-edit-cont {
+    width: 100px;
+    height: 100px;
+}
+
+@media (width >= 50.625em) {
+    form#pfp-banner-form {
+        width: 494px;
+    }
+}

@@ -2,8 +2,15 @@
     width: 77px;
     height: auto;
     cursor: pointer;
-
 }
+
+form .logo {
+    width: 75px;
+    height: auto;
+    padding-inline-start: 7px;
+    cursor:default;
+}
+
 
 @media (width >= 50.625em) {
     .logo {

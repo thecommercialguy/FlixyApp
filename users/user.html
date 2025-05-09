@@ -13,7 +13,7 @@
         <nav class="navbar">
             <div class="menu-logo-container">
                 <!-- <div class="menu-container"> -->
-                <i class='bx bx-menu menu'></i>
+                <i id="menu-button" class='bx bx-menu menu'></i>
                 <!-- </div> -->
                 <a href="/"><img src="../assets/flixy-logo-2.svg" alt="Flixy Logo" class="logo" /></a>
                 
@@ -22,7 +22,17 @@
             <a href="#" class="sign-in" id="sign-in-h">
                     <span class="sign-in-text" id="sign-in-text-h">Sign In</span>
             </a>
+
+            <!-- <i class='bx bxs-cog gear'></i> -->
             </div>
+        </nav>
+        <nav id="drop-down-h" class="drop-down">
+            <ul class="pages">
+                <li class="page"><a href="../a">Home</a></li>
+                <li class="page"><a href=".././movies">Movies</a></li>
+            </ul>
+
+            <span> <a class="settings-link" href="/settings" > Settings</a></span>
         </nav>
     </header>
 
@@ -71,8 +81,11 @@
         <div class="contents">
 
             <div class="form-row">
-                <div class="image-cont">
-                    
+                <div class="preview-cont">
+                    <div class="prev-img-cont">
+                        <div class="overlay"> Edit </div>
+                        <img id="prev-img-pfp" class="prev-img" src="" alt="">
+                    </div>
                 </div>
                 <div class="field">
                     <label for="pf-p">Edit Profile Pictire</label>
@@ -80,7 +93,11 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="image-cont">
+                <div class="preview-cont">
+                    <div class="prev-img-cont banner">
+                        <img id="prev-img-banner" class="prev-img" src="" alt="">
+                        <div class="overlay"></div>
+                    </div>
                 </div>
                 <div class="field">
                     <label for="banner">Edit Banner</label>
@@ -88,8 +105,15 @@
                 </div>
             </div>
             <div class="submit-row">
-                <input type="submit" value="Submit">
+                <input type="submit" value="Upload">
             </div>
+        </div>
+
+        <div id="preview-edit" class="preview-edit hidden">
+            <div class="prev-img-edit-cont">
+                <div class="prev-img-edit-cont"></div>
+            </div>
+
         </div>
 
     </form>
@@ -110,7 +134,7 @@
                         <h1 id="user-header" class="user-header"></h1>
                         <!-- <h1 id="user-header" class="user-header"></h1> -->
                     </div>
-                    <button class="edit-b authed">
+                    <button class="edit-b">
                         Edit
                     </button>   
                 </div>

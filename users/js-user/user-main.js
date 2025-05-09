@@ -1,6 +1,6 @@
 import { displayModal, userSignIn, isAuthenticatedBool, getToken, parseJwt, signOut, displaySignUpFields, hideSignUpFields, userSignUp, userSignInMax, userSignUpMax } from "../../js/auth.js"
 import { getGenres, getMovie, getMovieTitleByReview, getReviewerById, getReviewerByUsername, getReviewsByMovieId, getReviewsByReviewerId, postReview, updateProfilePictureBanner, updateReviewLikes } from "../../js/api.js"
-import { setAbout, setDirectorMoviePage, setGenresMoviePage, setReleaseDate, setReviewCardsMoviePage, setTitleMoviePage, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, revertTitle, setReviewFormMeta, setElementText, setMovieCards, formatTitles, setPfp } from "../../js/contnentInit.js"
+import { setAbout, setDirectorMoviePage, setGenresMoviePage, setReleaseDate, setReviewCardsMoviePage, setTitleMoviePage, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, revertTitle, setReviewFormMeta, setElementText, setMovieCards, formatTitles, setPfp, setBanner } from "../../js/contnentInit.js"
 
 
 const url = window.location.href
@@ -18,7 +18,7 @@ if (usernameParam.includes('?')) {
 const banner = document.getElementById('banner-id')
 const profilePic = document.getElementById('pfp')
 const usernameHeader = document.getElementById('user-header')
-const editButtonBanner = document.querySelector('.banner .edit-b.authed')  // logic for here later
+const editButtonBanner = document.querySelector('.banner .edit-b')  // logic for here later
 
 // Bio section
 const bioBox = document.getElementById('about-text')
@@ -48,10 +48,17 @@ if (pageParam) {
 let currUrl = `?page=${ini.page}`
 history.replaceState(ini, "", `${document.location.pathname}?page=${ini.page}`)
 
+const navbar = document.querySelector('.navbar')
+const main = document.querySelector('main')
+const menuIcon = document.getElementById('menu-button')
+const dropDownHeader = document.getElementById('drop-down-h')
+
+
 // Auth components
 const bodyElement = document.querySelector('body')
 
 const signInButtonHeader = document.getElementById('sign-in-h')
+
 const signInTextHeader = document.getElementById('sign-in-text-h')
 const signInButtonFooter = document.getElementById('sign-in-f')
 const signInTextFooter = document.getElementById('sign-in-text-f')
@@ -62,8 +69,8 @@ const signInFormHeader = document.getElementById('sign-in-header')
 const signInButtonForm = document.getElementById('sign-in-input')
 const signUpButtonForm = document.getElementById('sign-up-b')
 const usernameRowEl = document.querySelector('.form-row.hidden')
-console.log(getComputedStyle(signInButtonForm))
-console.log('unr', signUpButtonForm)
+// console.log(getComputedStyle(signInButtonForm))
+// console.log('unr', signUpButtonForm)
 const usernameInputEl = document.getElementById('username')
 const signInBackdrop = document.getElementById('modal-backdrop')
 const modalX = document.getElementById('modal-x')
@@ -72,6 +79,14 @@ const emailInputEl = document.getElementById('email')
 const passwordInputEl = document.getElementById('password')
 
 const pfpBannerForm = document.getElementById('pfp-banner-form')
+const contents = pfpBannerForm.querySelector('.contents')
+const prevPfp = document.getElementById('prev-img-pfp')
+const pfpInput = document.getElementById('pf-p')
+const overlay = document.querySelector('.overlay')
+const bannerInput = document.getElementById('banner')
+const prevBanner = document.getElementById('prev-img-banner')
+const prevEditor = document.getElementById('preview-edit')
+
 
 console.log(usernameParam)
 // Api calls
@@ -97,6 +112,7 @@ console.log(movieTitlesFrmt)
 
 // Content init
 setPfp({pfpUrl: user['profilePictureURL'], el: profilePic})
+setBanner({bannerUrl: user['bannerURL'], el: banner})
 setElementText({text: atUsername, el: usernameHeader})
 setElementText({text: user['about'], el: bioBox})
 setMovieCards({titles: movieTitlesFrmt, movieCardCont: movieContainer})
@@ -105,19 +121,70 @@ setReviewCardsMoviePage({reviewList: reviews, reviewsContainer: reviewsContainer
 
 // Event listeners
 
+menuIcon.addEventListener('click', () => {
+    console.log(dropDownHeader.classList)
+    dropDownHeader.classList.toggle('active')
+    console.log(dropDownHeader.classList)
+    // console.log('ok')
+
+})
+
+main.addEventListener('click', () => {
+    if (dropDownHeader.classList.contains('active')) {
+        dropDownHeader.classList.toggle('active')
+    }
+})
+
+// navbar.addEventListener('click', () => {
+//     if (dropDownHeader.classList.contains('active')) {
+//         dropDownHeader.classList.toggle('active')
+//     }
+// })
+
+// dropDownHeader.addEventListener('mouseleave', () => {
+//     dropDownHeader.classList.toggle('active')
+
+// })
+
+
+// pfp form listener
+pfpInput.addEventListener('change', (event) => {
+    const file = event.target.files[0]
+    
+    if (file) {
+        const fileUrl = URL.createObjectURL(file)
+        console.log(fileUrl)
+        prevPfp.src = fileUrl
+        
+        // Cleaning the URL when the image is uploaded
+        prevPfp.onload = () => {
+            URL.revokeObjectURL(fileUrl)
+        }
+        
+    } else {
+        prevPfp.src = ''
+        
+    }
+})
+
+// overlay for editing image
+// overlay.addEventListener('click', () => {
+//     contents.classList.toggle('hidden')
+//     prevEditor.classList.toggle('hidden')
+
+// })
+
 
 // Pagination
 backButton.addEventListener('click', () => {
     currReviewIdx--
     currReviewIdx = Math.max(0, currReviewIdx)
-    console.log(currReviewIdx)
 
     reviewsContainer.innerHTML = ''
     currUrl = `?page=${currReviewIdx}`
 
     setReviewCardsMoviePage({reviewList: reviews, reviewsContainer: reviewsContainer, backButton: backButton, nextButton: nextButton, currReviewSlice: currReviewIdx})
     history.pushState({page: currReviewIdx}, '', `${window.location.pathname}?page=${currReviewIdx}`)
-    
 
 })
 
@@ -126,16 +193,12 @@ nextButton.addEventListener('click', () => {
 
     currReviewIdx = Math.min(currReviewIdx, Math.floor(reviews.length / 3))
 
-    console.log("Lets see this",currReviewIdx)
-    console.log("Lets see this",Math.floor(reviews.length / 3))
     reviewsContainer.innerHTML = ''
     currUrl = `?page=${currReviewIdx}`
     setReviewCardsMoviePage({reviewList: reviews, reviewsContainer: reviewsContainer, backButton: backButton, nextButton: nextButton, currReviewSlice: currReviewIdx})
-    console.log(`${window.location.pathname}?page=${currReviewIdx}`)
-    history.pushState({page: currReviewIdx},'', `${window.location.pathname}?page=${currReviewIdx}`)
-    // history.forward()
 
-    //
+    history.pushState({page: currReviewIdx},'', `${window.location.pathname}?page=${currReviewIdx}`)
+
 })
 
 
@@ -189,30 +252,33 @@ if (isAuthenticatedBool() === false) {
     setSignInHrefHeader(username, signInButtonHeader)
     setSignInHrefFooter(username, signInButtonFooter)
     setSignOutText(signUpText)
-    // if []
-    // editButtonBanner
+    
     signUpButton.addEventListener('click', () => signOut())
-    // addReviewButton.addEventListener('click', () => displayModal(reviewForm, bodyElement, signInBackdrop))
-    signInBackdrop.addEventListener('click', () => displayModal(reviewForm, bodyElement, signInBackdrop))
+    // signInBackdrop.addEventListener('click', () => displayModal(reviewForm, bodyElement, signInBackdrop))
 
-    // reviewForm.addEventListener('submit', () => postReview({userId: sub, movieId: id, reviewTitle: titleReviewInput, reviewRating: ratingReviewInput, reviewBody: bodyReviewInput, currPage: currPage}))
     likeButtons.forEach((button) => {
         const parentEl = button.closest('.review-card')
         const reviewId = parentEl.dataset.id
         button.addEventListener('click', () => updateReviewLikes(reviewId))
     })
-    console.log(user)
-    editButtonBanner.addEventListener('click', () => {
-        preventDefault()
+    console.log(sub)
+    console.log(reviewerID)
 
-    })
     if (reviewerID === parseInt(sub)) {
-    pfpBannerForm.addEventListener('submit', (e) => {
-        e.preventDefault()
-        console.log(e.target)
-        updateProfilePictureBanner({user:user, pfpBannerForm: pfpBannerForm, currPage: currUrl})
-        
-    })
+        editButtonBanner.classList.toggle('authed')
+        pfpBannerForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+            console.log(e.target)
+            updateProfilePictureBanner({user:user, pfpBannerForm: pfpBannerForm, currPage: currUrl})
+            
+        })
+        editButtonBanner.addEventListener('click', () => {
+            displayModal(pfpBannerForm, bodyElement, signInBackdrop)
+
+        })
+        signInBackdrop.addEventListener('click', () => {
+            displayModal(pfpBannerForm, bodyElement, signInBackdrop)
+        })
     }
     // jWT needed^
 }
@@ -234,18 +300,6 @@ window.addEventListener('popstate', (event) => {
 
         currUrl = `?page?=${currReviewIdx}`
     }
-    // if (event.state && typeof event.state.page === 'number') {
-    //     console.log('state', event.state)
-    //     currReviewIdx = event.state.page;
-    //     setReviewCardsMoviePage({reviewList: reviews, reviewsContainer: reviewsContainer, backButton: backButton, nextButton: nextButton, currReviewSlice: currReviewIdx})
-    // } else {  // ie no state
-    //     // const urlParams = new URLSearchParams(window.location.search)
-    //     // const pageParam = urlParams.get('page')
-    //     // console.log('pparam', pageParam)
-        
-    //     currReviewIdx = 0        
-    //     // continue
-
 
 })
 

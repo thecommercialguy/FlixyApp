@@ -8,8 +8,6 @@
     width: 100%;
     height: 106px;
     padding-inline: 15px;
-
-    align-self: flex-end;
 }
 
 .sign-in-up {
@@ -28,7 +26,7 @@
 
 @media (width >= 90em) {
     .footer {
-        height: 168px;
+        /* height: px; */
         padding-inline: 121px;
     }
 }

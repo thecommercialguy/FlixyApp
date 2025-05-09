@@ -287,6 +287,170 @@ export async function userSignUpMax({signInForm, currPage}) {
 
     window.location.href = rel
 }
+
+export async function updateUserSettings({id, settingsForm, rel}) {
+    event.preventDefault()
+
+    if (!settingsForm) {
+        return
+    }
+
+    // const form = settingsForm
+    const formData = new FormData()
+
+    formData.append('Id', id)
+
+    const formFields = new FormData(settingsForm);
+    for (let [key, value] of formFields.entries()) {
+        formData.append(key, value);
+    }
+    
+    formData.append('ProfilePictureURL', '')
+    formData.append('BannerURL', '')
+    formData.delete('ConfirmPassword')
+    console.log(formData)
+    // console.log(formData)
+
+    const { apiBaseUrl } = await loadConfig()
+    const url = `${apiBaseUrl}/Reviewer/settings/${id}`
+
+    let response
+    try {
+        response = await fetch(url, {
+            method: 'PUT',
+            // headers: {
+            //     'Content-Type': 'application/json'
+            // },
+            body: formData
+        })
+    } catch(error) {
+        console.error("Error occured signing in:", error)
+        alert("An error when signing up")
+        return
+    }
+
+    if (!response.ok) {
+        let errorData
+        try {
+            errorData = await response.json()
+        } catch(error) {
+            console.error('Error signing up:', error)
+            alert("An error ocured when signing up")
+            return
+        }
+        // handleServerError(resposne)
+        return
+    }
+
+    // 204
+
+    // let data
+    // try {
+    //     data = await resposne.json()
+
+    // } catch (error) {
+    //     console.error('Error processing success response:', error)
+    //     alert('Error processing server resposne')
+    //     return
+    // }
+
+    // const rel = '../a'
+
+    // Changes applied modal
+
+    window.location.href = rel
+
+
+
+
+
+}
+
+export async function updateUserSettingss({id, settingsForm, rel}) {
+    event.preventDefault()
+
+    if (!settingsForm) {
+        return
+    }
+
+    const form = settingsForm
+    const formData = new FormData(form)
+    formData.delete('')
+    console.log(formData)
+
+    // const formContents = signInForm.querySelector('.contents')
+    // const usernameEl = formContents.querySelector('#username')
+    // const emailEl = formContents.querySelector('#email')
+    // const passwordEl = formContents.querySelector('#password')
+
+    if (usernameEl.value === '' || usernameEl.value.length < 2) {
+        // error hadnling on form
+        return
+    }
+
+    if (emailEl.value === '' || emailEl.value.length < 2) {
+        // error hadnling on form
+        return
+    }
+    
+    if (passwordEl.value === '' || passwordEl.value.length < 3) {
+        // error hadnling on form
+        return
+    }
+
+    const username = usernameEl.value
+    const email = emailEl.value
+    const password = passwordEl.value
+    
+
+    const { apiBaseUrl } = await loadConfig()
+    const url = `${ apiBaseUrl }/Auth/register`
+
+    let response
+    try {
+        response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userName: username,
+                email: email,
+                password: password
+            })
+        })
+    } catch(error) {
+        console.error("Error occured signing in:", error)
+        alert("An error when signing up")
+        return
+    }
+
+    if (!response.ok) {
+        let errorData
+        try {
+            errorData = await response.json()
+        } catch(error) {
+            console.error('Error signing up:', error)
+            alert("An error ocured when signing up")
+            return
+        }
+        // handleServerError(resposne)
+        return
+    }
+
+    let data
+    try {
+        data = await resposne.json()
+    } catch (error) {
+        console.error('Error processing success response:', error)
+        alert('Error processing server resposne')
+        return
+    }
+
+    // const rel = '../a'
+
+    window.location.href = rel
+}
 export async function userSignUp({usernameInputEl, emailInputEl, passwordInputEl, currPage}) {
     if (!usernameInputEl.value) {
         return
@@ -350,6 +514,7 @@ export async function userSignUp({usernameInputEl, emailInputEl, passwordInputEl
 
     window.location.href = rel
 }
+
 
 export function getToken() {
     const token = localStorage.getItem('Bearer')

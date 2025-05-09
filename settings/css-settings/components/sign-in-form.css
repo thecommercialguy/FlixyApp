@@ -1,0 +1,306 @@
+form {
+    color: var(--color-white);
+    display: none;
+    
+
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    
+
+    padding-block-start: 25px;
+    width: 345px;
+    /* width: 95.7333%; */
+    border-radius: 21px;
+
+    background-color: var(--color-black-4);
+    font-family: 'Figtree', Arial, sans-serif;
+
+    padding-block: 42px 59px;
+    /* margin-block: 10px; */
+
+    /* box-shadow: 0; */
+    top: 14%;
+    /* border: .01px solid var(--color-yellow); */
+    position: fixed;
+    top: 34%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* transition: box-shadow 350ms ease-in-out; */
+    z-index: 1001;
+    
+
+    /* align-items: center; */
+}
+
+.form[open] {
+    display: flex;
+}
+
+
+.sign-in-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    font-weight: 500;
+    align-items: center;
+    padding-block-end: 20px;
+    font-size: 18px;
+    cursor: default;
+}
+
+.contents {
+    display: flex;
+    align-self: center;
+    width: 62.15%;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* 
+.form-row {
+    display: flex;
+    flex-direction: row;
+    padding-block-end: 13px;
+    width: 98%;
+    visibility: visible;
+    transition: 300ms ease-in-out;
+    transition-property: visibility;
+
+} */
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    /* padding-block-end: 13px; */
+    padding: 0;
+    /* width: 0;  Changes */
+    opacity: 0;  /* Changes */
+    height: 0; /* Changes */
+
+    overflow: hidden;
+    /* visibility: visible; */
+    transition: 1000ms ease-in-out;
+    transition-property: height, opacity;
+    /* transition-property: height, width, opacity; */
+
+}
+
+.form-row:not(.hidden) {
+    display: flex;
+    flex-direction: row;
+    padding-block-end: 13px;
+    width: 98%;
+    opacity: 1;
+    height: max-content;
+    /* visibility: visible; */
+    transition: 300ms ease-in-out;
+    transition-property: height, opacity;
+
+    /* width: 79%; */
+    /* color: white; */
+
+}
+
+/* .username-f {
+    visibility: collapse;
+} */
+
+.form-row.last-form-row:not(.hidden) {
+    padding-block-end: 30px;
+}
+
+.form-row input {  /* Changing this a bit */
+    font-size: .9em;
+    /* width: 338px; */
+    width: 100%;
+    height: 33px;
+    /* height: 18px; */
+    /* border: 1px solid var(--color-yellow) */
+    /* font-family: 'fi'; */
+    /* outline: none; */
+    border: none;
+    border-radius: 2px;
+    /* outline: 1px solid var(--color-black-2); */
+    outline: 1px solid var(--color-black-3);
+    transition: outline 110ms ease-in;
+    font-family: 'Figtree', Arial, sans-serif;
+
+}
+
+.form-row input:focus {
+    outline: 1px solid var(--color-yellow);
+}
+
+label {
+    padding-inline-end: 1px;
+}
+
+/* .submit-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 79%;
+} */
+
+.submit-row.collapse /* Submit container */ {
+    
+}
+
+.submit-row input.hidden /* Sign-in button */ {
+    /* When hidden */
+    /* transform: translateX(-100%); */
+    opacity: 0;
+    display: none;
+}
+
+.submit-row:not(.collapse) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    /* overflow: hidden; */
+    /* align-self: flex-start; */
+    /* width: 30.1%;
+     */
+     /* width: max-content;
+      */
+    width: 79%;
+    /* padding-inline-start: 10px; */
+}
+
+.submit-row button:not(.hidden), /* Sign-up button */  /* Global yellow button default*/
+.submit-row input:not(.hidden) /* Sign-in button */ {
+    width: 81px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding-block: 3.34px; */
+    padding-block: 5px;
+    border-style: none;
+    border-radius: 21px;
+
+    transform: translateX(0%);
+    visibility: visible;
+    opacity: 1;
+    /* margin-inline-end: 5px; */
+
+    color: var(--color-white);
+    background-color: var(--color-yellow);
+    box-shadow: none;
+
+    opacity: 1;
+
+    font-size: .9375em;
+    font-weight: 400;
+    font-family: 'Figtree', Arial, sans-serif;
+
+
+
+    cursor: pointer;
+
+    transition: 300ms ease-in-out;
+    transition-property: color, width, height, background-color, transform, visibility, opacity;
+
+}
+
+.submit-row button:not(.hidden) /* Sign-up button */ {
+    background-color: var(--color-black-4);
+    /* ^ might make this darker */
+}
+
+.submit-row button:not(.hidden):hover, 
+.submit-row input:not(.hidden):hover { /* Global */
+    transform: scale(1.05);
+}
+/* More, orderly */
+.submit-row button:not(.hidden):hover /* Sign-up button */ {
+    background-color: var(--color-black-3);
+}
+
+.submit-row input:not(.hidden):hover /* Sign-in button */ {
+    background-color: var(--color-yellow-1);
+}
+
+.submit-row button:not(.hidden):active /* Sign-up button */ {
+    background-color: var(--color-black-1);
+    /* Basically when sign-up is clicked */
+}
+
+.submit-row input:not(.hidden):active /* Sign-in button */ {
+    color: var(--color-black-4);
+    background-color: var(--color-yellow-1);
+    /* Color change when clicked, background color too */
+}
+
+/* .submit-row button:not(.hidden):hover {
+    background-color: var(--color-black-3);
+    transform: scale(1.05);
+} */
+
+#modal-x {
+    position: absolute;
+    right: 4%;
+    top: 3%;
+    font-size: 23px;
+
+    cursor: pointer;
+
+    transition: transform 335ms ease-in;
+}
+
+#modal-x:hover {
+    color: var(--color-yellow-1);
+}
+
+#modal-x:active {
+    color: var(--color-yellow-2);
+    transform: rotate(180deg);
+}
+
+.modal-backdrop {
+    display: none;
+    position: fixed;  /* position fixed*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);  /* Black with 50% opacity */
+    z-index: 1000;  /* Enusring the z-index is higher than the rest of the page */
+}
+
+.modal-backdrop.active {
+    display: block;
+} 
+
+@media (width >= 50.625em) {
+    form {
+        width: 494px;
+    }
+
+    .sign-in-header {
+        padding-block-end: 30px;
+    }
+
+    #modal-x {
+        right: 3%;
+        top: 4%;
+        font-size: 26px;
+    }
+}
+
+@media (width >= 90em) {
+    form {
+        /* width: 506px; */
+        padding-block: 46px 118px;
+    }
+
+    /* .sign-in-header */
+    /* form#post-review {
+        width: 506px;
+
+        padding-block: 46px 118px;
+    } */
+}

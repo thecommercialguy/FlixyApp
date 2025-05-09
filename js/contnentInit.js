@@ -65,8 +65,12 @@ export function setPfp({pfpUrl, el}) {
 
 export function setBanner({bannerUrl, el}) {
     if (!bannerUrl) {
+        console.log("dkfdhjk")
         return
     }
+
+    console.log(bannerUrl)
+    el.style.backgroundImage = `url(${bannerUrl})`
 }
 
 export function setSrc({title, el}) {

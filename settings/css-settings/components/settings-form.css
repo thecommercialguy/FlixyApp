@@ -1,0 +1,270 @@
+#settings-update-form {
+    display: flex;
+    position: relative;
+    transform: none;
+    top: unset;
+    left: unset;
+    align-items: flex-start;
+    width: 100%;
+    padding-block-start: 12px;
+    z-index: 0;
+}
+
+#settings-update-form .form-header {
+    font-size: 1em;
+    font-weight: 500;
+}
+
+#settings-update-form .contents {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+}
+
+#settings-update-form .contents .form-row {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+}
+
+#settings-update-form .contents .form-row.last {
+    margin-block-end: 10px;
+    position: relative;
+}
+
+#settings-update-form .contents .form-row .field-label {
+    font-size: 1em;
+    font-weight: 500;
+
+    padding-inline-start: 2.133%;
+    padding-block: 8px;
+
+    transition: 300ms ease-in-out;
+    transition-property: background-color, color;
+}
+
+#settings-update-form .contents .form-row .field-label:hover {
+    background-color: var(--color-black-3);
+
+}
+
+#settings-update-form .contents .form-row .field-label:active {
+    color: var(--color-yellow);
+}
+
+#settings-update-form .contents .form-row .field {
+    font-size: .9em;
+    width: 96%;
+    height: 28px;
+    border: 1px solid var(--color-yellow);
+    /* font-family: 'fi'; */
+    outline: none;
+    border: none;
+    margin-block-start: 1px;
+    margin-block-end: 5px;
+    border-radius: 2px;
+    outline: 1px solid var(--color-black-2);
+    outline: 1px solid var(--color-black-3);
+    transition: outline 110ms ease-in;
+    font-family: 'Figtree', Arial, sans-serif;
+    align-self: center;
+    opacity: 1;
+    
+
+    transition: 150ms ease-in-out;
+    transition-property: height, opacity, border, margin;
+}
+
+#settings-update-form .contents .form-row .field:focus {
+    border: 1px solid var(--color-yellow);
+
+}
+
+#settings-update-form .contents .form-row .field#c-password-field,
+#settings-update-form .contents .form-row .field#c-password-field.hidden {
+    /* transition-delay: 100ms; */
+}
+
+#settings-update-form .contents .form-row .field#new-password-field,
+#settings-update-form .contents .form-row .field#new-password-field.hidden {
+    /* transition-delay: 220ms; */
+}
+
+#settings-update-form .contents .form-row .field#password-field.ver,
+#settings-update-form .contents .form-row .field#c-password-field.ver{
+    border: 1px solid #8ee161;
+}
+
+#settings-update-form .contents .form-row .field#password-field.err,
+#settings-update-form .contents .form-row .field#c-password-field.err{
+    border: 1px solid red;
+}
+
+
+#settings-update-form .contents .form-row textarea.field{
+    height: 92px;
+    /* padding-block-end: 0;
+    justify-content: flex-start; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* position: relative; */
+    /* justify-items: start; */
+}
+
+#settings-update-form .contents .form-row .char-count {
+    right: 1%;
+    bottom: 1%;
+    font-size: 14px;
+
+}
+
+
+#settings-update-form .contents .form-row .field.hidden {
+    /* display: none; */
+    height: 0;
+    opacity: 0;
+    padding: 0;
+    margin: 1px;
+    transition: 150ms ease-in-out;
+    transition-property: height, opacity;
+    
+}
+
+#settings-update-form .contents .submit-row {
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    height: auto;
+}
+
+#settings-update-form .contents .verify-post {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+    top: -17%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+
+    background-color: var(--color-black-3);
+
+    padding-inline: 41px;
+    padding-block: 23px;
+    border-radius: 21px;
+
+    box-shadow: 0px 6px 20px 11px rgba(0,0,0,0.61);
+    z-index: 1500;
+}
+
+#settings-update-form .contents .verify-post.hidden {
+    display: none;
+}
+
+
+#settings-update-form .contents .verify-post .verify-header {
+    width: 15ch;
+
+    margin-bottom: 19px;
+    padding-bottom: 0px;
+
+    font-weight: 550;
+}
+
+#settings-update-form .contents .verify-post .verify-header > span {
+    display: inline;
+    color: var(--color-yellow);
+}   
+
+#settings-update-form .contents .verify-post .submit-row{
+    justify-content: space-between;
+    width: 75%;
+}
+#settings-update-form .contents .verify-post .submit-row button {
+    background-color: transparent;
+
+}
+
+#settings-update-form .contents .verify-post .submit-row button:hover {
+
+    background-color: var(--color-black-4);
+    
+}
+
+/* #settings-update-form .contents .verify-post .submit-row input {
+} */
+
+.disabled {
+    pointer-events: none;
+}
+
+
+
+
+/* #settings-update-form .contents .form-row .field.hidden {
+    display: none;
+    height: 0;
+} */
+
+/* 4.1% */
+@media (width >= 50.625em) {
+    #settings-update-form .contents .form-row .field-label {
+        padding-inline-start: 4.1%;
+        font-size: 1.125rem;
+    }
+
+    #settings-update-form .contents .form-row .field {
+        width: 91.3%;
+    }
+
+    #settings-update-form .contents .form-row textarea.field {
+        /* height: 92158px; */
+        padding-block: 5px;
+        /* padding-block-end: 0; */
+    }
+
+    #settings-update-form .contents .verify-post {
+        box-shadow: 0px 9px 30px 20px rgba(0,0,0,0.11);
+    }
+
+}
+@media (width >= 90em) {
+    #settings-update-form .contents {
+        padding-inline: 82px;
+    }
+
+    #settings-update-form .contents .form-row .field-label {
+        padding-inline-start: 6px;
+        font-size: 1.25rem;
+        border-radius: 8px
+    }
+
+    #settings-update-form .contents .form-row .field {
+        width: 98%;
+    }
+
+    #settings-update-form .contents .submit-row input {
+        width: max-content;
+        font-size: 1.25rem;
+        padding-inline: 22px;
+        padding-block: 7px;
+    }
+
+    #settings-update-form .contents .verify-post {
+        top: 5%;
+    }
+    
+    #settings-update-form .contents .verify-post .submit-row{
+        width: 81px;
+        font-size: 15px;
+        
+        padding-inline: 4px;
+        padding-block: 5px;
+    }
+
+}
