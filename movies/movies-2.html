@@ -13,15 +13,26 @@
         <nav class="navbar">
             <div class="menu-logo-container">
                 <!-- <div class="menu-container"> -->
-                <i class='bx bx-menu menu'></i>
+                <i id="menu-button" class='bx bx-menu menu'></i>
                 <!-- </div> -->
-                <a href="/"><img  href="/" src="../assets/flixy-logo-2.svg" alt="Flixy Logo" class="logo" /></a>
+                <a href="/"><img src="../assets/flixy-logo-2.svg" alt="Flixy Logo" class="logo" /></a>
                 
             </div>
+            <div>
             <a href="#" class="sign-in" id="sign-in-h">
-                <span class="sign-in-text" id="sign-in-text-h">Sign In</span>
+                    <span class="sign-in-text" id="sign-in-text-h">Sign In</span>
             </a>
+
+            <!-- <i class='bx bxs-cog gear'></i> -->
             </div>
+        </nav>
+        <nav id="drop-down-h" class="drop-down">
+            <ul class="pages">
+                <li class="page"><a href="../a">Home</a></li>
+                <li class="page"><a href=".././movies">Movies</a></li>
+            </ul>
+
+            <span> <a class="settings-link" href="/settings" > Settings</a></span>
         </nav>
     </header>
     <div class="modal-backdrop" id="modal-backdrop"></div>

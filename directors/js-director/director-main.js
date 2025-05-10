@@ -36,6 +36,11 @@ const leftButton = document.getElementById('button-l')
 const rightButton = document.getElementById('button-r')
 
 const bodyElement = document.querySelector('body')
+
+const main = document.querySelector('main')
+const menuIcon = document.getElementById('menu-button')
+const dropDownHeader = document.getElementById('drop-down-h')
+
 // Auth components
 const signInButtonHeader = document.getElementById('sign-in-h')
 const signInTextHeader = document.getElementById('sign-in-text-h')
@@ -92,6 +97,19 @@ let currGroup = detCurr({slider: slider})
 
 console.log(currGroup)
 
+menuIcon.addEventListener('click', () => {
+    console.log(dropDownHeader.classList)
+    dropDownHeader.classList.toggle('active')
+    console.log(dropDownHeader.classList)
+    // console.log('ok')
+
+})
+
+main.addEventListener('click', () => {
+    if (dropDownHeader.classList.contains('active')) {
+        dropDownHeader.classList.toggle('active')
+    }
+})
 
 
 leftButton.addEventListener('click', () => {

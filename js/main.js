@@ -10,6 +10,11 @@ const currPage = '/a'
 const widthSlider = document.querySelector('.featured .content-slider-container')
 let prevWidth = window.innerWidth
 console.log(widthSlider)
+
+const main = document.querySelector('main')
+const menuIcon = document.getElementById('menu-button')
+const dropDownHeader = document.getElementById('drop-down-h')
+
 // Featured Slider Items
 const featuredSliderContent = document.querySelectorAll('.featured .slider-index')
 const featuredSliderPortraits = document.querySelectorAll('.featured .slider-index img.portrait')
@@ -110,6 +115,20 @@ function setUpEventListeners() {
             const indexChange = +button.getAttribute('data-index-change')
             navigateReviewSlider(indexChange, reviewSliderContent)
         })
+    })
+
+    menuIcon.addEventListener('click', () => {
+        console.log(dropDownHeader.classList)
+        dropDownHeader.classList.toggle('active')
+        console.log(dropDownHeader.classList)
+        // console.log('ok')
+    
+    })
+    
+    main.addEventListener('click', () => {
+        if (dropDownHeader.classList.contains('active')) {
+            dropDownHeader.classList.toggle('active')
+        }
     })
     
     // Something to ensure the page is "blurred befor the DOM is loaded"

@@ -44,6 +44,10 @@ if (pageParam) {
 
 const bodyElement = document.querySelector('body')
 
+const main = document.querySelector('main')
+const menuIcon = document.getElementById('menu-button')
+const dropDownHeader = document.getElementById('drop-down-h')
+
 const signInButtonHeader = document.getElementById('sign-in-h')
 const signInTextHeader = document.getElementById('sign-in-text-h')
 const signInButtonFooter = document.getElementById('sign-in-f')
@@ -155,6 +159,8 @@ function modifyStarColors(starsList, index) {
     
 }
 
+
+
 console.log(reviewStars)
 
 // Something for ommitting the # or any other url alterations
@@ -184,6 +190,20 @@ setGenresMoviePage({genres: genres, genresEl: genresEl})
 setReviewCardsMoviePage({reviewList: reviewsObjs, reviewsContainer: reviewsContainer, backButton: backButton, nextButton: nextButton, currReviewSlice: currReviewIdx})
 setReviewFormMeta({title: title, director: director, portraitSrc: portraitSrc, reviewFormMetaEl: reviewFormMetaEl})
 
+
+menuIcon.addEventListener('click', () => {
+    console.log(dropDownHeader.classList)
+    dropDownHeader.classList.toggle('active')
+    console.log(dropDownHeader.classList)
+    // console.log('ok')
+
+})
+
+main.addEventListener('click', () => {
+    if (dropDownHeader.classList.contains('active')) {
+        dropDownHeader.classList.toggle('active')
+    }
+})
 
 // Will have to do like buttons, but I'll leave that for later
 backButton.addEventListener('click', () => {

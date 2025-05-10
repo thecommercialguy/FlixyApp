@@ -1,0 +1,78 @@
+
+.drop-down {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    padding-block: 16px;
+    padding-inline: 13px 23px;
+    width: 100%;
+    background-color: hsla(0, 0%, 13%, .9);
+    border-radius: 0 0 21px 21px;
+    left: 0;
+    transform: translateY(75%);
+    /* align-self: flex-start; */
+    z-index: 0;
+    
+}
+.drop-down:not(.active) {
+    /* visibility: hidden; */
+    opacity: 0;
+    transition: 100ms ease-in-out;
+    transition-property: transform, opacity;
+    pointer-events: none;
+}
+
+.drop-down.active {
+    transform: translateY(99%);
+    opacity: 1;
+    transition: 150ms ease-in-out;
+    transition-property: transform, opacity;
+    pointer-events: auto;
+
+}
+
+.pages {
+    display: inline-flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+}
+
+.pages .page {
+    list-style: none;
+    padding-right: 10px;
+}
+
+.pages .page > a {
+    color: white;
+    text-decoration: none;
+}
+
+.pages .page > a:hover {
+    text-decoration: underline;
+}
+
+.settings-link {
+    color: white;
+}
+
+@media (width >= 50.625em) {
+    .drop-down {
+        padding-inline: 30px 40px;
+    }
+
+    .pages .page {
+        padding-inline-end: 12.72%;
+    }
+    
+}
+
+@media (width >= 90em) {
+    .drop-down {
+        padding-inline: 125px 131px;
+    }
+
+}
