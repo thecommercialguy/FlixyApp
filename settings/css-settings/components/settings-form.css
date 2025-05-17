@@ -249,23 +249,32 @@
         width: 98%;
     }
 
-    #settings-update-form .contents .submit-row input {
-        width: max-content;
-        font-size: 1.25rem;
-        padding-inline: 22px;
-        padding-block: 7px;
-    }
-
+    
     #settings-update-form .contents .verify-post {
         top: 5%;
     }
     
-    #settings-update-form .contents .verify-post .submit-row{
-        width: 81px;
+    #settings-update-form .contents .verify-post .submit-row {
+        width: 91%;
         font-size: 15px;
-        
         padding-inline: 4px;
         padding-block: 5px;
     }
+    
+    #settings-update-form .contents .submit-row input {
+        width: max-content;
+        font-size: 1.25rem;
+        padding-inline: 16px;
+        padding-block: 7px;
+    }
+
+    #settings-update-form .contents .verify-post .submit-row button {
+        background-color: transparent;
+        font-size: 1.125em;
+        padding-inline: 36px;
+        padding-block: 9px;
+        width: max-content;
+    }
+    
 
 }

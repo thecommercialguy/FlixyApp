@@ -85,6 +85,55 @@ export async function getMonthlyMovies() {
     }
 }
 
+export async function getSeasonalMovies() {
+    
+
+    const { apiBaseUrl } = await loadConfig()
+    const url = `${ apiBaseUrl }/Movie/seasonal`
+
+    let response
+    try {
+        response = await fetch(url)
+
+    } catch (error) {
+        console.error('Error fetching seasoanl movies:', error)
+        return
+    }
+
+    // So what exactly could go wrong here
+    // And what alert does
+    if (!response.ok) {
+        let errorData
+        try {
+            errorData = await response.json()
+        } catch (error) {
+            console.error('Error getting seasonal movies:', error)
+            return
+        }
+    }
+
+    let data
+    let seasonalMovies = []
+    try {
+        data = await response.json()
+        // const data = await response.json()
+
+        for (let i = 0; i < data.length; i++){
+            if (seasonalMovies.length < 13) {
+                console.log(data[i].title)
+                seasonalMovies.push(data[i].title)
+            } 
+
+        }
+        
+    } catch (error) {
+        console.error('Error processing success response:', error)
+        return
+    }
+    return seasonalMovies
+
+}
+
 export async function getMovieById({movieId}) {
     if (!movieId) {
         return

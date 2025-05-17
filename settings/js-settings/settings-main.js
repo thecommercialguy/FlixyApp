@@ -87,8 +87,15 @@ main.addEventListener('click', () => {
     }
 })
 
-// Pagination
+// let errorMessage = document.querySelector('.auth-error-message')
+// if (errorMessage) {
+//     errorMessage.remove()
+// }
 
+// errorMessage = document.createElement('div')
+// error.className = 'auth-error-message'
+
+// errorMessage.innerHTML = 'Successful'
 
 
 console.log('Am I?:', isAuthenticatedBool())
@@ -201,6 +208,8 @@ if (isAuthenticatedBool() === false) {
 
     submitSettingsEl.addEventListener('click', (e) => {
         e.preventDefault()
+        
+
         verifyModal.classList.toggle('hidden')
         // displayModal(verifyModal, bodyElement, signInBackdrop)
         toggleFields()
@@ -217,16 +226,65 @@ if (isAuthenticatedBool() === false) {
 
     verSubmitSettingsEl.addEventListener('click', async (e) => {
         e.preventDefault() 
-        try { 
-            updateUserSettings({id: user.id, settingsForm: settingsFormEl, rel: ''})
+        let errorMessage = document.querySelector('.auth-error-message')
+        if (errorMessage) {
+            errorMessage.remove()
+        }
+        verSubmitSettingsEl.disabled = true
+        try {
+            await updateUserSettings({id: user.id, settingsForm: settingsFormEl, rel: ''})
+            errorMessage = document.createElement('div')
+            errorMessage.className = 'auth-error-message'
 
+            errorMessage.innerHTML = 'Successful'
+
+            document.body.appendChild(errorMessage)
+
+
+            setTimeout(() => {
+                console.log('fade-out')
+                errorMessage.classList.add('fade-out')  // causes an animation
+                errorMessage.addEventListener('animationend', (event) => {
+                    console.log('fade-out-')
+                        if (errorMessage) {
+                            
+                            errorMessage.remove()
+                        }   
+                }, {once: true})
+
+            }, 90000) // 5seconds
+            
+            verifyModal.classList.toggle('hidden')
+            toggleFields()
+            refreshFields({user: user})
+            
         } catch (error) {
             console.error('Error occured while updating settings:', error)
+            
+            errorMessage = document.createElement('div')
+            error.className = 'auth-error-message'
+
+            errorMessage.innerHTML = 'Failure'
+    
+        } finally {
+            verSubmitSettingsEl.diabled = false;
+            
+            
         }
 
     })
 
+    settingsFormEl.addEventListener('submit', (e) => {
+        e.preventDefault()
+    })
 
+
+}
+
+function refreshFields({user}) {
+    usernameLabel.nextElementSibling.placeholder = `@${user.userName}`
+    emailLabel.nextElementSibling.placeholder = user.email
+    bioLabel.nextElementSibling.placeholder = user.about
 }
 
 function toggleFields() {
@@ -238,6 +296,7 @@ function toggleFields() {
         row.classList.toggle('disabled')
     })
 }
+
 
     // jWT needed^
 

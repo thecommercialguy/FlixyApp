@@ -1,0 +1,73 @@
+/* error message styling */
+.auth-error-message {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    left: 50%;
+    bottom: 5vh;
+    transform: translate(-50%, -50%);
+    background-color: var(--opaque-yellow);
+    color: var(--color-white);
+    padding: 10px 10px;
+    border-radius: 10px;
+    /* box-shadow: rgba(0, 0, 0, .7) 0px 8px; */
+    z-index: 1002;
+    font-family: 'Figtree', Arial, sans-serif;
+
+    opacity: 0;  /* Start hidden* */
+    /* transition: opacity 0.5s ease; */
+    animation: fadeIn 0.5s ease forwards;
+}
+
+
+/* .auth-error-message.visible {
+    opacity: 0.9;
+} */
+.auth-error-message.fade-out {
+    /* opacity: 0;  Trigger fade out */
+    /* transition: opacity 0.5s ease; */
+    animation: fadeOut 0.5s ease forwards;
+
+}
+
+.auth-error-message a.sign-in-link {
+    color: var(--color-grey-1);
+    text-decoration: underline;
+    padding-inline-start: 10px;
+}
+
+.auth-error-message a.sign-in-link:hover {
+    color: var(--color-grey-2);
+    
+}
+
+/* .auth-error-message a.sign-in-link:hover {
+    color: var(--color-black);
+} */
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@media (width < 810) {
+    .auth-error-message a.sign-in-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
+
+@media (width > 810) {
+    .auth-error-message a.sign-in-link {
+        width: max-content;
+    }
+}

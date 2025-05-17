@@ -289,7 +289,7 @@ export async function userSignUpMax({signInForm, currPage}) {
 }
 
 export async function updateUserSettings({id, settingsForm, rel}) {
-    event.preventDefault()
+    // event.preventDefault()
 
     if (!settingsForm) {
         return
@@ -358,7 +358,7 @@ export async function updateUserSettings({id, settingsForm, rel}) {
 
     // Changes applied modal
 
-    window.location.href = rel
+    // window.location.href = rel
 
 
 
@@ -367,7 +367,7 @@ export async function updateUserSettings({id, settingsForm, rel}) {
 }
 
 export async function updateUserSettingss({id, settingsForm, rel}) {
-    event.preventDefault()
+    // event.preventDefault()
 
     if (!settingsForm) {
         return
@@ -382,26 +382,6 @@ export async function updateUserSettingss({id, settingsForm, rel}) {
     // const usernameEl = formContents.querySelector('#username')
     // const emailEl = formContents.querySelector('#email')
     // const passwordEl = formContents.querySelector('#password')
-
-    if (usernameEl.value === '' || usernameEl.value.length < 2) {
-        // error hadnling on form
-        return
-    }
-
-    if (emailEl.value === '' || emailEl.value.length < 2) {
-        // error hadnling on form
-        return
-    }
-    
-    if (passwordEl.value === '' || passwordEl.value.length < 3) {
-        // error hadnling on form
-        return
-    }
-
-    const username = usernameEl.value
-    const email = emailEl.value
-    const password = passwordEl.value
-    
 
     const { apiBaseUrl } = await loadConfig()
     const url = `${ apiBaseUrl }/Auth/register`
@@ -449,7 +429,7 @@ export async function updateUserSettingss({id, settingsForm, rel}) {
 
     // const rel = '../a'
 
-    window.location.href = rel
+    // window.location.href = rel
 }
 export async function userSignUp({usernameInputEl, emailInputEl, passwordInputEl, currPage}) {
     if (!usernameInputEl.value) {

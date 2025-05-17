@@ -164,7 +164,11 @@ function modifyStarColors(starsList, index) {
 console.log(reviewStars)
 
 // Something for ommitting the # or any other url alterations
-const movieTitle = revertTitle({titleFormatted: titleParam})
+let movieTitle = revertTitle({titleFormatted: titleParam})
+if (movieTitle == 'rudolph the red nosed reindeer') {
+    movieTitle = 'rudolph the red-nosed reindeer'
+}
+console.log(movieTitle)
 const currPage = titleParam
 console.log(currPage)
 let fileType = 'png'

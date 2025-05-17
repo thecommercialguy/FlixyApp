@@ -1,5 +1,5 @@
 import { initializeSliderWidths, setUpResizeListener, navigateFeaturedSlider, navigateMonthlySliderContentMobile, navigateMonthlySliderContent, navigateReviewSlider, navigateSeasonalSliderMobile, navigateSeasonalSlider, navigateFilmSlider, navigateFilmSliderMobile, sliderListen, adjustSlider } from "./slider.js"
-import { getFeaturedMovies, getMonthlyMovies, getMovieIdsFromReview, getMovieTitleByReview, getTopReviews, getUsernamesByReviewId, updateReviewLikes } from './api.js'
+import { getFeaturedMovies, getMonthlyMovies, getMovieIdsFromReview, getMovieTitleByReview, getSeasonalMovies, getTopReviews, getUsernamesByReviewId, updateReviewLikes } from './api.js'
 import { setMonthlySectionContentHref, setMonthlySectionImgSrcs, setReviewCardsSlider, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, setImgSrcs, setFeaturedSectionBannerSrcs, setMoviesHref, getMovieTitlesToList, getFeaturedMovieDirectorsToList, setTitlesFeatured, setDirectorsFeatured, setDirectorsHref} from './contnentInit.js'
 import { displayModal, getToken, isAuthenticatedBool, parseJwt, userSignIn, signOut, userSignInMax, userSignUpMax, displaySignUpFields, hideSignUpFields } from "./auth.js"
 
@@ -28,11 +28,14 @@ const featuredDirectorLinks = document.querySelectorAll('.featured .slider-index
 const monthlyContentSlider = document.getElementById('monthly-slider')
 const monthlySliderContent = document.querySelectorAll('.monthly .content-slider-container .content-slider .slider-index')
 const monthlySliderImages = document.querySelectorAll('.monthly .content-slider-container .content-slider .slider-image')
-// Review Slider Items
-const reviewSliderContent = document.querySelectorAll('.review-card')
+
 // Seasonal Slider Elements
+const seaosnlSliderImages = document.querySelectorAll('.seasonal .content-slider-container .content-slider .slider-image')
 const seasonalContentSlider = document.getElementById('seasonal-slider')
 const seasonalSliderContent = document.querySelectorAll('.seasonal .content-slider-container .content-slider .slider-index')
+
+// Review Slider Items
+const reviewSliderContent = document.querySelectorAll('.review-card')
 // Slider Buttons
 const featuredSliderButtons = document.querySelectorAll('.featured .navigation-container i')
 const monthlySliderButtons = document.querySelectorAll('.monthly .navigation-container i')
@@ -66,7 +69,7 @@ async function initializeApp() {
         // apiCalls for movies actually present in reviews
         initializeSliderWidths(widthSlider)
         setUpResizeListener(widthSlider)
-        const [ topReviews, monthlyMovieTitles ] = await Promise.all([getTopReviews(), getMonthlyMovies()])
+        const [ topReviews, monthlyMovieTitles, seasonalMovieTitles ] = await Promise.all([getTopReviews(), getMonthlyMovies(), getSeasonalMovies()])
         const movieTitlesReview = await getMovieTitleByReview({reviewObjs: topReviews})
         const reviewerNames = await getUsernamesByReviewId({reviewObjs: topReviews})
         console.log(reviewerNames)
@@ -81,8 +84,11 @@ async function initializeApp() {
         await setFeaturedSectionBannerSrcs({movieList: featuredMovieTitles, sliderImages: featuredSliderBanners})
         setReviewCardsSlider({reviews: topReviews, movieTitles: movieTitlesReview, usernames: reviewerNames, reviewSliderContent: reviewSliderContent})
         await setImgSrcs({movieList: monthlyMovieTitles, imageEls: monthlySliderImages})
+        console.log(seasonalMovieTitles)
+        await setImgSrcs({movieList: seasonalMovieTitles, imageEls: seaosnlSliderImages})
         // await setImgSrcs(monthlyMovieTitles, monthlySliderImages)
         setMonthlySectionContentHref(monthlyMovieTitles, monthlySliderContent)
+        setMonthlySectionContentHref(seasonalMovieTitles, seasonalSliderContent)
 
 
         setUpEventListeners()
@@ -101,7 +107,7 @@ function setUpEventListeners() {
     })
 
     sliderListen({sliderButtons: monthlySliderButtons, contentSlider: monthlyContentSlider, sliderContent: monthlySliderContent})
-    sliderListen({sliderButtons: seasonalSliderButtons, contentSlider: seasonalContentSlider, sliderContent: seasonalContentSlider})
+    sliderListen({sliderButtons: seasonalSliderButtons, contentSlider: seasonalContentSlider, sliderContent: seasonalSliderContent})
 
     window.addEventListener('resize', () => {
         adjustSlider({prevWidth: prevWidth, contentSlider: monthlyContentSlider, sliderContent: monthlySliderContent})
