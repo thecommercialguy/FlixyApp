@@ -1,7 +1,7 @@
 import { getDirector, getMoviesByDirectorId } from "../../js/api.js"
 import { displayModal, userSignIn, isAuthenticatedBool, getToken, parseJwt, signOut, displaySignUpFields, hideSignUpFields, userSignUp, userSignInMax } from "../../js/auth.js"
 // import { getGenres, getMovie, getReviewsByMovieId, postReview, updateReviewLikes } from "../../js/api.js"
-import { setAbout, setDirectorMoviePage, setGenresMoviePage, setReleaseDate, setReviewCardsMoviePage, setTitleMoviePage, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, revertTitle, setReviewFormMeta, revertDirectorNameRetObj, setDirectorHeader, getMovieTitlesToList, formatTitles, setMovieCards } from "../../js/contnentInit.js"
+import { setAbout, setDirectorMoviePage, setGenresMoviePage, setReleaseDate, setReviewCardsMoviePage, setTitleMoviePage, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, revertTitle, setReviewFormMeta, revertDirectorNameRetObj, setDirectorHeader, getMovieTitlesToList, formatTitles, setMovieCards, setMovieCardsNew } from "../../js/contnentInit.js"
 import { detCurr, sliderTrav } from "../../js/slider.js"
 
 console.log(document.location)
@@ -74,17 +74,18 @@ if (movieTitles.length < 5) {
     leftButton.classList.toggle('hidden')
     rightButton.classList.toggle('hidden')
 }
-console.log(movieTitles)
-console.log(movieTitlesFrmt)
+// console.log(movieTitles)
+// console.log(movieTitlesFrmt)
 
-console.log(dirData)
-console.log(moviesByDir)
+// console.log(dirData)
+// console.log(moviesByDir)
 
 // Set director data
+
 sliderHeader.textContent = `${dirData['firstName']} ${dirData['lastName']}`
 setDirectorHeader({firstName: dirData['firstName'], lastName: dirData['lastName'], directorBox: directorHeader})
 setAbout({about: dirData['bio'], aboutBox: bioBox})
-setMovieCards({titles: movieTitlesFrmt, movieCardCont: slider})
+setMovieCardsNew({movies: moviesByDir, movieCardCont: slider})
 // Slider Logic + EventListeners
 console.log(getComputedStyle(slider))
 // console.log('slider left',getComputedStyle(slider).getPropertyValue('left'))

@@ -1,5 +1,5 @@
 import { displayModal, userSignIn, isAuthenticatedBool, getToken, parseJwt, signOut, displaySignUpFields, hideSignUpFields, userSignUp, userSignInMax } from "../../js/auth.js"
-import { getGenres, getMovie, getReviewsByMovieId, postReview, updateReviewLikes } from "../../js/api.js"
+import { getGenres, getMovie, getReviewsByMovieId, postReview, updateReviewLikes, getMovieByParam } from "../../js/api.js"
 import { setAbout, setDirectorMoviePage, setGenresMoviePage, setReleaseDate, setReviewCardsMoviePage, setTitleMoviePage, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, revertTitle, setReviewFormMeta } from "../../js/contnentInit.js"
 
 
@@ -23,7 +23,10 @@ console.log(urlParts)
 
 
 const movieTitleBox = document.querySelector('.portrait-text-container h1')
-const directorBox = document.querySelector('.portrait-text-container h2')
+const directorBox = document.querySelector('.portrait-text-container .ft-link.ft-director')
+const directorNameEl = directorBox.querySelector('.ft-director-name')
+console.log(directorNameEl)
+console.log(directorBox)
 const aboutBox = document.querySelector('.about-text')
 
 const banner = document.getElementById('banner-id')
@@ -164,11 +167,12 @@ function modifyStarColors(starsList, index) {
 console.log(reviewStars)
 
 // Something for ommitting the # or any other url alterations
-let movieTitle = revertTitle({titleFormatted: titleParam})
-if (movieTitle == 'rudolph the red nosed reindeer') {
-    movieTitle = 'rudolph the red-nosed reindeer'
-}
-console.log(movieTitle)
+// let movieTitle = revertTitle({titleFormatted: titleParam})
+// if (movieTitle == 'rudolph the red nosed reindeer') {
+//     movieTitle = 'rudolph the red-nosed reindeer'
+// }
+// console.log(movieTitle)
+const movieUrl = window.location.pathname
 const currPage = titleParam
 console.log(currPage)
 let fileType = 'png'
@@ -176,23 +180,24 @@ let fileType = 'png'
 if (titleParam === 'poor-things') {
     fileType = 'jpg'
 }
-const bannerSrc = `../images/${titleParam}-banner.${fileType}`
-const portraitSrc = `../images/${titleParam}-portrait.${fileType}`
-banner.src = bannerSrc
-portrait.src = portraitSrc
+// const bannerSrc = `../images/${titleParam}-banner.${fileType}`
+// const portraitSrc = `../images/${titleParam}-portrait.${fileType}`
 
 // General page set-up
-const { title, director, releaseDate, description, id } = await getMovie(movieTitle)
+const { title, director, releaseDate, description, id, bannerUrl, portraitUrl } = await getMovieByParam(titleParam)
+banner.src = bannerUrl
+portrait.src = portraitUrl
 console.log("fjjf", id)
 const genres = await getGenres(id)
 const reviewsObjs = await getReviewsByMovieId({movieId: id})
 setTitleMoviePage({title: title, movieTitleBox: movieTitleBox})
-setDirectorMoviePage({directorObj: director, directorBox})
+console.log(directorBox)
+setDirectorMoviePage({directorObj: director, directorBox: directorBox, directorNameEl: directorNameEl})
 setAbout({about: description, aboutBox: aboutBox})
 setReleaseDate({releaseDate: releaseDate, releaseDateEl: releaseDateEl})
 setGenresMoviePage({genres: genres, genresEl: genresEl})
 setReviewCardsMoviePage({reviewList: reviewsObjs, reviewsContainer: reviewsContainer, backButton: backButton, nextButton: nextButton, currReviewSlice: currReviewIdx})
-setReviewFormMeta({title: title, director: director, portraitSrc: portraitSrc, reviewFormMetaEl: reviewFormMetaEl})
+setReviewFormMeta({title: title, director: director, portraitSrc: portraitUrl, reviewFormMetaEl: reviewFormMetaEl})
 
 
 menuIcon.addEventListener('click', () => {

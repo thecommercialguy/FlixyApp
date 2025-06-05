@@ -1,6 +1,6 @@
 import { initializeSliderWidths, setUpResizeListener, navigateFeaturedSlider, navigateMonthlySliderContentMobile, navigateMonthlySliderContent, navigateReviewSlider, navigateSeasonalSliderMobile, navigateSeasonalSlider, navigateFilmSlider, navigateFilmSliderMobile, sliderListen, adjustSlider } from "./slider.js"
-import { getFeaturedMovies, getMonthlyMovies, getMovieIdsFromReview, getMovieTitleByReview, getSeasonalMovies, getTopReviews, getUsernamesByReviewId, updateReviewLikes } from './api.js'
-import { setMonthlySectionContentHref, setMonthlySectionImgSrcs, setReviewCardsSlider, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, setImgSrcs, setFeaturedSectionBannerSrcs, setMoviesHref, getMovieTitlesToList, getFeaturedMovieDirectorsToList, setTitlesFeatured, setDirectorsFeatured, setDirectorsHref} from './contnentInit.js'
+import { getFeaturedMovies, getMonthlyMovies, getMovieIdsFromReview, getMovieTitleByReview, getSeasonalMovies, getSeasonalMoviess, getTopReviews, getUsernamesByReviewId, updateReviewLikes, getMonthlyMoviess } from './api.js'
+import { setMonthlySectionContentHref, setMonthlySectionImgSrcs, setReviewCardsSlider, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, setImgSrcs, setFeaturedSectionBannerSrcs, setMoviesHref, getMovieTitlesToList, getFeaturedMovieDirectorsToList, setTitlesFeatured, setDirectorsFeatured, setDirectorsHref, setImgSrcObjs, setSectionContentHrefObjs, setTitlesFeaturedObjs, setMoviesHrefObjs, setDirectorsFeaturedd, setImgSrcBannerObjs} from './contnentInit.js'
 import { displayModal, getToken, isAuthenticatedBool, parseJwt, userSignIn, signOut, userSignInMax, userSignUpMax, displaySignUpFields, hideSignUpFields } from "./auth.js"
 
 const currPage = '/a'
@@ -21,7 +21,7 @@ const featuredSliderPortraits = document.querySelectorAll('.featured .slider-ind
 const featuredSliderBanners = document.querySelectorAll('.featured .slider-index img.banner')
 const featuredTitleEls = document.querySelectorAll('.featured .slider-index .ft-movie-title')  
 const featuredMovieLinks = document.querySelectorAll('.featured .slider-index .ft-link.ft-movie')  
-const featuredDirectorEls = document.querySelectorAll('.featured .slider-index .ft-director-name')  
+const featuredDirectorEls = document.querySelectorAll('.featured .slider-index .ft-link.ft-director')  
 const featuredDirectorLinks = document.querySelectorAll('.featured .slider-index .ft-link.ft-director') 
 
 // Monthly Slider Elements
@@ -69,26 +69,37 @@ async function initializeApp() {
         // apiCalls for movies actually present in reviews
         initializeSliderWidths(widthSlider)
         setUpResizeListener(widthSlider)
-        const [ topReviews, monthlyMovieTitles, seasonalMovieTitles ] = await Promise.all([getTopReviews(), getMonthlyMovies(), getSeasonalMovies()])
+        const [ topReviews, monthlyMovies, seasonalMovies ] = await Promise.all([getTopReviews(), getMonthlyMoviess(), getSeasonalMoviess()])
         const movieTitlesReview = await getMovieTitleByReview({reviewObjs: topReviews})
         const reviewerNames = await getUsernamesByReviewId({reviewObjs: topReviews})
-        console.log(reviewerNames)
+        // console.log(monthlyMovieTitles)
+
         const featuredMovies = await getFeaturedMovies()
-        const featuredMovieTitles = await getMovieTitlesToList({movies: featuredMovies})
+        console.log(featuredMovies)
+        // const featuredMovieTitles = await getMovieTitlesToList({movies: featuredMovies})
         const featuredDirectors = await getFeaturedMovieDirectorsToList({movies: featuredMovies})
-        setTitlesFeatured({movieTitles: featuredMovieTitles, headerEls: featuredTitleEls})
-        setDirectorsFeatured({directorNames: featuredDirectors, headerEls: featuredDirectorEls})
-        setMoviesHref({movieTitles: featuredMovieTitles, linkEls: featuredMovieLinks})
+        setTitlesFeaturedObjs({movies: featuredMovies, headerEls: featuredTitleEls})  // New
+        setDirectorsFeaturedd({movies: featuredMovies, headerEls: featuredDirectorEls})
+
+        // setDirectorsFeatured({directorNames: featuredDirectors, headerEls: featuredDirectorEls})
+        // setMoviesHref({movieTitles: featuredMovieTitles, linkEls: featuredMovieLinks})
+        setMoviesHrefObjs({movies: featuredMovies, linkEls: featuredMovieLinks})
         setDirectorsHref({directorNames: featuredDirectors, linkEls: featuredDirectorLinks})
-        await setImgSrcs({movieList: featuredMovieTitles, imageEls: featuredSliderPortraits})
-        await setFeaturedSectionBannerSrcs({movieList: featuredMovieTitles, sliderImages: featuredSliderBanners})
+        await setImgSrcObjs({movies: featuredMovies, imageEls: featuredSliderPortraits})
+        await setImgSrcBannerObjs({movies: featuredMovies, imageEls: featuredSliderBanners})
+        // setMoviesHrefObjs({movies: featuredMovies, linkEls: featuredMovieLinks})
+        // await setImgSrcs({movieList: featuredMovieTitles, imageEls: featuredSliderPortraits})
+        // await setFeaturedSectionBannerSrcs({movieList: featuredMovieTitles, sliderImages: featuredSliderBanners})
         setReviewCardsSlider({reviews: topReviews, movieTitles: movieTitlesReview, usernames: reviewerNames, reviewSliderContent: reviewSliderContent})
-        await setImgSrcs({movieList: monthlyMovieTitles, imageEls: monthlySliderImages})
-        console.log(seasonalMovieTitles)
-        await setImgSrcs({movieList: seasonalMovieTitles, imageEls: seaosnlSliderImages})
+        await setImgSrcObjs({movies: monthlyMovies, imageEls: monthlySliderImages})
+        // await setImgSrcs({movieList: monthlyMovieTitles, imageEls: monthlySliderImages})
+        // console.log(seasonalMovieTitles)
+        await setImgSrcObjs({movies: seasonalMovies, imageEls: seaosnlSliderImages})
         // await setImgSrcs(monthlyMovieTitles, monthlySliderImages)
-        setMonthlySectionContentHref(monthlyMovieTitles, monthlySliderContent)
-        setMonthlySectionContentHref(seasonalMovieTitles, seasonalSliderContent)
+        setSectionContentHrefObjs({movies: monthlyMovies, sliderContent: monthlySliderContent})
+        setSectionContentHrefObjs({movies: seasonalMovies, sliderContent: seasonalSliderContent})
+        // setMonthlySectionContentHref(monthlyMovieTitles, monthlySliderContent)
+        // setMonthlySectionContentHref(seasonalMovieTitles, seasonalSliderContent)
 
 
         setUpEventListeners()
@@ -187,6 +198,7 @@ function setUpEventListeners() {
         signUpButton.addEventListener('click', () => signOut())
         likeButtons.forEach((button) => {
             const parentEl = button.closest('.review-card')
+            console.log(parentEl)
             const reviewId = parentEl.dataset.id
             button.addEventListener('click', () => updateReviewLikes(reviewId))
         })

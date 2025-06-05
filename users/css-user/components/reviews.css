@@ -48,6 +48,8 @@
     justify-self: flex-start;
     align-items: center;
     width: 95.733%;
+    /* width: 33.333333%; */
+    /* width: 95.733%; */
     padding-inline: 11px;
     padding-block: 13px;
     border-radius: 21px;
@@ -57,6 +59,150 @@
     /* border: 1px solid var(--color-white); */
     background-color: var(--color-black-3);
     /* box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.90); */
+    transform: translateX(0%);
+    transition: transform 300ms ease-in-out;
+
+}
+
+.review-pfp-container {
+    display: flex;
+    align-self: start;
+    justify-content: center;
+    align-items: center;
+    margin-block-start: 5px;
+    margin-inline-end: 8px;
+    border-radius: 21px;
+    /* border-radius: 100%; */
+    background-color: gray;
+    
+
+    aspect-ratio: 1/1;
+    width: 45px;
+    height: 45px;
+    overflow: clip;
+    border: 2px solid white;
+
+
+}
+
+.review-pfp {
+    width: 100%;
+    object-fit: cover;
+}
+
+.review-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.movie-reviewed-link {
+    color: var(--color-white);
+}
+
+.review-title {
+    font-size: 1em;
+    font-weight: 500;
+
+    /* padding: 6; */
+    margin-block-end: 2px;
+}
+
+.username-rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-block: 0px;
+
+    margin-block-end: 6px;
+
+    width: max-content;
+}
+
+.user-link {
+    color: var(--color-white);
+}
+
+.username {
+    font-size: 12px;
+    font-weight: 500;
+    margin-inline-end: 3px;
+    pointer-events: none;
+}
+
+.rating-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+}
+
+.rating-container > i {
+    font-size: 12px;
+    margin-inline-end: 3px;
+    color: var(--color-yellow);
+}
+
+.rating {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+p.review-body {
+    font-size: 16px;
+    font-weight: 400;
+    /* padding-block: 0; */
+    max-width: 100%;
+    padding: 0;
+    margin-block-start: 0;
+    margin-block-end: 13px; 
+} 
+
+.like-button {
+    cursor: pointer;
+    
+    transition: 300ms ease;
+    transition-property: color, transform;
+}
+
+.like-button:hover {
+    color: var(--color-yellow);
+    transform: scale(1.05);
+    /* transform: scale(1.05) rotate(-30deg) rotate(30deg); */
+
+}
+
+.like-button:active {
+    color: var(--color-yellow-1);
+
+}
+
+.like-count {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+
+}
+
+
+/* .review-card {
+    display: flex;
+    align-self: center;
+    flex-direction: row;
+    justify-self: flex-start;
+    align-items: center;
+    width: 95.733%;
+    padding-inline: 11px;
+    padding-block: 13px;
+    border-radius: 21px;
+    margin-block-end: 18px;
+
+
+    background-color: var(--color-black-3);
 
 }
 
@@ -88,7 +234,6 @@
     font-size: 1em;
     font-weight: 500;
 
-    /* padding: 6; */
     margin-block-end: 2px;
 }
 
@@ -133,7 +278,6 @@
 p.review-body {
     font-size: 16px;
     font-weight: 400;
-    /* padding-block: 0; */
     max-width: 100%;
     padding: 0;
     margin-block-start: 0;
@@ -155,7 +299,7 @@ p.review-body {
 
 .user-link:visited {
     color: var(--color-white);
-}
+} */
 
 .review-card-null {
     display: flex;
@@ -176,8 +320,56 @@ p.review-body {
 
         font-size: 1.25em;
     }
-
     .review-card {
+        /* width: 83.532%; */
+        width: 91.6049438%;
+        /* width: 91.6049438%; */
+        padding-block: 28px;
+        padding-inline: 26px;
+    }
+
+    .review-pfp-container {
+        width: 74px;
+        height: 74px;
+        margin-inline-end: 22px;
+        margin-block: 0;
+        border: 2px solid white;
+    }
+
+    .review-title {
+        font-weight: 600;
+        margin-block-end: 3px;
+    }
+
+    .username-rating {
+        margin-block-end: 12px;
+    }
+
+    .username {
+        font-size: 16px;
+        font-weight: 500;
+        margin-inline-end: 5px;
+    }
+
+    .rating-container > i {
+        font-size: 16px;
+        margin-inline-end: 2px;
+        padding: 0;
+    }
+    
+
+    .rating {
+        font-size: 16px;
+        font-weight: 500;
+
+    }
+    
+    p.review-body {
+        margin-block-end: 14px; 
+    }
+
+
+    /* .review-card {
         width: 91.6049438%;
         padding-block: 28px;
         padding-inline: 26px;
@@ -229,7 +421,7 @@ p.review-body {
     .review-card-null {
         padding-block: 30px;
         padding-inline: 26px;
-    }
+    } */
 }
 
 @media (width >= 90em) {
@@ -246,6 +438,76 @@ p.review-body {
     }
 
     .review-card {
+        width: 83.532%;
+        padding-block: 30px;
+        padding-inline: 26px;
+        margin-block-end: 30px;
+
+    }
+
+    .review-pfp-container {
+        width: 74px;
+        height: 74px;
+        margin-inline-end: 22px;
+        margin-block: 0;
+    }
+
+    .movie-reviewed {
+        /* font-size: 16px; */
+        font-size: 14px;
+        font-weight: 400;
+        /* padding-bottom: 3px; */
+    }
+    /* 17.5px */
+    .review-title {
+        /* font-weight: 500; */
+        font-weight: 600;
+        font-size: 1.125em;
+        /* margin-block-end: 3px; */
+    }
+
+    .username-rating {
+        margin-block-end: 6px;
+        /* margin-block-end: 12px; */
+    }
+
+    .username {
+        /* font-size: 1.125em; */
+        font-size: .875em;
+        font-weight: 500;
+        margin-inline-end: 5px;
+
+    }
+
+    .rating-container > i {
+        font-size: 18px;
+        margin-inline-end: 2px;
+        padding: 0;
+    }
+
+    .rating {
+        font-size: 1.094em;
+        /* font-size: 1.125em; */
+        font-weight: 500;
+
+    }
+    
+    p.review-body {
+        margin-block-end: 14px; 
+    }
+
+    .like-count > i {
+        width:20px;
+        height: 20px;
+        font-size: 1.25em;
+        margin-inline-end: 4px;
+    }
+
+    .num-likes {
+        font-size: 1em;
+    }
+
+    /* .review-card {
         width: 83.532%;
         padding-block: 30px;
         padding-inline: 26px;
@@ -272,7 +534,6 @@ p.review-body {
 
     .username {
         font-size: 1em;
-        /* font-size: 1.125em; */
         font-weight: 500;
         margin-inline-end: 5px;
 
@@ -286,7 +547,6 @@ p.review-body {
 
     .rating {
         font-size: 1em;
-        /* font-size: 1.125em; */
         font-weight: 500;
 
     }
@@ -297,7 +557,6 @@ p.review-body {
 
     i.bx.bx-like.like.likes {
         font-size: 1.125em;
-        /* margin-inline-end: 4px; */
         margin-inline-end: 2px;
     }
 
@@ -310,7 +569,7 @@ p.review-body {
         font-size: 1.125em;
         padding-block: 38px;
         padding-inline: 26px;
-    }
+    } */
     /* .like */
 }
 

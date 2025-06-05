@@ -147,6 +147,9 @@ p.review-body {
     padding: 0;
     margin-block-start: 0;
     margin-block-end: 13px; 
+    max-height: 38px;
+    overflow-y: scroll;
+    /*  may add something that allows the '...' to break down into scrolling */
 } 
 
 .like-button {

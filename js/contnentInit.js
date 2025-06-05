@@ -52,6 +52,80 @@ export function setMovieCards({titles, movieCardCont}) {
     // })
     
 }
+export function setMovieCardsNew({movies, movieCardCont}) {
+    if (!movieCardCont) {
+        console.log('err1')
+        return
+    }
+
+    if (!movies) {
+        console.log('err2')
+        return
+    }
+    // contentSlider.innerHTML = ''
+    // console.log(titles)
+    
+    // for (const [index, movie] of movies.entries()) {
+    //     console.log(movie)
+    //     const cardContainer = document.createElement('div')
+    //     cardContainer.className = 'idx-cont'
+    //     cardContainer.dataset.slideIdx = index
+
+    //     const cardImg = document.createElement('img')
+    //     cardImg.className = 'idx-image'
+    //     cardImg.src = movie['portraitUrl']
+    //     console.log('cardImg')
+    //     const cardLink = document.createElement('a')
+    //     cardLink.className = 'idx-link'
+    //     cardLink.href = movie['movieUrl']
+    //     // setHref({title: title, el: cardLink})
+
+    //     cardContainer.appendChild(cardImg)
+    //     cardContainer.appendChild(cardLink)
+
+    //     movieCardCont.appendChild(cardContainer)
+    // }
+    movies.forEach((movie, index) => {
+        console.log(movie)
+        const cardContainer = document.createElement('div')
+        cardContainer.className = 'idx-cont'
+        cardContainer.dataset.slideIdx = index
+
+        const cardImg = document.createElement('img')
+        cardImg.className = 'idx-image'
+        cardImg.src = movie['portraitUrl']
+        console.log('cardImg')
+        const cardLink = document.createElement('a')
+        cardLink.className = 'idx-link'
+        cardLink.href = movie['movieUrl']
+        // setHref({title: title, el: cardLink})
+
+        cardContainer.appendChild(cardImg)
+        cardContainer.appendChild(cardLink)
+
+        movieCardCont.appendChild(cardContainer)
+    })
+    console.log('dlfjkljf')
+
+
+    // const sliderEls = contentSlider.querySelectorAll('.idx-cont')
+
+    // if (!sliderEls) {
+    //     return
+    // }
+
+    // sliderEls.forEach((sliderEl,index) => {
+
+    //     const sliderImg = sliderEl.querySelector('.idx-image')
+    //     const sliderLink = sliderEl.querySelector('.idx-link')
+    //     if (titles[index]) {
+    //         setSrc({title: titles[index], el: sliderImg}) 
+    //         setHref({title: titles[index], el: sliderLink})
+    //     }
+
+    // })
+    
+}
 
 export function setPfp({pfpUrl, el}) {
     if (!pfpUrl) {
@@ -85,6 +159,24 @@ export function setSrc({title, el}) {
 export function setHref({title, el}) {
     el.href = `/movies/${title}`
 
+}
+
+export async function setImgSrcBannerObjs({movies, imageEls}) {
+    imageEls.forEach((image, index) => {
+        
+        image.src = movies[index]['bannerUrl']
+    
+    })
+}
+
+export async function setImgSrcObjs({movies, imageEls}) {
+
+
+    imageEls.forEach((image, index) => {
+        
+        image.src = movies[index]['portraitUrl']
+
+    })
 }
 
 export async function setImgSrcs({movieList, imageEls}) {
@@ -205,11 +297,37 @@ export async function setMonthlySectionContentHref(monthlyMovies, monthlySliderC
         console.log(movieTitle)
     })
 }
+
+export async function setSectionContentHrefObjs({movies, sliderContent}) {
+    // const monthlyMovies = await getMonthlyMovies()  // Array
+    sliderContent.forEach((card, index) => {
+        // const movieTitle = monthlyMovies[index].toLowerCase().trim().split(" ").join("-")
+        card.href = movies[index]['movieUrl']
+        // console.log(movieTitle)
+    })
+}
 // as opposed to when THIS content loads...
 export function setTitlesFeatured({movieTitles, headerEls}) {
     headerEls.forEach((header, index) => {
         header.textContent = movieTitles[index]
     })
+}
+
+export function setTitlesFeaturedObjs({movies, headerEls}) {
+    headerEls.forEach((header, index) => {
+        header.textContent = movies[index]['title']
+    })
+}
+
+export function setDirectorsFeaturedd({movies, headerEls}) {
+    if (movies.length < 1) {
+        return 
+    }
+    headerEls.forEach((header, index) => {
+        header.href = movies[index]['director']['directorUrl']
+        header.firstElementChild.textContent = `${movies[index]['director']['firstName']} ${movies[index]['director']['lastName']}`
+    })
+
 }
 
 export function setDirectorsFeatured({directorNames, headerEls}) {
@@ -227,6 +345,29 @@ export function setMoviesHref({movieTitles, linkEls}){
         const movieTitle = formatTitle({title: movieTitles[i]})
         linkEls[i].href = `/movies/${movieTitle}`
         console.log(movieTitle)
+        i++
+    }
+    // linkEls.forEach((el, index) => {
+    //     if (movieTitles[index]) {
+    //         const movieTitle = formatTitle({title: movieTitles[index]})
+    //         el.href = `/movies/${movieTitle}`
+    //         console.log(movieTitle)
+    //     } else {
+    //         console.log('no title')
+    //         el.href = ''
+
+    //     }
+    
+
+    // })
+}
+
+export function setMoviesHrefObjs({movies, linkEls}){
+    let i = 0
+    while (i < movies.length) {
+        // const movieTitle = formatTitle({title: movieTitles[i]})
+        linkEls[i].href = movies[i]['movieUrl']
+        // console.log(movieTitle)
         i++
     }
     // linkEls.forEach((el, index) => {
@@ -278,6 +419,12 @@ export async function setReviewCardsSlider({reviews, movieTitles, usernames, rev
             userName.textContent = usernames[i]
             rating.textContent = `${reviews[i]['stars']}/5`
             description.textContent = reviews[i]['description']
+            // description.textContent = reviews[i]['description'].substring(0, 145) + '...'
+            // description.textContent = reviews[i]['description'].length > 148 ? formatReviewBody(reviews[i]['description']) : reviews[i]['description']
+
+            // reviews[i]['description'].slice(0, 145) + "..." : 
+            console.log(reviews[i]['description'].length )
+
             likeCount.textContent = `(${reviews[i]['likes']})`
         }
     }
@@ -294,6 +441,22 @@ export async function setReviewCardsSlider({reviews, movieTitles, usernames, rev
     //         })
     // }
 }
+
+export function formatReviewBody(reviewBody) {  // Helper function
+    const reviewSplit = reviewBody.split(' ')
+    let formattedReview = ''
+    let i = 0
+    while (formattedReview.length < 180) {  // 148 (too small)  // 180 (this woek)
+        formattedReview += reviewSplit[i] + ' '
+
+        i++
+    }
+
+    console.log(formattedReview.length)
+
+    return formattedReview + "..."
+}
+
 // Distingusishing elements from variables
 export function setUserNameTextHeader(username, signInTextHeader) {
     signInTextHeader.textContent = username
@@ -342,9 +505,13 @@ export function setTitleMoviePage({title, movieTitleBox}) {
 
 }
 
-export function setDirectorMoviePage({directorObj, directorBox}) {
-    directorBox.textContent = `${directorObj.firstName} ${directorObj.lastName}`
-
+export function setDirectorMoviePage({directorObj, directorBox, directorNameEl}) {
+    if (directorBox){
+        directorBox.href = directorObj.directorUrl
+    }
+    if (directorNameEl){
+        directorNameEl.textContent = `${directorObj.firstName} ${directorObj.lastName}`
+    }
 }
 
 export function setDirectorHeader({firstName, lastName, directorBox}) {
@@ -474,12 +641,71 @@ export function setReviewCardsMoviePage({reviewList, reviewsContainer, backButto
 
 }
 
+export function setReviewCardsUserPage({reviewList, reviewsContainer, backButton, nextButton, currReviewSlice}) {
+    if (!reviewsContainer) {
+        console.error('Reviews container not found')
+        return
+    }
+
+    if (reviewList.length < 1) {
+        reviewsContainer.innerHTML = '<p class="review-card-null">No reviews, yet.</p>'
+        // styling this...
+        return
+    }
+
+    const reviewsPerLoad = 3  // Three reviews per page load
+
+    
+    backButton.style.display = 'flex'
+    nextButton.style.display = 'flex'
+    
+    // backButton.disable = curr == 0
+    // nextButton.disable = currReviewIdx == reviewList.length - reviewsPerLoad - 1
+
+    const currIdx = currReviewSlice * reviewsPerLoad
+    console.log(currIdx)
+    // Displaying first three reviews
+    
+    for (let i = currIdx; i < currIdx + reviewsPerLoad; i++) {
+        const review = reviewList[i]
+        // console.log(review)
+        if (review != null) {
+            console.log('Checking this', review)
+            const reviewCard = createReviewCardMovieTitle({review: review})
+            reviewsContainer.appendChild(reviewCard)
+        }
+    }
+
+    // console.log(currReviewIdx)
+
+    // reviewsList.slice(i, 3)
+
+
+
+    // reviewList.forEach(review => {
+    //     console.log(review)
+    //     const reviewCard = createReviewCard({review: review})
+    //     reviewsContainer.appendChild(reviewCard)
+    // })
+
+
+}
+
 export function createReviewCard({review}) {
     const reviewCard = document.createElement('div')  // Creating a specific HTML element
     reviewCard.className = 'review-card'  // ".className", setting the class name of a DOM elt
 
+    // Settting profile picture container
     const profilePictureContainer = document.createElement('div')
-    profilePictureContainer.className = 'profile-picture'
+    profilePictureContainer.className = 'review-pfp-container'
+
+    // <img> for pfp
+    const profilePicture = document.createElement('img')
+    profilePicture.className = 'review-pfp'
+    profilePicture.src = review['reviewer']['profilePictureUrl'] || '../assets/default-pfp.png'
+    console.log(review['reviewer']['profilePictureUrl'])
+
+    profilePictureContainer.appendChild(profilePicture)
 
     // ReviewData <- reviewCard
     const reviewDataContainer = document.createElement('div')
@@ -556,6 +782,112 @@ export function createReviewCard({review}) {
 
 }
 
+export function createReviewCardMovieTitle({review}) {
+    const reviewCard = document.createElement('div')  // Creating a specific HTML element
+    reviewCard.className = 'review-card'  // ".className", setting the class name of a DOM elt
+
+    // Settting profile picture container
+    const profilePictureContainer = document.createElement('div')
+    profilePictureContainer.className = 'review-pfp-container'
+
+    // <img> for pfp
+    const profilePicture = document.createElement('img')
+    profilePicture.className = 'review-pfp'
+    profilePicture.src = review['reviewer']['profilePictureUrl'] || '../assets/default-pfp.png'
+    console.log(review['reviewer']['profilePictureUrl'])
+
+
+    profilePictureContainer.appendChild(profilePicture)
+
+    // <a> for movie reviewed
+    const movieReviewedLink = document.createElement('a')
+    movieReviewedLink.className = 'movie-reviewed-link'
+    movieReviewedLink.href = review['movie']['movieUrl']
+    
+
+    // Name of movie reviewed
+    const movieReviewed = document.createElement('span')
+    movieReviewed.className = 'movie-reviewed'
+    movieReviewed.textContent = review['movie']['title']
+
+    movieReviewedLink.appendChild(movieReviewed)
+
+    // ReviewData <- reviewCard
+    const reviewDataContainer = document.createElement('div')
+    reviewDataContainer.className = 'review-data'
+
+    // reviewTitle <- reviewData
+    const reviewTitle = document.createElement('h3')
+    reviewTitle.className = 'review-title'
+    reviewTitle.textContent = review['title'] || 'Untitled'
+
+    // usernameRatingBox <- reviewData
+    const usernameRatingContaier = document.createElement('div')
+    usernameRatingContaier.className = 'username-rating'
+
+    const userLink = document.createElement('a')
+    userLink.className = 'user-link'
+
+    const username = document.createElement('span')
+    username.className = 'username'
+    username.textContent = `@${review['reviewer']['userName']}` || '@thecommercialguy'
+
+    userLink.appendChild(username)
+
+    const ratingContainer = document.createElement('span')
+    ratingContainer.className = 'rating-container'
+
+    const starIcon = document.createElement('i')
+    starIcon.className = 'bx bxs-star'
+
+    const rating = document.createElement('span')
+    rating.className = 'rating'
+    rating.textContent = `${review['stars']}/5`
+
+    ratingContainer.appendChild(starIcon)
+    ratingContainer.appendChild(rating)
+
+    usernameRatingContaier.appendChild(userLink)
+    usernameRatingContaier.appendChild(ratingContainer)
+
+
+    const reviewBody = document.createElement('p')
+    reviewBody.className = 'review-body'
+    reviewBody.textContent = review['description']
+
+    const likeContainer = document.createElement('div')
+    likeContainer.className = 'like-count'
+
+    const likeIcon = document.createElement('i')
+    likeIcon.className = 'bx bx-like like likes'
+
+    const likeCount = document.createElement('span')
+    likeCount.className = 'num-likes'
+    likeCount.textContent = `(${review['likes']})` || '(0)'
+
+    likeContainer.appendChild(likeIcon)
+    likeContainer.appendChild(likeCount)
+
+    reviewDataContainer.appendChild(movieReviewedLink)
+    reviewDataContainer.appendChild(reviewTitle)
+    reviewDataContainer.appendChild(usernameRatingContaier)
+    reviewDataContainer.appendChild(reviewBody)
+    reviewDataContainer.appendChild(likeContainer)
+
+    reviewCard.appendChild(profilePictureContainer)
+    reviewCard.appendChild(reviewDataContainer)
+
+    return reviewCard
+
+
+    //setAttribute('class','className')
+    // const att = document.createAttribute('class(valid-attribute)')
+    // att.value = value-of-attribute 
+    // elt.setAttribute(att)  (Basically setting the attribute to a DOM element)
+
+
+}
+
 // Abstract this
 export function setReviewFormMeta({title, director, portraitSrc, reviewFormMetaEl}) {
     if (reviewFormMetaEl == null) {
@@ -584,7 +916,8 @@ export function setReviewFormMeta({title, director, portraitSrc, reviewFormMetaE
 
     portraitEl.src = portraitSrc
     setTitleMoviePage({title: title, movieTitleBox: portraitHeaderEl})
-    setDirectorMoviePage({directorObj: director, directorBox: directorNameEl})
+    // directorNameEl.textContent = `${director['firstName'] + $`director['lastName']}`
+    setDirectorMoviePage({directorObj: director, directorBox: null, directorNameEl: directorNameEl})
 
 
 

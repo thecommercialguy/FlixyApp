@@ -1,6 +1,6 @@
 import { getMoviesMoviesPage } from "../../js/api.js"
 import { displayModal, displaySignUpFields, getToken, hideSignUpFields, isAuthenticatedBool, parseJwt, signOut, userSignIn, userSignInMax, userSignUpMax } from "../../js/auth.js"
-import { formatTitles, getMovieTitlesToList, setImgSrcs, setMoviesHref, setSignInHrefFooter, setSignInHrefHeader, setSignOutText, setUserNameTextFooter, setUserNameTextHeader } from "../../js/contnentInit.js"
+import { formatTitles, getMovieTitlesToList, setImgSrcObjs, setImgSrcs, setMoviesHref, setMoviesHrefObjs, setSignInHrefFooter, setSignInHrefHeader, setSignOutText, setUserNameTextFooter, setUserNameTextHeader } from "../../js/contnentInit.js"
 
 const imageContainers = document.querySelectorAll('.img-container')  // href  // arr    // split to length of response
 const imageEls = document.querySelectorAll('.img-container img')  // alt + src  // arr // split to length of response
@@ -152,10 +152,10 @@ async function setMovies({queryParam}) {
     try {
         const movieObjs = await getMoviesMoviesPage({queryIdx: currPage})
         if (movieObjs.length > 0) {
-            const movieTitles = await getMovieTitlesToList({movies: movieObjs})
-            const formattedTitles = await formatTitles({titles: movieTitles})
-            setMoviesHref({movieTitles: formattedTitles, linkEls: imageContainers})
-            await setImgSrcs({movieList: formattedTitles, imageEls: imageEls})
+            // const movieTitles = await getMovieTitlesToLis({movies: movieObjs})
+            // const formattedTitles = await formatTitles({titles: movieTitles})
+            setMoviesHrefObjs({movies: movieObjs, linkEls: imageContainers})
+            await setImgSrcObjs({movies: movieObjs, imageEls: imageEls})
         } else {
             console.error('no movies found')
             // Not perfect, but this is like, say a user is going next they basiclly will be forced back

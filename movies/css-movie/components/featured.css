@@ -62,21 +62,57 @@
     transition-property: scale, text-shadow;
     cursor: pointer;
 }
+
 .portrait-text-container > h1:hover {
     transform: scale(1.05);
     text-shadow: 0 0 0px var(--color-yellow);
 }
-.portrait-text-container > h1:hover {
+
+/* .portrait-text-container h2 {
+    font-size: var(--fs-2);
+} */
+
+.ft-director-name {
+    font-size: var(--fs-2);
+    color: white;
+    transition: color 300ms ease-in-out;
 
 }
-.portrait-text-container h2 {
-    font-size: var(--fs-2);
+.ft-director-name:hover {
+    color: #8ee161;
+
 }
-.portrait-text-container > h2:hover {
+
+.ft-link.ft-director {
+    padding: 0;
+    margin-inline: 0;
+    margin-block: 0;
+    border: none;
+    border-radius: 0;
+    aspect-ratio: auto;
+    overflow: visible;
+    justify-content: flex-start;
+    width: max-content;
+    outline: none;
+
+}
+
+
+.ft-link.ft-director:hover {
+    box-shadow: none;
+}
+
+.ft-link.ft-director:visited {
+    color: white;
+    text-decoration: none;
+
+}
+
+/* .portrait-text-container > h2:hover {
 
 }.portrait-text-container > h2:hover {
 
-}
+} */
 
 .star-list {
     display: flex;

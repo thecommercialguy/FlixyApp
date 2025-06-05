@@ -25,7 +25,7 @@ export async function getFeaturedMovies() {
 
 export async function getMoviesMoviesPage({queryIdx}) {
     const { apiBaseUrl } = await loadConfig()
-    const url = `${ apiBaseUrl }/Movie`
+    const url = `${ apiBaseUrl }/Movie/alphabetical`
     console.log(url)
     try {
         const response = await fetch(url)
@@ -51,6 +51,37 @@ export async function getMoviesMoviesPage({queryIdx}) {
 
     } catch (error) {
         console.error('Error fetching movies:', error)
+    }
+}
+
+export async function getMonthlyMoviess() {
+    const { apiBaseUrl } = await loadConfig()
+    const url = `${ apiBaseUrl }/Movie`
+    const monthlyMovies = []
+    try {
+        const response = await fetch(url)
+        // Check response StausCode
+        // Not 2XX, error data (like what that does)
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Response Body:', errorText);
+            throw new Error(`HTTP error! Status: ${response.status}, ${errorText}`);
+        }
+
+        // Access response (2XX StatusCode)
+        const data = await response.json()
+
+        for (let i = 0; i < data.length; i++){
+            if (monthlyMovies.length < 13) {
+                if (data[i].isFeatured === false) {
+                    monthlyMovies.push(data[i])
+                }
+            }  
+        }
+        
+        return monthlyMovies
+    } catch(error) {
+        console.error('Error fetching monthly movies:', error)
     }
 }
 
@@ -85,6 +116,48 @@ export async function getMonthlyMovies() {
     }
 }
 
+export async function getSeasonalMoviess() {
+    
+
+    const { apiBaseUrl } = await loadConfig()
+    const url = `${ apiBaseUrl }/Movie/seasonal`
+
+    let response
+    try {
+        response = await fetch(url)
+
+    } catch (error) {
+        console.error('Error fetching seasoanl movies:', error)
+        return
+    }
+
+    // So what exactly could go wrong here
+    // And what alert does
+    if (!response.ok) {
+        let errorData
+        try {
+            errorData = await response.json()
+        } catch (error) {
+            console.error('Error getting seasonal movies:', error)
+            return
+        }
+    }
+
+    let data
+    // let seasonalMovies = []
+    try {
+        data = await response.json()
+        // const data = await response.json()
+
+        return data
+        
+    } catch (error) {
+        console.error('Error processing success response:', error)
+        return
+    }
+    return seasonalMovies
+
+}
 export async function getSeasonalMovies() {
     
 
@@ -201,6 +274,34 @@ export async function getMovie(movieTitle) {
 
     
 }
+export async function getMovieByParam(param) {
+    const { apiBaseUrl } = await loadConfig()
+    const url = `${ apiBaseUrl }/Movie/title/${param}`
+    console.log(url)
+    const response = await fetch(url)
+    if (!response.ok) {
+        handleServerError(response)
+    }
+    
+    const movie = await response.json()
+    return movie
+
+    
+
+    // setAbout(movie.description)
+    // setDate(movie.releaseDate)
+    // setGenres(movie.id)
+    
+    
+
+
+    // movieTitleBox.textContent = movie.title
+    // directorBox.textContent = `${movie.director.firstName} ${movie.director.lastName}`
+    // aboutBox.textContent = movie.descriptionF
+    // console.log(movie)
+
+    
+}
 
 export async function getUsernamesByReviewId({reviewObjs}) {
     if (!reviewObjs) {
@@ -228,6 +329,49 @@ export async function getUsernamesByReviewId({reviewObjs}) {
     return usernames
 }
 
+export async function getMoviesByReviews({reviewObjs}){
+    if (!reviewObjs) {
+        return 
+    }
+    const movieIds = getMovieIdsFromReview({reviewObjs: reviewObjs})
+    console.log(movieIds)
+
+    if (movieIds.length < 1) {
+        return 
+    }
+
+    
+    const movies = await Promise.all(
+        movieIds.map(async (movieId) => {
+            try {
+                const movie = await getMovieById({movieId: movieId})
+                // console.log(movie['title'])
+                return movie
+            } catch (error){
+                console.error('Error getting movie', error)
+            }
+        })
+
+    )
+    console.log(movies)
+    // const { apiBaseUrl } = await loadConfig()
+    // const movieTitles = await
+    // // const { apiBaseUrl } = await loadConfig()
+    // movieIds.forEach(async (movieId) => {
+    //     try {
+    //         const movie = await getMovieById({movieId: movieId})
+    //         const movieTitle = !movie ? '' : movie['title']
+    //         movieTitles.push(movieTitle)
+    //         console.log(movieTitle)
+    //     } catch (error){
+    //         console.error('Error getting movie', error)
+    //     }
+    // })
+
+
+    return movies
+
+}
 export async function getMovieTitleByReview({reviewObjs}){
     if (!reviewObjs) {
         return 

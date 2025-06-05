@@ -1,6 +1,6 @@
 import { displayModal, userSignIn, isAuthenticatedBool, getToken, parseJwt, signOut, displaySignUpFields, hideSignUpFields, userSignUp, userSignInMax, userSignUpMax } from "../../js/auth.js"
-import { getGenres, getMovie, getMovieTitleByReview, getReviewerById, getReviewerByUsername, getReviewsByMovieId, getReviewsByReviewerId, postReview, updateProfilePictureBanner, updateReviewLikes } from "../../js/api.js"
-import { setAbout, setDirectorMoviePage, setGenresMoviePage, setReleaseDate, setReviewCardsMoviePage, setTitleMoviePage, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, revertTitle, setReviewFormMeta, setElementText, setMovieCards, formatTitles, setPfp, setBanner } from "../../js/contnentInit.js"
+import { getGenres, getMovie, getMoviesByReviews, getMovieTitleByReview, getReviewerById, getReviewerByUsername, getReviewsByMovieId, getReviewsByReviewerId, postReview, updateProfilePictureBanner, updateReviewLikes } from "../../js/api.js"
+import { setAbout, setDirectorMoviePage, setGenresMoviePage, setReleaseDate, setReviewCardsMoviePage, setTitleMoviePage, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, revertTitle, setReviewFormMeta, setElementText, setMovieCards, formatTitles, setPfp, setBanner, setMovieCardsNew, setReviewCardsUserPage} from "../../js/contnentInit.js"
 
 
 const url = window.location.href
@@ -93,30 +93,32 @@ console.log(usernameParam)
 let reviewerID
 let user
 let reviews
-let movieTitles
-let movieTitlesFrmt
+let movies
+// let movieTitles
+// let movieTitlesFrmt
 try {
     reviewerID  = await getReviewerByUsername({username: usernameParam})
     user = await getReviewerById({reviewerId: reviewerID})
     console.log(user)
     reviews = await getReviewsByReviewerId({reviewerId: reviewerID})
-    movieTitles = await getMovieTitleByReview({reviewObjs: reviews})
-    movieTitlesFrmt = await formatTitles({titles: movieTitles})
+    movies = await getMoviesByReviews({reviewObjs: reviews})
+    console.log(movies)
+    // movieTitlesFrmt = await formatTitles({titles: movieTitles})
 } catch(error) {
     console.error('Error fetching data:', error)
 }
 
 // Formatting
 const atUsername = `@${user['userName']}`
-console.log(movieTitlesFrmt)
+// console.log(movieTitlesFrmt)
 
 // Content init
 setPfp({pfpUrl: user['profilePictureURL'], el: profilePic})
 setBanner({bannerUrl: user['bannerURL'], el: banner})
 setElementText({text: atUsername, el: usernameHeader})
 setElementText({text: user['about'], el: bioBox})
-setMovieCards({titles: movieTitlesFrmt, movieCardCont: movieContainer})
-setReviewCardsMoviePage({reviewList: reviews, reviewsContainer: reviewsContainer, backButton: backButton, nextButton: nextButton, currReviewSlice: currReviewIdx})
+setMovieCardsNew({movies: movies, movieCardCont: movieContainer})  // 
+setReviewCardsUserPage({reviewList: reviews, reviewsContainer: reviewsContainer, backButton: backButton, nextButton: nextButton, currReviewSlice: currReviewIdx})
 
 
 // Event listeners
@@ -255,12 +257,14 @@ if (isAuthenticatedBool() === false) {
     
     signUpButton.addEventListener('click', () => signOut())
     // signInBackdrop.addEventListener('click', () => displayModal(reviewForm, bodyElement, signInBackdrop))
-
+    // if (reviewerID == parseInt(sub)) {
     likeButtons.forEach((button) => {
         const parentEl = button.closest('.review-card')
         const reviewId = parentEl.dataset.id
+        console.log(parentEl.dataset)
         button.addEventListener('click', () => updateReviewLikes(reviewId))
     })
+    // }
     console.log(sub)
     console.log(reviewerID)
 
