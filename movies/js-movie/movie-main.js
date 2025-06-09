@@ -368,8 +368,13 @@ if (isAuthenticatedBool() === false) {
     reviewForm.addEventListener('submit', () => postReview({userId: sub, movieId: id, reviewTitle: titleReviewInput, reviewRating: ratingReviewInput, reviewBody: bodyReviewInput, currPage: currPage}))
     likeButtons.forEach((button) => {
         const parentEl = button.closest('.review-card')
-        const reviewId = parentEl.dataset.id
-        button.addEventListener('click', () => updateReviewLikes(reviewId))
+        const uNameEl = parentEl.querySelector('.username')
+        const reverId = uNameEl.dataset.userId
+        console.log(parentEl)
+        if (reverId !== sub) {
+            const reviewId = parentEl.dataset.id
+            button.addEventListener('click', () => updateReviewLikes(reviewId))
+        }
     })
 }
 

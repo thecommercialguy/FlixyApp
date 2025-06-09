@@ -406,6 +406,7 @@ export async function setReviewCardsSlider({reviews, movieTitles, usernames, rev
         const movieLink = reviewSliderContent[i].querySelector('.movie-reviewed-link')
         const movieTitle = reviewSliderContent[i].querySelector('.movie-reviewed')
         // console.log('mt', movieTitle)
+        const userLink = reviewSliderContent[i].querySelector('.user-link')
         const userName = reviewSliderContent[i].querySelector('.username')
         const description = reviewSliderContent[i].querySelector('.review-body')
         const rating = reviewSliderContent[i].querySelector('.rating')
@@ -416,6 +417,9 @@ export async function setReviewCardsSlider({reviews, movieTitles, usernames, rev
             movieLink.href = `./movies/${formatTitle({title: movieTitles[i]})}`
             movieTitle.textContent = movieTitles[i]
             title.textContent = reviews[i]['title']
+            console.log(reviews[i] )
+            userLink.href = `users/${usernames[i]}`
+            userName.dataset.userId = reviews[i]['reviewerId']
             userName.textContent = usernames[i]
             rating.textContent = `${reviews[i]['stars']}/5`
             description.textContent = reviews[i]['description']
@@ -423,7 +427,6 @@ export async function setReviewCardsSlider({reviews, movieTitles, usernames, rev
             // description.textContent = reviews[i]['description'].length > 148 ? formatReviewBody(reviews[i]['description']) : reviews[i]['description']
 
             // reviews[i]['description'].slice(0, 145) + "..." : 
-            console.log(reviews[i]['description'].length )
 
             likeCount.textContent = `(${reviews[i]['likes']})`
         }
@@ -721,10 +724,12 @@ export function createReviewCard({review}) {
     usernameRatingContaier.className = 'username-rating'
 
     const userLink = document.createElement('a')
+    userLink.href = `../users/${review['reviewer']['userName']}`
     userLink.className = 'user-link'
 
     const username = document.createElement('span')
     username.className = 'username'
+    username.dataset.userId = review['reviewer']['id']
     username.textContent = `@${review['reviewer']['userName']}` || '@thecommercialguy'
 
     userLink.appendChild(username)
@@ -754,7 +759,7 @@ export function createReviewCard({review}) {
     likeContainer.className = 'like-count'
 
     const likeIcon = document.createElement('i')
-    likeIcon.className = 'bx bx-like like likes'
+    likeIcon.className = 'bx bx-like like likes like-button'
 
     const likeCount = document.createElement('span')
     likeCount.className = 'num-likes'
@@ -826,10 +831,12 @@ export function createReviewCardMovieTitle({review}) {
     usernameRatingContaier.className = 'username-rating'
 
     const userLink = document.createElement('a')
+    userLink.href = `../users/${review['reviewer']['userName']}`
     userLink.className = 'user-link'
 
     const username = document.createElement('span')
     username.className = 'username'
+    username.dataset.userId = review['reviewer']['id']
     username.textContent = `@${review['reviewer']['userName']}` || '@thecommercialguy'
 
     userLink.appendChild(username)
@@ -859,7 +866,7 @@ export function createReviewCardMovieTitle({review}) {
     likeContainer.className = 'like-count'
 
     const likeIcon = document.createElement('i')
-    likeIcon.className = 'bx bx-like like likes'
+    likeIcon.className = 'bx bx-like like likes like-button'
 
     const likeCount = document.createElement('span')
     likeCount.className = 'num-likes'

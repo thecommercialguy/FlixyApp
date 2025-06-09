@@ -260,9 +260,13 @@ if (isAuthenticatedBool() === false) {
     // if (reviewerID == parseInt(sub)) {
     likeButtons.forEach((button) => {
         const parentEl = button.closest('.review-card')
-        const reviewId = parentEl.dataset.id
-        console.log(parentEl.dataset)
-        button.addEventListener('click', () => updateReviewLikes(reviewId))
+        const uNameEl = parentEl.querySelector('.username')
+        const reverId = uNameEl.dataset.userId
+        console.log(parentEl)
+        if (reverId !== sub) {
+            const reviewId = parentEl.dataset.id
+            button.addEventListener('click', () => updateReviewLikes(reviewId))
+        }
     })
     // }
     console.log(sub)

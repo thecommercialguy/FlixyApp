@@ -148,11 +148,22 @@ p.review-body {
     margin-block-end: 13px; 
 } 
 
-.like-count {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0;
+.like-button {
+    cursor: pointer;
+    
+    transition: 300ms ease;
+    transition-property: color, transform;
+}
+
+.like-button:hover {
+    color: var(--color-yellow);
+    transform: scale(1.05);
+    /* transform: scale(1.05) rotate(-30deg) rotate(30deg); */
+
+}
+
+.like-button:active {
+    color: var(--color-yellow-1);
 
 }
 
@@ -233,7 +244,8 @@ p.review-body {
         margin-block-end: 14px; 
     }
 
-    i.bx.bx-like.like.likes {
+    /* i.bx.bx-like.like.likes { */
+    .like-button {
         font-size: 1.144em;
         margin-inline-end: 3px;
     }
@@ -307,7 +319,8 @@ p.review-body {
         margin-block-end: 14px; 
     }
 
-    i.bx.bx-like.like.likes {
+    /* i.bx.bx-like.like.likes { */
+    .like-button {
         font-size: 1.125em;
         /* margin-inline-end: 4px; */
         margin-inline-end: 2px;

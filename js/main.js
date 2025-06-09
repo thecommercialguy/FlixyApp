@@ -1,5 +1,5 @@
 import { initializeSliderWidths, setUpResizeListener, navigateFeaturedSlider, navigateMonthlySliderContentMobile, navigateMonthlySliderContent, navigateReviewSlider, navigateSeasonalSliderMobile, navigateSeasonalSlider, navigateFilmSlider, navigateFilmSliderMobile, sliderListen, adjustSlider } from "./slider.js"
-import { getFeaturedMovies, getMonthlyMovies, getMovieIdsFromReview, getMovieTitleByReview, getSeasonalMovies, getSeasonalMoviess, getTopReviews, getUsernamesByReviewId, updateReviewLikes, getMonthlyMoviess } from './api.js'
+import { getFeaturedMovies, getMonthlyMovies, getMovieIdsFromReview, getMovieTitleByReview, getSeasonalMovies, getSeasonalMoviess, getTopReviews, getUsernamesByReviewId, updateReviewLikes, getMonthlyMoviess, getRecentMovies } from './api.js'
 import { setMonthlySectionContentHref, setMonthlySectionImgSrcs, setReviewCardsSlider, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, setImgSrcs, setFeaturedSectionBannerSrcs, setMoviesHref, getMovieTitlesToList, getFeaturedMovieDirectorsToList, setTitlesFeatured, setDirectorsFeatured, setDirectorsHref, setImgSrcObjs, setSectionContentHrefObjs, setTitlesFeaturedObjs, setMoviesHrefObjs, setDirectorsFeaturedd, setImgSrcBannerObjs} from './contnentInit.js'
 import { displayModal, getToken, isAuthenticatedBool, parseJwt, userSignIn, signOut, userSignInMax, userSignUpMax, displaySignUpFields, hideSignUpFields } from "./auth.js"
 
@@ -69,10 +69,10 @@ async function initializeApp() {
         // apiCalls for movies actually present in reviews
         initializeSliderWidths(widthSlider)
         setUpResizeListener(widthSlider)
-        const [ topReviews, monthlyMovies, seasonalMovies ] = await Promise.all([getTopReviews(), getMonthlyMoviess(), getSeasonalMoviess()])
+        const [ topReviews, monthlyMovies, seasonalMovies ] = await Promise.all([getTopReviews(), getMonthlyMoviess(), getRecentMovies()])
         const movieTitlesReview = await getMovieTitleByReview({reviewObjs: topReviews})
         const reviewerNames = await getUsernamesByReviewId({reviewObjs: topReviews})
-        // console.log(monthlyMovieTitles)
+        console.log(seasonalMovies)
 
         const featuredMovies = await getFeaturedMovies()
         console.log(featuredMovies)
@@ -188,7 +188,8 @@ function setUpEventListeners() {
         })
     } else {
         const token = getToken()
-        const { name } = parseJwt(token)
+        const { name, sub } = parseJwt(token)
+        console.log(sub)
         const username = name
         setUserNameTextHeader(username, signInTextHeader)
         setUserNameTextFooter(username, signInTextFooter)
@@ -198,9 +199,13 @@ function setUpEventListeners() {
         signUpButton.addEventListener('click', () => signOut())
         likeButtons.forEach((button) => {
             const parentEl = button.closest('.review-card')
+            const uNameEl = parentEl.querySelector('.username')
+            const reverId = uNameEl.dataset.userId
             console.log(parentEl)
-            const reviewId = parentEl.dataset.id
-            button.addEventListener('click', () => updateReviewLikes(reviewId))
+            if (reverId !== sub) {
+                const reviewId = parentEl.dataset.id
+                button.addEventListener('click', () => updateReviewLikes(reviewId))
+            }
         })
     }
 }
