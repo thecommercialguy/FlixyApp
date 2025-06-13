@@ -63,6 +63,7 @@
 .review-pfp-container {
     display: flex;
     align-self: start;
+    position: relative;
     justify-content: center;
     align-items: center;
     margin-block-start: 5px;
@@ -85,6 +86,23 @@
 .review-pfp {
     width: 100%;
     object-fit: cover;
+    pointer-events: none;
+}
+
+
+.pfp-link {
+  width: 100%;
+  position: absolute;
+  aspect-ratio: 1/1;
+  border-radius: 21px;
+  pointer-events: all;
+  cursor: pointer;
+  background-color: rgba(0,0, 0, 0);
+  transition: background-color 150ms ease;
+}
+
+.pfp-link:hover {
+  background-color: rgba(0, 0, 0, .1);
 }
 
 .review-data {
@@ -151,7 +169,7 @@ p.review-body {
 .like-button {
     cursor: pointer;
     
-    transition: 300ms ease;
+    transition: 150ms ease;
     transition-property: color, transform;
 }
 

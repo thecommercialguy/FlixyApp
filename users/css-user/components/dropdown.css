@@ -55,8 +55,17 @@
     text-decoration: underline;
 }
 
-.settings-link {
+.settings-link{
     color: white;
+    border-radius: 21px;
+    padding-block: 5px;
+    padding-inline: 18px;
+    transition: background-color 150ms ease-in;
+    background-color: hsla(0, 0%, 13%, 0);
+}
+
+#settings-link:hover {
+  background-color: var(--color-black-2);
 }
 
 @media (width >= 50.625em) {
@@ -73,6 +82,15 @@
 @media (width >= 90em) {
     .drop-down {
         padding-inline: 125px 131px;
+    }
+
+    .settings-link{
+        color: white;
+        border-radius: 21px;
+        padding-block: 5px;
+        padding-inline: 18px;
+        transition: background-color 150ms ease-in;
+        background-color: hsla(0, 0%, 13%, 0);
     }
 
 }

@@ -37,6 +37,9 @@
 #sign-in-text-f, #sign-in-text-h {
     color: var(--color-white);
 }
+#sign-in-text-f:visited, #sign-in-text-h:visited {
+    color: var(--color-white);
+}
 
 
 

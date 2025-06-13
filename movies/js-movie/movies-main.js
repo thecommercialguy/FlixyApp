@@ -1,6 +1,6 @@
 import { getMoviesMoviesPage } from "../../js/api.js"
 import { displayModal, displaySignUpFields, getToken, hideSignUpFields, isAuthenticatedBool, parseJwt, signOut, userSignIn, userSignInMax, userSignUpMax } from "../../js/auth.js"
-import { formatTitles, getMovieTitlesToList, setImgSrcObjs, setImgSrcs, setMoviesHref, setMoviesHrefObjs, setSignInHrefFooter, setSignInHrefHeader, setSignOutText, setUserNameTextFooter, setUserNameTextHeader } from "../../js/contnentInit.js"
+import { formatTitles, getMovieTitlesToList, setImgSrcObjs, setImgSrcs, setMoviesHref, setMoviesHrefObjs, setSettingsHref, setSettingsHrefLevel1, setSignInHrefFooter, setSignInHrefFooterMovies, setSignInHrefHeader, setSignInHrefHeaderMovies, setSignOutText, setUserNameTextFooter, setUserNameTextHeader } from "../../js/contnentInit.js"
 
 const imageContainers = document.querySelectorAll('.img-container')  // href  // arr    // split to length of response
 const imageEls = document.querySelectorAll('.img-container img')  // alt + src  // arr // split to length of response
@@ -25,6 +25,8 @@ const bodyElement = document.querySelector('body')
 const main = document.querySelector('main')
 const menuIcon = document.getElementById('menu-button')
 const dropDownHeader = document.getElementById('drop-down-h')
+const dropDownSettingsLink = document.getElementById('settings-link')
+
 
 // Auth components 
 const signInButtonHeader = document.getElementById('sign-in-h')
@@ -125,8 +127,9 @@ if (isAuthenticatedBool() === false) {
     const username = name
     setUserNameTextHeader(username, signInTextHeader)
     setUserNameTextFooter(username, signInTextFooter)
-    setSignInHrefHeader(username, signInButtonHeader)
-    setSignInHrefFooter(username, signInButtonFooter)
+    setSignInHrefHeaderMovies(username, signInButtonHeader)
+    setSignInHrefFooterMovies(username, signInButtonFooter)
+    setSettingsHref(username, dropDownSettingsLink)
     setSignOutText(signUpText)
     signUpButton.addEventListener('click', () => signOut())
     

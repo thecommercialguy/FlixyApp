@@ -105,6 +105,7 @@
 .ft-movie-title {
     font-size: var(--fs-1);
     cursor: pointer;
+    color: var(--color-white);
 }
 
 .portrait-text-container > h1 {

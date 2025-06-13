@@ -401,6 +401,13 @@ export async function setReviewCardsSlider({reviews, movieTitles, usernames, rev
 
         // const profilePic = card.querySelector('.profile-pictu');
         // adding the movie which was reviewed to the card
+        // Adding profile picture, along with the new profile picture styling
+        // HTML CSS then I'll update this to corresepond with that
+        // I'll also add the href associated with the reveiwer
+
+        const profilePictureContainer = reviewSliderContent[i].querySelector('.review-pfp-container')
+        const profilePicture = reviewSliderContent[i].querySelector('.review-pfp')
+        const pfpLink = reviewSliderContent[i].querySelector('.pfp-link')
 
         const title = reviewSliderContent[i].querySelector('.review-title')
         const movieLink = reviewSliderContent[i].querySelector('.movie-reviewed-link')
@@ -413,14 +420,18 @@ export async function setReviewCardsSlider({reviews, movieTitles, usernames, rev
         const likeCount = reviewSliderContent[i].querySelector('.num-likes')
         console.log(likeCount)
         if (reviews[i]) {
+            // something to do with the review objects I query (db)
             reviewSliderContent[i].dataset.id = reviews[i]['id']
+            profilePicture.src = reviews[i]['reviewer']['profilePictureURL'] || './assets/default-pfp.png'
+            profilePicture.alt = `${reviews[i]['reviewer']['userName']}'s profile picture`
+            pfpLink.href = `users/${reviews[i]['reviewer']['userName']}`
             movieLink.href = `./movies/${formatTitle({title: movieTitles[i]})}`
             movieTitle.textContent = movieTitles[i]
             title.textContent = reviews[i]['title']
-            console.log(reviews[i] )
-            userLink.href = `users/${usernames[i]}`
+            console.log(reviews[i])
+            userLink.href = `users/${reviews[i]['reviewer']['userName']}`
             userName.dataset.userId = reviews[i]['reviewerId']
-            userName.textContent = usernames[i]
+            userName.textContent = reviews[i]['reviewer']['userName']
             rating.textContent = `${reviews[i]['stars']}/5`
             description.textContent = reviews[i]['description']
             // description.textContent = reviews[i]['description'].substring(0, 145) + '...'
@@ -481,9 +492,30 @@ export function setSignInHrefHeader(username, signInButtonHeader) {
     
 }
 
+export function setSignInHrefHeaderMovies(username, signInButtonHeader) {
+    signInButtonHeader.href = `../users/${username}`
+    
+}
+
 export function setSignInHrefFooter(username, signInButtonFooter) {
     signInButtonFooter.href = `users/${username}`
     
+}
+
+export function setSignInHrefFooterMovies(username, signInButtonFooter) {
+    signInButtonFooter.href = `../users/${username}`
+    
+}
+// export function setSettingsHref(username, settingsButton) {
+//     settingsButton.href = `/settings/${username}`
+// }
+
+export function setSettingsHref(username, settingsButton){
+    settingsButton.href = `/settings/${username}`
+}
+
+export function setSettingsHrefLevel1(username, settingsButton){
+    settingsButton.href = `/settings/${username}`
 }
 // For normal ol' text elements
 export function setElementText({text, el}){
@@ -705,9 +737,16 @@ export function createReviewCard({review}) {
     // <img> for pfp
     const profilePicture = document.createElement('img')
     profilePicture.className = 'review-pfp'
-    profilePicture.src = review['reviewer']['profilePictureUrl'] || '../assets/default-pfp.png'
-    console.log(review['reviewer']['profilePictureUrl'])
+    profilePicture.src = review['reviewer']['profilePictureURL'] || '../assets/default-pfp.png'
+    profilePicture.alt = `${review['reviewer']['userName']}'s profile picture`
 
+
+    // <a> for pfp
+    const pfpLink = document.createElement('a')
+    pfpLink.className = 'pfp-link'
+    pfpLink.href = `../users/${review['reviewer']['userName']}`
+
+    profilePictureContainer.appendChild(pfpLink)
     profilePictureContainer.appendChild(profilePicture)
 
     // ReviewData <- reviewCard
@@ -798,10 +837,15 @@ export function createReviewCardMovieTitle({review}) {
     // <img> for pfp
     const profilePicture = document.createElement('img')
     profilePicture.className = 'review-pfp'
-    profilePicture.src = review['reviewer']['profilePictureUrl'] || '../assets/default-pfp.png'
+    profilePicture.src = review['reviewer']['profilePictureURL'] || '../assets/default-pfp.png'
     console.log(review['reviewer']['profilePictureUrl'])
 
+    // <a> for pfp
+    const pfpLink = document.createElement('a')
+    pfpLink.className = 'pfp-link'
+    pfpLink.href = `../users/${review['reviewer']['userName']}`
 
+    profilePictureContainer.appendChild(pfpLink)
     profilePictureContainer.appendChild(profilePicture)
 
     // <a> for movie reviewed

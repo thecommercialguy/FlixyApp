@@ -1,6 +1,6 @@
 import { displayModal, userSignIn, isAuthenticatedBool, getToken, parseJwt, signOut, displaySignUpFields, hideSignUpFields, userSignUp, userSignInMax } from "../../js/auth.js"
 import { getGenres, getMovie, getReviewsByMovieId, postReview, updateReviewLikes, getMovieByParam } from "../../js/api.js"
-import { setAbout, setDirectorMoviePage, setGenresMoviePage, setReleaseDate, setReviewCardsMoviePage, setTitleMoviePage, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, revertTitle, setReviewFormMeta } from "../../js/contnentInit.js"
+import { setAbout, setDirectorMoviePage, setGenresMoviePage, setReleaseDate, setReviewCardsMoviePage, setTitleMoviePage, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, revertTitle, setReviewFormMeta, setSignInHrefHeaderMovies, setSignInHrefFooterMovies, setSettingsHrefLevel1, setSettingsHref } from "../../js/contnentInit.js"
 
 
 
@@ -21,6 +21,7 @@ console.log(window.location.pathname)  // movies/<f-movie-title>
 console.log(url)
 console.log(urlParts)
 
+const pageTitle = document.getElementById('page-title')
 
 const movieTitleBox = document.querySelector('.portrait-text-container h1')
 const directorBox = document.querySelector('.portrait-text-container .ft-link.ft-director')
@@ -50,6 +51,7 @@ const bodyElement = document.querySelector('body')
 const main = document.querySelector('main')
 const menuIcon = document.getElementById('menu-button')
 const dropDownHeader = document.getElementById('drop-down-h')
+const dropDownSettingsLink = document.getElementById('settings-link')
 
 const signInButtonHeader = document.getElementById('sign-in-h')
 const signInTextHeader = document.getElementById('sign-in-text-h')
@@ -185,6 +187,7 @@ if (titleParam === 'poor-things') {
 
 // General page set-up
 const { title, director, releaseDate, description, id, bannerUrl, portraitUrl } = await getMovieByParam(titleParam)
+pageTitle.textContent = `${title} | Flixy`
 banner.src = bannerUrl
 portrait.src = portraitUrl
 console.log("fjjf", id)
@@ -359,9 +362,11 @@ if (isAuthenticatedBool() === false) {
     console.log(parseJwt(token))
     setUserNameTextHeader(username, signInTextHeader)
     setUserNameTextFooter(username, signInTextFooter)
-    setSignInHrefHeader(username, signInButtonHeader)
-    setSignInHrefFooter(username, signInButtonFooter)
+    setSignInHrefHeaderMovies(username, signInButtonHeader)
+    setSignInHrefFooterMovies(username, signInButtonFooter)
+    setSettingsHref(username, dropDownSettingsLink)
     setSignOutText(signUpText)
+
     signUpButton.addEventListener('click', () => signOut())
     addReviewButton.addEventListener('click', () => displayModal(reviewForm, bodyElement, signInBackdrop))
     signInBackdrop.addEventListener('click', () => displayModal(reviewForm, bodyElement, signInBackdrop))

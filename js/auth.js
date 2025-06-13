@@ -311,6 +311,11 @@ export async function updateUserSettings({id, settingsForm, rel}) {
     console.log(formData)
     // console.log(formData)
 
+    const token = localStorage.getItem('Bearer')
+    if (!token) {
+        return
+    }
+
     const { apiBaseUrl } = await loadConfig()
     const url = `${apiBaseUrl}/Reviewer/settings/${id}`
 
@@ -318,9 +323,9 @@ export async function updateUserSettings({id, settingsForm, rel}) {
     try {
         response = await fetch(url, {
             method: 'PUT',
-            // headers: {
-            //     'Content-Type': 'application/json'
-            // },
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
             body: formData
         })
     } catch(error) {

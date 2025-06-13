@@ -718,7 +718,10 @@ export async function postReview({userId, movieId, reviewTitle, reviewRating, re
     console.log('rating', rating)
     console.log('body', body)
     // reviewRating.value = parseFloat(reviewRating.value)
-
+    const token = localStorage.getItem('Bearer')
+    if (!token) {
+        return
+    }
     const { apiBaseUrl } = await loadConfig()
     const url = `${ apiBaseUrl }/Review?reviewerId=${userId}&movieId=${movieId}`
     // Make request
@@ -727,10 +730,13 @@ export async function postReview({userId, movieId, reviewTitle, reviewRating, re
         response = await fetch(url, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             }, 
             body: JSON.stringify({
                 // id: 0,
+                reviewerId: userId,
+                movieId: movieId,
                 title: title,
                 stars: rating,
                 description: body
@@ -925,11 +931,10 @@ export async function updateProfilePictureBanner({user, pfpBannerForm, currPage}
 
    
     
-    // Hardcoded values for fields not in the form (replace with actual values)
-    const reviewerId = user.id // Example: Replace with the actual reviewer ID
-    const username = user.userName // Replace with actual username
-    const email = user.email // Replace with actual email
-    const about = user.about // Replace with actual bio
+    const reviewerId = user.id 
+    const username = user.userName 
+    const email = user.email 
+    const about = user.about 
 
     // Create FormData object from the form
     // const form = event.target;
@@ -941,26 +946,19 @@ export async function updateProfilePictureBanner({user, pfpBannerForm, currPage}
     formData.append('Email', email)
     formData.append('About', about)
     
-    // eveListner('change', formvalue)
     // dynamic error handling
 
     const formContnents = pfpBannerForm.querySelector('.contents')
     const pfpEl = formContnents.querySelector('#pf-p')
     const bannerEl = formContnents.querySelector('#banner')
 
-    // if (pfpEl.value === '' || pfpEl.value.length < 2) {
-    //     // error hadnling on form
-    //     return
-    // }
-    
-    // if (bannerEl.value === '' || bannerEl.value.length < 2) {
-    //     // error hadnling on form
-    //     return
-    // }
-
     const pfp = pfpEl.value
     const banner = bannerEl.value
-
+    
+    const token = localStorage.getItem('Bearer')
+    if (!token) {
+        return
+    }
     console.log('Username:', email)
     console.log('Password:', password)
     console.log(formData)
@@ -969,19 +967,14 @@ export async function updateProfilePictureBanner({user, pfpBannerForm, currPage}
         console.log(endpoint)
         const response = await fetch(endpoint, {
             method: 'POST',
-            // headers: {
-            //     'Content-Type': 'application/json'
-            // },
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
             body: formData
         })
-
     
-
         if (response.ok) {
             const data = await response.json()
-            const token = data.token  // Data Transfer Object (Representing our Token)
-
-            localStorage.setItem('Bearer', token)
             
             const rel = currPage
             console.log(rel)

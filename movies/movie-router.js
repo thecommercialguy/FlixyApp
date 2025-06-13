@@ -20,12 +20,12 @@ router.use(express.static(path.join(__dirname, 'js-movie')))
 
 router.route('/').
     get((req, res) => {
-        res.sendFile(path.join(__dirname, 'movies-2.html'))
+        res.sendFile(path.join(__dirname, 'movies.html'))
         
     })
     .post((req, res) => {
         const formData = res.body
-        res.sendFile(path.join(__dirname, 'movies-2.html'))
+        res.sendFile(path.join(__dirname, 'movies.html'))
     })
 
 
@@ -45,7 +45,7 @@ router.route('/:movieTitle').
     get((req, res) => {
         console.log(req.params.movieTitle)
         // res.sendFile(path.join(__dirname, 'movie.html'))
-        res.sendFile(path.join(__dirname, 'movie-2.html'))
+        res.sendFile(path.join(__dirname, 'movie.html'))
     })
     .post((req, res) => {
         const formData = res.body
@@ -53,7 +53,7 @@ router.route('/:movieTitle').
         console.log('jjj')
 
         // res.sendFile(path.join(__dirname, 'movie.html'))
-        res.sendFile(path.join(__dirname, 'movie-2.html'))
+        res.sendFile(path.join(__dirname, 'movie.html'))
     })
 
     module.exports = router

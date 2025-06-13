@@ -23,6 +23,8 @@ if (directorParam.includes('?')) {
 
 console.log(directorParam)
 
+const pageTitle = document.getElementById('page-title')
+
 // Featured director name
 const directorHeader = document.getElementById('dir-header')
 
@@ -61,6 +63,7 @@ const signUpButtonForm = document.getElementById('sign-up-b')
 const signInBackdrop = document.getElementById('modal-backdrop')
 
 const {dirFirstName, dirLastName} = revertDirectorNameRetObj({formattedDirectorName: directorParam})
+pageTitle.textContent = `${dirFirstName} ${dirLastName} | Flixy`
 console.log(dirFirstName)
 console.log(dirLastName)
 // Fetch director data

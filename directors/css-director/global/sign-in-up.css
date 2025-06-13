@@ -29,6 +29,11 @@
     /* transition-property: font-size, text-shadow; */
 }
 
+.sign-in-text:visited, .sign-up-text:visited {
+    color: var(--color-white);
+}
+
+
 .sign-in-text:hover {
     /* transform: scale(1.03); */
     /* font-size: 1em; */

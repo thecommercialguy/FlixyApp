@@ -63,21 +63,49 @@
 
 }
 
-.profile-picture {
+.review-pfp-container {
     display: flex;
     align-self: start;
+    position: relative;
     justify-content: center;
     align-items: center;
     margin-block-start: 5px;
     margin-inline-end: 8px;
-    border-radius: 100%;
+    border-radius: 24%;
+    /* border-radius: 21px; */
+    /* border-radius: 100%; */
     background-color: gray;
     
 
     aspect-ratio: 1/1;
     width: 45px;
     height: 45px;
+    overflow: clip;
+    border: 2px solid white;
 
+
+}
+
+.review-pfp {
+    width: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+
+.pfp-link {
+  width: 100%;
+  position: absolute;
+  aspect-ratio: 1/1;
+  border-radius: 21px;
+  pointer-events: all;
+  cursor: pointer;
+  background-color: rgba(0,0, 0, 0);
+  transition: background-color 150ms ease;
+}
+
+.pfp-link:hover {
+  background-color: rgba(0, 0, 0, .1);
 }
 
 .review-data {
@@ -155,7 +183,7 @@ p.review-body {
 .like-button {
     cursor: pointer;
     
-    transition: 300ms ease;
+    transition: 150ms ease;
     transition-property: color, transform;
 }
 
@@ -212,12 +240,16 @@ p.review-body {
         padding-inline: 26px;
     }
 
-    .profile-picture {
+    .review-pfp-container {
         width: 74px;
         height: 74px;
         margin-inline-end: 22px;
         margin-block: 0;
+        border: 2px solid white;
+        /* border-radius: 21px; */
+        /* box-shadow: 0px 6px 7px rgba(0,0,0,.3); */
     }
+
 
     .review-title {
         font-weight: 600;
@@ -324,7 +356,7 @@ p.review-body {
 
     }
 
-    .profile-picture {
+    .review-pfp-container {
         width: 74px;
         height: 74px;
         margin-inline-end: 22px;

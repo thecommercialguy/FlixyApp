@@ -1,6 +1,6 @@
 import { displayModal, userSignIn, isAuthenticatedBool, getToken, parseJwt, signOut, displaySignUpFields, hideSignUpFields, userSignUp, userSignInMax, userSignUpMax, updateUserSettings } from "../../js/auth.js"
 import { getGenres, getMovie, getMovieTitleByReview, getReviewerById, getReviewerByUsername, getReviewsByMovieId, getReviewsByReviewerId, postReview, updateProfilePictureBanner, updateReviewLikes } from "../../js/api.js"
-import { setAbout, setDirectorMoviePage, setGenresMoviePage, setReleaseDate, setReviewCardsMoviePage, setTitleMoviePage, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, revertTitle, setReviewFormMeta, setElementText, setMovieCards, formatTitles, setPfp, setBanner } from "../../js/contnentInit.js"
+import { setAbout, setDirectorMoviePage, setGenresMoviePage, setReleaseDate, setReviewCardsMoviePage, setTitleMoviePage, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, revertTitle, setReviewFormMeta, setElementText, setMovieCards, formatTitles, setPfp, setBanner, setSignInHrefHeaderMovies, setSignInHrefFooterMovies, setSettingsHref } from "../../js/contnentInit.js"
 
 
 const url = window.location.href
@@ -30,6 +30,8 @@ const navbar = document.querySelector('.navbar')
 const main = document.querySelector('main')
 const menuIcon = document.getElementById('menu-button')
 const dropDownHeader = document.getElementById('drop-down-h')
+const dropDownSettingsLink = document.getElementById('settings-link')
+
 
 
 // Auth components
@@ -111,23 +113,25 @@ if (isAuthenticatedBool() === false) {
         // ()
         console.log('break')
     }
-    const  t= parseJwt(token)
+    const t = parseJwt(token)
     console.log(t)
     // console.log(parseJwt(token))
     const username = name
     setUserNameTextHeader(username, signInTextHeader)
     setUserNameTextFooter(username, signInTextFooter)
-    setSignInHrefHeader(username, signInButtonHeader)
-    setSignInHrefFooter(username, signInButtonFooter)
+    setSignInHrefHeaderMovies(username, signInButtonHeader)
+    setSignInHrefFooterMovies(username, signInButtonFooter)
     setSignOutText(signUpText)
+    setSettingsHref(username, dropDownSettingsLink)
+    
     
     signUpButton.addEventListener('click', () => signOut())
     // signInBackdrop.addEventListener('click', () => displayModal(reviewForm, bodyElement, signInBackdrop))
 
-
+    console.log(userIdParam)
     let user
     try {
-        user = await getReviewerById({reviewerId: parseInt(userIdParam)})
+        user = await getReviewerById({reviewerId: parseInt(sub)})
         console.log(user)
     } catch(error) {
         console.error('Error fetching data:', error)

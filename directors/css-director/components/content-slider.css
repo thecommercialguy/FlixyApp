@@ -46,9 +46,7 @@
     max-width: 100%;
     padding: 0;
     height: auto;
-    border: 1px solid white;
     border-radius: 21px;
-    /* object-fit: cover; */
 }
 
 .idx-link {
@@ -56,6 +54,13 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    border: 2px solid white;
+    transition: border 300ms ease-in-out;
+    border-radius: 21px; 
+}
+
+.idx-link:hover {
+    border: 2px solid var(--color-yellow);
 }
 
 @media (width >= 50.625em) {

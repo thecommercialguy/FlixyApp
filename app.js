@@ -126,4 +126,5 @@ app.use('/settings', settings)
 
 app.listen(port, () => {
     console.log(`Testing ${port}`)
+    console.log(`http://localhost:${port}/`)
 })

@@ -1,6 +1,6 @@
 import { initializeSliderWidths, setUpResizeListener, navigateFeaturedSlider, navigateMonthlySliderContentMobile, navigateMonthlySliderContent, navigateReviewSlider, navigateSeasonalSliderMobile, navigateSeasonalSlider, navigateFilmSlider, navigateFilmSliderMobile, sliderListen, adjustSlider } from "./slider.js"
 import { getFeaturedMovies, getMonthlyMovies, getMovieIdsFromReview, getMovieTitleByReview, getSeasonalMovies, getSeasonalMoviess, getTopReviews, getUsernamesByReviewId, updateReviewLikes, getMonthlyMoviess, getRecentMovies } from './api.js'
-import { setMonthlySectionContentHref, setMonthlySectionImgSrcs, setReviewCardsSlider, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, setImgSrcs, setFeaturedSectionBannerSrcs, setMoviesHref, getMovieTitlesToList, getFeaturedMovieDirectorsToList, setTitlesFeatured, setDirectorsFeatured, setDirectorsHref, setImgSrcObjs, setSectionContentHrefObjs, setTitlesFeaturedObjs, setMoviesHrefObjs, setDirectorsFeaturedd, setImgSrcBannerObjs} from './contnentInit.js'
+import { setMonthlySectionContentHref, setMonthlySectionImgSrcs, setReviewCardsSlider, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, setImgSrcs, setFeaturedSectionBannerSrcs, setMoviesHref, getMovieTitlesToList, getFeaturedMovieDirectorsToList, setTitlesFeatured, setDirectorsFeatured, setDirectorsHref, setImgSrcObjs, setSectionContentHrefObjs, setTitlesFeaturedObjs, setMoviesHrefObjs, setDirectorsFeaturedd, setImgSrcBannerObjs, setSettingsHref} from './contnentInit.js'
 import { displayModal, getToken, isAuthenticatedBool, parseJwt, userSignIn, signOut, userSignInMax, userSignUpMax, displaySignUpFields, hideSignUpFields } from "./auth.js"
 
 const currPage = '/a'
@@ -14,6 +14,7 @@ console.log(widthSlider)
 const main = document.querySelector('main')
 const menuIcon = document.getElementById('menu-button')
 const dropDownHeader = document.getElementById('drop-down-h')
+const dropDownSettingsLink = document.getElementById('settings-link')
 
 // Featured Slider Items
 const featuredSliderContent = document.querySelectorAll('.featured .slider-index')
@@ -196,6 +197,7 @@ function setUpEventListeners() {
         setSignInHrefHeader(username, signInButtonHeader)
         setSignInHrefFooter(username, signInButtonFooter)
         setSignOutText(signUpText)
+        setSettingsHref(username, dropDownSettingsLink)
         signUpButton.addEventListener('click', () => signOut())
         likeButtons.forEach((button) => {
             const parentEl = button.closest('.review-card')

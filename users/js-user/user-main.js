@@ -1,6 +1,6 @@
 import { displayModal, userSignIn, isAuthenticatedBool, getToken, parseJwt, signOut, displaySignUpFields, hideSignUpFields, userSignUp, userSignInMax, userSignUpMax } from "../../js/auth.js"
-import { getGenres, getMovie, getMoviesByReviews, getMovieTitleByReview, getReviewerById, getReviewerByUsername, getReviewsByMovieId, getReviewsByReviewerId, postReview, updateProfilePictureBanner, updateReviewLikes } from "../../js/api.js"
-import { setAbout, setDirectorMoviePage, setGenresMoviePage, setReleaseDate, setReviewCardsMoviePage, setTitleMoviePage, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, revertTitle, setReviewFormMeta, setElementText, setMovieCards, formatTitles, setPfp, setBanner, setMovieCardsNew, setReviewCardsUserPage} from "../../js/contnentInit.js"
+import { getGenres, getMovie, getMoviesByDirectorId, getMoviesByReviews, getMovieTitleByReview, getReviewerById, getReviewerByUsername, getReviewsByMovieId, getReviewsByReviewerId, postReview, updateProfilePictureBanner, updateReviewLikes } from "../../js/api.js"
+import { setAbout, setDirectorMoviePage, setGenresMoviePage, setReleaseDate, setReviewCardsMoviePage, setTitleMoviePage, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, revertTitle, setReviewFormMeta, setElementText, setMovieCards, formatTitles, setPfp, setBanner, setMovieCardsNew, setReviewCardsUserPage, setSettingsHref} from "../../js/contnentInit.js"
 
 
 const url = window.location.href
@@ -14,6 +14,7 @@ if (usernameParam.includes('?')) {
     usernameParam = usernameParam.slice(0,usernameParam.indexOf('#'))
 }
 
+const pageTitle = document.getElementById('page-title')
 
 const banner = document.getElementById('banner-id')
 const profilePic = document.getElementById('pfp')
@@ -21,6 +22,7 @@ const usernameHeader = document.getElementById('user-header')
 const editButtonBanner = document.querySelector('.banner .edit-b')  // logic for here later
 
 // Bio section
+const bioSection = document.getElementById('about')
 const bioBox = document.getElementById('about-text')
 
 // Content stuff
@@ -52,6 +54,8 @@ const navbar = document.querySelector('.navbar')
 const main = document.querySelector('main')
 const menuIcon = document.getElementById('menu-button')
 const dropDownHeader = document.getElementById('drop-down-h')
+const dropDownSettingsLink = document.getElementById('settings-link')
+
 
 
 // Auth components
@@ -108,6 +112,8 @@ try {
     console.error('Error fetching data:', error)
 }
 
+pageTitle.textContent = `@${user['userName']} | Flixy`
+
 // Formatting
 const atUsername = `@${user['userName']}`
 // console.log(movieTitlesFrmt)
@@ -116,7 +122,7 @@ const atUsername = `@${user['userName']}`
 setPfp({pfpUrl: user['profilePictureURL'], el: profilePic})
 setBanner({bannerUrl: user['bannerURL'], el: banner})
 setElementText({text: atUsername, el: usernameHeader})
-setElementText({text: user['about'], el: bioBox})
+user['about'].length > 1 ? setElementText({text: user['about'], el: bioBox}) : bioSection.classList.toggle('hidden')
 setMovieCardsNew({movies: movies, movieCardCont: movieContainer})  // 
 setReviewCardsUserPage({reviewList: reviews, reviewsContainer: reviewsContainer, backButton: backButton, nextButton: nextButton, currReviewSlice: currReviewIdx})
 
@@ -254,6 +260,8 @@ if (isAuthenticatedBool() === false) {
     setSignInHrefHeader(username, signInButtonHeader)
     setSignInHrefFooter(username, signInButtonFooter)
     setSignOutText(signUpText)
+    setSettingsHref(username, dropDownSettingsLink)
+
     
     signUpButton.addEventListener('click', () => signOut())
     // signInBackdrop.addEventListener('click', () => displayModal(reviewForm, bodyElement, signInBackdrop))
