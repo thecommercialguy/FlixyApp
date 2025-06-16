@@ -170,8 +170,19 @@ i.fa-solid.fa-star-half[data-rating*=".0"] {
     outline: 1px solid var(--color-yellow);
 }
 
+.review-fields .submit-row button {
+    background-color: var(--color-yellow);
+}
 
+.review-fields .submit-row button:hover {
+    background-color: var(--color-yellow-1);
 
+}
+
+.review-fields .submit-row button:active {
+    background-color: var(--color-yellow-2);
+
+}
 
 
 @media (width >= 50.625em) {
