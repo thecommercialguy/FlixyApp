@@ -560,7 +560,7 @@ export async function getReviewerByUsername({username}) {
     
 
     const { apiBaseUrl } = await loadConfig()
-    const url = `http://localhost:5200/api/Reviewer/ids/${username}`
+    const url = `${ apiBaseUrl }/Reviewer/ids/${username}`
 
     let response
     try {

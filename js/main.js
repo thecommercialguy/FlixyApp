@@ -3,7 +3,7 @@ import { getFeaturedMovies, getMonthlyMovies, getMovieIdsFromReview, getMovieTit
 import { setMonthlySectionContentHref, setMonthlySectionImgSrcs, setReviewCardsSlider, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, setImgSrcs, setFeaturedSectionBannerSrcs, setMoviesHref, getMovieTitlesToList, getFeaturedMovieDirectorsToList, setTitlesFeatured, setDirectorsFeatured, setDirectorsHref, setImgSrcObjs, setSectionContentHrefObjs, setTitlesFeaturedObjs, setMoviesHrefObjs, setDirectorsFeaturedd, setImgSrcBannerObjs, setSettingsHref} from './contnentInit.js'
 import { displayModal, getToken, isAuthenticatedBool, parseJwt, userSignIn, signOut, userSignInMax, userSignUpMax, displaySignUpFields, hideSignUpFields } from "./auth.js"
 
-const currPage = '/a'
+const currPage = '/'
 
 // DOM Elements
 // Featured Slider Width
