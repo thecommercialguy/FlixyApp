@@ -71,6 +71,15 @@
     border: 2px solid var(--color-yellow);
 }
 
+.rec-reviewed-container.reviews-null .review-card-null {
+    width: max-content;
+    background-color: var(--color-black-4);
+}
+
+.rec-reviewed-container.reviews-null {
+    justify-content: center;
+}
+
 @media (width >= 50.625em) {
     .rec-reviewed-container{
         display: flex;

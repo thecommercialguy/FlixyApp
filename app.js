@@ -39,14 +39,14 @@ app.route('/').
         const formData = res.body
         res.sendFile(path.join(__dirname, 'index.html'))
     })
-app.route('/a').
-    get((req, res) => {
-        res.sendFile(path.join(__dirname, 'index2.html'))
-    })
-    .post((req, res) => {
-        const formData = res.body
-        res.sendFile(path.join(__dirname, 'index.html'))
-    })
+// app.route('/a').
+//     get((req, res) => {
+//         res.sendFile(path.join(__dirname, 'index2.html'))
+//     })
+//     .post((req, res) => {
+//         const formData = res.body
+//         res.sendFile(path.join(__dirname, 'index.html'))
+//     })
 
 app.use('/movies', movies)
 app.use('/directors', directors)

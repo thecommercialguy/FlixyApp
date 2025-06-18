@@ -60,6 +60,9 @@ export function setMovieCardsNew({movies, movieCardCont}) {
 
     if (!movies) {
         console.log('err2')
+
+        document.querySelector('.rec-reviewed-container').classList.toggle('reviews-null')
+        movieCardCont.innerHTML = '<p class="review-card-null">No reviews, yet.</p>'
         return
     }
     // contentSlider.innerHTML = ''
@@ -489,6 +492,11 @@ export function setSignOutText(signUpText) {
 
 export function setSignInHrefHeader(username, signInButtonHeader) {
     signInButtonHeader.href = `users/${username}`
+    
+}
+
+export function setSignInHrefHeaderUserPage(username, signInButtonHeader) {
+    signInButtonHeader.href = `./${username}`
     
 }
 

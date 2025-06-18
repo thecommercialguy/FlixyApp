@@ -256,7 +256,7 @@ export async function userSignUpMax({signInForm, currPage}) {
             })
         })
     } catch(error) {
-        console.error("Error occured signing in:", error)
+        console.error("Error occured signing up:", error)
         alert("An error when signing up")
         return
     }
@@ -274,9 +274,12 @@ export async function userSignUpMax({signInForm, currPage}) {
         return
     }
 
-    let data
+    
     try {
-        data = await resposne.json()
+        const data = await response.json()
+        const token = data.token  // Data Transfer Object (Representing our Token)
+        localStorage.setItem('Bearer', token)
+        
     } catch (error) {
         console.error('Error processing success response:', error)
         alert('Error processing server resposne')
@@ -369,6 +372,45 @@ export async function updateUserSettings({id, settingsForm, rel}) {
 
 
 
+}
+
+export async function deleteUser({id}) {
+    
+    const token = localStorage.getItem('Bearer')
+    if (!token) {
+        return
+    }
+
+    const { apiBaseUrl } = await loadConfig()
+    const url = `${apiBaseUrl}/Reviewer/${id}`
+
+
+    let response
+    try {
+        response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+        })
+
+        if (!response.ok) {
+            const errorData = await response.json()
+            const errorMessage = errorData.message || `Failed to delete user: ${response.statusText}`
+            throw new Error(errorMessage)
+        }
+        
+        signOut()
+        window.location.href = '/'
+
+        
+
+    } catch(error) {
+        console.error("Error deleting user:", error)
+        alert("An error when signing up")
+        return
+    }
+    
 }
 
 export async function updateUserSettingss({id, settingsForm, rel}) {

@@ -1,4 +1,4 @@
-import { displayModal, userSignIn, isAuthenticatedBool, getToken, parseJwt, signOut, displaySignUpFields, hideSignUpFields, userSignUp, userSignInMax, userSignUpMax, updateUserSettings } from "../../js/auth.js"
+import { displayModal, userSignIn, isAuthenticatedBool, getToken, parseJwt, signOut, displaySignUpFields, hideSignUpFields, userSignUp, userSignInMax, userSignUpMax, updateUserSettings, deleteUser } from "../../js/auth.js"
 import { getGenres, getMovie, getMovieTitleByReview, getReviewerById, getReviewerByUsername, getReviewsByMovieId, getReviewsByReviewerId, postReview, updateProfilePictureBanner, updateReviewLikes } from "../../js/api.js"
 import { setAbout, setDirectorMoviePage, setGenresMoviePage, setReleaseDate, setReviewCardsMoviePage, setTitleMoviePage, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, revertTitle, setReviewFormMeta, setElementText, setMovieCards, formatTitles, setPfp, setBanner, setSignInHrefHeaderMovies, setSignInHrefFooterMovies, setSettingsHref } from "../../js/contnentInit.js"
 
@@ -67,10 +67,16 @@ const currPasswordVerEl = document.getElementById('c-password-field')
 const newPasswordEl = document.getElementById('new-password-field')
 const submitSettingsEl = document.getElementById('submit-settings')
 
-const verifyModal = document.getElementById('ver-modal')
-const verSubmitSettingsEl = document.getElementById('ver-submit')
-const cancelSubmitEl = document.getElementById('cancel-submit')
+const verifyModal = document.getElementById('ver-modal')  // MODAL
+const verSubmitSettingsEl = document.getElementById('ver-submit')  // IN MODAL
 
+const cancelSubmitEl = document.getElementById('cancel-submit')  // IN SETMOD
+
+const deleteButton = document.getElementById('delete')
+const verifyDeleteModal = document.getElementById('del-modal')
+const verDeleteEl = document.getElementById('ver-delete')
+
+const cancelDeletetEl = document.getElementById('cancel-delete')
 
 
 // Event listeners
@@ -212,11 +218,20 @@ if (isAuthenticatedBool() === false) {
 
     submitSettingsEl.addEventListener('click', (e) => {
         e.preventDefault()
-        
+        e.stopPropagation()
 
-        verifyModal.classList.toggle('hidden')
+
+        verifyModal.classList.toggle('hidden') 
         // displayModal(verifyModal, bodyElement, signInBackdrop)
         toggleFields()
+
+    })
+
+    deleteButton.addEventListener('click', (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        verifyDeleteModal.classList.toggle('hidden')
+        // toggleFields()
 
     })
 
@@ -224,6 +239,14 @@ if (isAuthenticatedBool() === false) {
         e.preventDefault()
         // displayModal(verifyModal, bodyElement, signInBackdrop)
         verifyModal.classList.toggle('hidden')
+        toggleFields()
+
+    })
+
+    cancelDeletetEl.addEventListener('click', (e) => {
+        e.preventDefault()
+        // displayModal(verifyModal, bodyElement, signInBackdrop)
+        verifyDeleteModal.classList.toggle('hidden')
         toggleFields()
 
     })
@@ -271,7 +294,75 @@ if (isAuthenticatedBool() === false) {
             errorMessage.innerHTML = 'Failure'
     
         } finally {
+            verSubmitSettingsEl.disabled = false;
+            
+            
+        }
+
+    })
+
+    verDeleteEl.addEventListener('click', async (e) => {
+        e.preventDefault() 
+        let errorMessage = document.querySelector('.auth-error-message')
+        if (errorMessage) {
+            errorMessage.remove()
+        }
+        verDeleteEl.disabled = true
+
+        try {
+            await deleteUser({id: user.id})
+            // errorMessage = document.createElement('div')
+            // errorMessage.className = 'auth-error-message'
+
+            // errorMessage.innerHTML = 'Successful'
+
+            // document.body.appendChild(errorMessage)
+
+
+            // setTimeout(() => {
+            //     console.log('fade-out')
+            //     errorMessage.classList.add('fade-out')  // causes an animation
+            //     errorMessage.addEventListener('animationend', (event) => {
+            //         console.log('fade-out-')
+            //             if (errorMessage) {
+                            
+            //                 errorMessage.remove()
+            //             }   
+            //     }, {once: true})
+
+            // }, 90000) // 5seconds
+            
+            // verifyModal.classList.toggle('hidden')
+            // toggleFields()
+            // refreshFields({user: user})
+            
+        } catch (error) {
+            console.error('Error occured while updating settings:', error)
+            
+            errorMessage = document.createElement('div')
+            error.className = 'auth-error-message'
+
+            errorMessage.innerHTML = 'Failure'
+
+            document.body.appendChild(errorMessage)
+
+            setTimeout(() => {
+                console.log('fade-out')
+                errorMessage.classList.add('fade-out')  // causes an animation
+                errorMessage.addEventListener('animationend', (event) => {
+                    console.log('fade-out-')
+                        if (errorMessage) {
+                            
+                            errorMessage.remove()
+                        }   
+                }, {once: true})
+
+            }, 90000) // 5seconds
+
+    
+        } finally {
             verSubmitSettingsEl.diabled = false;
+            verDeleteEl.disabled = false
             
             
         }
@@ -295,6 +386,7 @@ function toggleFields() {
     const formRows = settingsFormEl.querySelectorAll('.form-row')
 
     submitSettingsEl.classList.toggle('diabled')
+    deleteButton.classList.toggle('disable')
 
     formRows.forEach((row) => {
         row.classList.toggle('disabled')

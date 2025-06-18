@@ -141,7 +141,7 @@
     height: auto;
 }
 
-#settings-update-form .contents .verify-post {
+#settings-update-form .contents .verify-post, #settings-update-form .contents .verify-del {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -163,12 +163,13 @@
     z-index: 1500;
 }
 
-#settings-update-form .contents .verify-post.hidden {
+#settings-update-form .contents .verify-post.hidden, #settings-update-form .contents .verify-del.hidden {
     display: none;
 }
 
 
-#settings-update-form .contents .verify-post .verify-header {
+#settings-update-form .contents .verify-post .verify-header,
+#settings-update-form .contents .verify-del .verify-header {
     width: 15ch;
 
     margin-bottom: 19px;
@@ -177,32 +178,73 @@
     font-weight: 550;
 }
 
-#settings-update-form .contents .verify-post .verify-header > span {
+#settings-update-form .contents .verify-post .verify-header > span, 
+#settings-update-form .contents .verify-del .verify-header > span {
     display: inline;
     color: var(--color-yellow);
 }   
 
-#settings-update-form .contents .verify-post .submit-row{
+#settings-update-form .contents .verify-post .submit-row,
+#settings-update-form .contents .verify-del .submit-row { 
     justify-content: space-between;
     width: 75%;
 }
-#settings-update-form .contents .verify-post .submit-row button {
+#settings-update-form .contents .verify-post .submit-row button,
+#settings-update-form .contents .verify-del .submit-row button {
     background-color: transparent;
 
 }
 
-#settings-update-form .contents .verify-post .submit-row button:hover {
+#settings-update-form .contents .verify-post .submit-row button:hover, 
+#settings-update-form .contents .verify-del .submit-row button:hover {
 
     background-color: var(--color-black-4);
     
 }
+#settings-update-form .contents .verify-del .submit-row #ver-delete {
+    background-color: #8ee161;
+}
+#settings-update-form .contents .verify-del .submit-row #ver-delete:hover {
+    background-color: #75d542;;
+}
 
+#settings-update-form .contents .verify-del .submit-row #ver-delete:active {
+    color: black;
+    background-color: #75d5429e;
+}
 /* #settings-update-form .contents .verify-post .submit-row input {
 } */
+
+#delete {
+    display: flex;
+    position: absolute;
+    right: 0%;
+    color: #8ee161;
+    text-decoration: none;
+    width: max-content;
+    translate: -15%;
+    transition: none;
+    background-color: transparent;
+    font-size: 12px;
+}
+
+#delete:active {
+    color: white;
+    background-color: transparent;
+
+}
+
+#delete:hover {
+    transform:none;
+    text-decoration: underline;
+    background-color: transparent;
+
+}
 
 .disabled {
     pointer-events: none;
 }
+
 
 
 
@@ -229,8 +271,13 @@
         /* padding-block-end: 0; */
     }
 
-    #settings-update-form .contents .verify-post {
+    #settings-update-form .contents .verify-post,
+    #settings-update-form .contents .verify-del {
         box-shadow: 0px 9px 30px 20px rgba(0,0,0,0.11);
+    }
+
+    #delete {
+        font-size: 0.9375rem;
     }
 
 }
@@ -250,11 +297,11 @@
     }
 
     
-    #settings-update-form .contents .verify-post {
+    #settings-update-form .contents .verify-post, #settings-update-form .contents .verify-del {
         top: 5%;
     }
     
-    #settings-update-form .contents .verify-post .submit-row {
+    #settings-update-form .contents .verify-post .submit-row, #settings-update-form .contents .verify-del .submit-row{
         width: 91%;
         font-size: 15px;
         padding-inline: 4px;
@@ -268,7 +315,7 @@
         padding-block: 7px;
     }
 
-    #settings-update-form .contents .verify-post .submit-row button {
+    #settings-update-form .contents .verify-post .submit-row button, #settings-update-form .contents .verify-del .submit-row button {
         background-color: transparent;
         font-size: 1.125em;
         padding-inline: 36px;
@@ -276,5 +323,7 @@
         width: max-content;
     }
     
-
+    #delete {
+        translate: -39.8%;
+    }
 }

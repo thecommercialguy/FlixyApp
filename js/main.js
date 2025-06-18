@@ -182,7 +182,12 @@ function setUpEventListeners() {
             hideSignUpFields({usernameRowEl: usernameRowEl, signInButtonForm: signInButtonForm, signInHeader: signInFormHeader})
             displayModal(signInForm, bodyElement, signInBackdrop)
         })
-        signInForm.addEventListener('submit', () => userSignInMax({signInForm: signInForm, currPage: currPage}))
+        signInForm.addEventListener('submit', () => {
+            if (!signInButtonForm.classList.contains('hidden')){
+            userSignInMax({signInForm: signInForm, currPage: currPage})
+            } else {
+                userSignUpMax({signInForm: signInForm, currPage: currPage})
+            }})
         // Managing to get the modal to arise when signing in
         likeButtons.forEach((button) => {
             button.addEventListener('click', () =>  displayModal(signInForm, bodyElement, signInBackdrop))

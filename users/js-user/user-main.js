@@ -1,6 +1,6 @@
 import { displayModal, userSignIn, isAuthenticatedBool, getToken, parseJwt, signOut, displaySignUpFields, hideSignUpFields, userSignUp, userSignInMax, userSignUpMax } from "../../js/auth.js"
 import { getGenres, getMovie, getMoviesByDirectorId, getMoviesByReviews, getMovieTitleByReview, getReviewerById, getReviewerByUsername, getReviewsByMovieId, getReviewsByReviewerId, postReview, updateProfilePictureBanner, updateReviewLikes } from "../../js/api.js"
-import { setAbout, setDirectorMoviePage, setGenresMoviePage, setReleaseDate, setReviewCardsMoviePage, setTitleMoviePage, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, revertTitle, setReviewFormMeta, setElementText, setMovieCards, formatTitles, setPfp, setBanner, setMovieCardsNew, setReviewCardsUserPage, setSettingsHref} from "../../js/contnentInit.js"
+import { setAbout, setDirectorMoviePage, setGenresMoviePage, setReleaseDate, setReviewCardsMoviePage, setTitleMoviePage, setUserNameTextHeader, setUserNameTextFooter, setSignInHrefHeader, setSignInHrefFooter, setSignOutText, revertTitle, setReviewFormMeta, setElementText, setMovieCards, formatTitles, setPfp, setBanner, setMovieCardsNew, setReviewCardsUserPage, setSettingsHref, setSignInHrefHeaderUserPage} from "../../js/contnentInit.js"
 
 
 const url = window.location.href
@@ -26,11 +26,13 @@ const bioSection = document.getElementById('about')
 const bioBox = document.getElementById('about-text')
 
 // Content stuff
+const recentlyReviewedSection = document.getElementById('rec-rev-sec')
 const movieContainer = document.getElementById('movie-container')
 console.log(movieContainer)
 
 // Reviews components
 const reviewsContainer = document.getElementById('review-card-container')
+const usernameSpan = document.getElementById('span-username')
 const backButton = document.getElementById('btn-back')
 const nextButton = document.getElementById('btn-next')
 
@@ -102,11 +104,13 @@ let movies
 // let movieTitlesFrmt
 try {
     reviewerID  = await getReviewerByUsername({username: usernameParam})
+    console.log(reviewerID)
     user = await getReviewerById({reviewerId: reviewerID})
     console.log(user)
     reviews = await getReviewsByReviewerId({reviewerId: reviewerID})
     movies = await getMoviesByReviews({reviewObjs: reviews})
     console.log(movies)
+    console.log(reviews)
     // movieTitlesFrmt = await formatTitles({titles: movieTitles})
 } catch(error) {
     console.error('Error fetching data:', error)
@@ -122,8 +126,13 @@ const atUsername = `@${user['userName']}`
 setPfp({pfpUrl: user['profilePictureURL'], el: profilePic})
 setBanner({bannerUrl: user['bannerURL'], el: banner})
 setElementText({text: atUsername, el: usernameHeader})
+setElementText({text: atUsername, el: usernameSpan})
 user['about'].length > 1 ? setElementText({text: user['about'], el: bioBox}) : bioSection.classList.toggle('hidden')
-setMovieCardsNew({movies: movies, movieCardCont: movieContainer})  // 
+// if (movies != null){
+setMovieCardsNew({movies: movies, movieCardCont: movieContainer})
+// } else {
+//     recentlyReviewedSection.classList.toggle('hidden')
+// }
 setReviewCardsUserPage({reviewList: reviews, reviewsContainer: reviewsContainer, backButton: backButton, nextButton: nextButton, currReviewSlice: currReviewIdx})
 
 
@@ -191,7 +200,7 @@ backButton.addEventListener('click', () => {
     reviewsContainer.innerHTML = ''
     currUrl = `?page=${currReviewIdx}`
 
-    setReviewCardsMoviePage({reviewList: reviews, reviewsContainer: reviewsContainer, backButton: backButton, nextButton: nextButton, currReviewSlice: currReviewIdx})
+    setReviewCardsUserPage({reviewList: reviews, reviewsContainer: reviewsContainer, backButton: backButton, nextButton: nextButton, currReviewSlice: currReviewIdx})
     history.pushState({page: currReviewIdx}, '', `${window.location.pathname}?page=${currReviewIdx}`)
 
 })
@@ -203,7 +212,7 @@ nextButton.addEventListener('click', () => {
 
     reviewsContainer.innerHTML = ''
     currUrl = `?page=${currReviewIdx}`
-    setReviewCardsMoviePage({reviewList: reviews, reviewsContainer: reviewsContainer, backButton: backButton, nextButton: nextButton, currReviewSlice: currReviewIdx})
+    setReviewCardsUserPage({reviewList: reviews, reviewsContainer: reviewsContainer, backButton: backButton, nextButton: nextButton, currReviewSlice: currReviewIdx})
 
     history.pushState({page: currReviewIdx},'', `${window.location.pathname}?page=${currReviewIdx}`)
 
@@ -257,8 +266,8 @@ if (isAuthenticatedBool() === false) {
     console.log(parseJwt(token))
     setUserNameTextHeader(username, signInTextHeader)
     setUserNameTextFooter(username, signInTextFooter)
-    setSignInHrefHeader(username, signInButtonHeader)
-    setSignInHrefFooter(username, signInButtonFooter)
+    setSignInHrefHeaderUserPage(username, signInButtonHeader)
+    setSignInHrefHeaderUserPage(username, signInButtonFooter)
     setSignOutText(signUpText)
     setSettingsHref(username, dropDownSettingsLink)
 
